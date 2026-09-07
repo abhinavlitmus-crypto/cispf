@@ -1,0 +1,357 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap');
+* {
+  /* font-family: 'Poppins', sans-serif; */
+  /* font-family: 'Atkinson Hyperlegible', sans-serif; */
+  font-family: 'Atkinson Hyperlegible Next', sans-serif;
+}
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(133, 112, 112);
+}
+
+.overflow-y-auto {
+  overflow-y: auto !important;
+}
+
+.overflow-x-auto {
+  overflow-x: auto !important;
+}
+
+/* .nav-overflow>ul{
+  overflow: auto;
+  overflow-x: hidden;
+  height: calc(100vh - 46px);
+} */
+.main-content {
+  /* background-color: #f5f5f5!important; */
+  width: 100% !important;
+  height: calc(100vh - 20px) !important;
+  overflow: auto;
+  /* border: 1px solid rgb(211, 96, 96); */
+  margin: 10px;
+  padding: 10px;
+}
+
+.ant-page-header.ant-page-header-ghost {
+  padding: 0px;
+}
+
+.req::after {
+  content: ' *';
+  color: red;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.app-modal-body-overflow .ant-modal-body,
+.app-modal-without-footer-body-overflow .ant-modal-body {
+  max-height: calc(100vh - 200px) !important;
+  display: flex;
+  flex-direction: column;
+  overflow: auto !important;
+}
+
+.app-modal-without-footer-body-overflow .ant-modal-body {
+  max-height: calc(100vh - 100px) !important;
+}
+
+.ant-modal-fullscreen {
+  width: 100vw !important;
+  height: 100vh;
+  top: 0px !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+.ant-modal-fullscreen .ant-modal-body {
+  height: calc(100vh - 110px) !important;
+  display: flex;
+  flex-direction: column;
+  overflow: auto !important;
+}
+
+.ant-modal-fullscreen .ant-modal-content {
+  height: 100vh;
+  width: 100vw;
+}
+
+.ant-tabs-nav {
+  margin-bottom: 0px !important;
+}
+
+/* .ant-tabs-content-holder{
+  padding: 10px;
+  overflow: auto;
+  height: calc(100vh - 204px)
+} */
+.ant-tabs-tab {
+  border-top: 2px solid transparent !important;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active {
+  border-top: 2px solid red !important;
+}
+
+.ant-message .anticon {
+  top: -3px !important;
+}
+
+.ant-pagination {
+  display: inline-flex;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.ant-page-header {
+  padding: 0px;
+}
+
+.main-content .ant-card-small>.ant-card-body:first-child {
+  padding-top: 0px;
+}
+
+.ant-col .ant-form-item {
+  margin-bottom: 10px;
+}
+
+.ant-col.ant-form-item-label {
+  padding: 0px !important;
+}
+
+/* Loader Page CSS Starts */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Loader Page CSS Ends */
+.tox-notification.tox-notification--in.tox-notification--warning,
+.tox-statusbar__branding {
+  display: none !important;
+}
+
+.search-form .ant-row div.ant-col:last-child {
+  margin-left: auto;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+.ant-message .anticon {
+  position: static !important;
+}
+
+ul.ant-menu-horizontal li:first-child {
+  margin-left: auto;
+}
+
+.role-module-checkbox {
+  display: flex !important;
+  flex-wrap: wrap;
+}
+
+.role-module-checkbox label {
+  width: 25%;
+  margin-right: 0px;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+.w-25 {
+  width: 25% !important;
+}
+
+.w-50 {
+  width: 50% !important;
+}
+
+.w-75 {
+  width: 75% !important;
+}
+
+/* =========================
+   Mobile responsiveness
+   (xs: < 576px)
+   ========================= */
+@media (max-width: 575px) {
+  /* prevent layout overflow on tiny screens */
+  html,
+  body,
+  #root {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* content wrappers that used desktop spacing */
+  .main-content {
+    margin: 8px;
+    padding: 8px;
+    height: auto !important;
+  }
+
+  /* AntD tables: allow horizontal scroll rather than breaking layout */
+  .ant-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .ant-table {
+    min-width: 640px; /* keeps columns readable; wrapper provides scroll */
+  }
+
+  /* Pagination should wrap nicely */
+  .ant-pagination {
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+
+  /* Modals should never exceed viewport width */
+  .ant-modal {
+    max-width: calc(100vw - 20px);
+    margin: 10px auto;
+  }
+  .ant-modal-content {
+    max-width: calc(100vw - 20px);
+  }
+
+  /* Checkbox grids in role module should stack */
+  .role-module-checkbox label {
+    width: 100%;
+  }
+
+  /* Forms: reduce label spacing a bit */
+  .ant-form-item-label {
+    padding-bottom: 2px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .role-module-checkbox label {
+    width: 50%;
+  }
+}
+
+.ant-menu-submenu-selected.ant-menu-title-content a {
+  /* color: #000000; Set the text color to white8 */
+  color: #ffffff
+}
+
+.ant-menu-item.ant-menu-item-selected{
+  /* background: #EFF1F7 !important; */
+  /* background: #FB904D !important; */
+  background: #7F802D !important;
+  color: #ffffff !important;
+}
+
+.ant-pagination-item {
+  border-radius: 50% !important;
+}
+
+:where(.css-dev-only-do-not-override-wpf5p1).ant-image-preview-root .ant-image-preview-img-wrapper {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Move required asterisk to AFTER label (final fix) */
+.ant-form-item 
+.ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+  display: none !important;
+  content: none !important;
+}
+
+.ant-form-item 
+.ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::after {
+  content: " *";
+  visibility: visible !important;   /* 🔥 THIS WAS MISSING */
+  display: inline-block;
+  margin-left: 4px;
+  color: #ff4d4f;
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* For HIV positivity module custom select  */
+
+/* Primary button styled Select */
+.filter-select .ant-select-selector {
+    background-color: #667eea !important;   
+    border-color: #667eea !important;
+    color: #fff !important;
+    font-weight: 500;
+}
+
+.filter-select .ant-select-selection-placeholder {
+    color: #ffffffcc;
+}
+
+.filter-select .ant-select-arrow {
+    color: #fff;
+}
+
+/* Hover */
+.filter-select:hover .ant-select-selector {
+    background-color: #4b67e0 !important;
+    border-color: #4b67e0 !important;
+}
+
+/* When value selected */
+.filter-select.ant-select-focused .ant-select-selector,
+.filter-select.ant-select-open .ant-select-selector {
+    background-color: #435fde !important;
+    border-color: #0958d9 !important;
+}
+/* Disable typing inside pagination page-size select */
+.ant-pagination-options
+  .ant-select-selection-search-input {
+  pointer-events: none !important;
+  width: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+ .ant-pagination-options
+  .ant-select-selection-search {
+  display: none !important;
+}
+
+
+

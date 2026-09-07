@@ -1,0 +1,11 @@
+{
+	"token": {
+		"colorPrimary": "#7F802D",
+		"colorInfo": "#28282B"
+	},
+	"components": {
+		"Divider": {
+			"colorSplit": "rgba(236, 24, 24, 0.25)"
+		}
+	}
+}
