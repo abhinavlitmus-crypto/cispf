@@ -3,7 +3,7 @@ export const navigation = [
   { label: "ABOUT US", href: "/#about" },
   { label: "WHAT WE DO", href: "/#what-we-do" },
   { label: "NEWS & MEDIA", href: "/#news-media" },
-  { label: "RESEARCH + MORE", href: "/#research" },
+  { label: "RESEARCH WORK", href: "/#research" },
   { label: "EVENTS", href: "/#events" },
 ];
 

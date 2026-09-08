@@ -10,7 +10,7 @@ type ButtonProps = (
 export default function Button({ variant = "solid", className, ...props }: ButtonProps) {
   const classes = cn(
     "inline-flex min-h-11 shrink-0 items-center justify-center gap-2 px-6 py-3 text-sm font-semibold whitespace-nowrap transition-[filter] hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-4 disabled:pointer-events-none disabled:opacity-50",
-    variant === "solid" ? "bg-button-gradient text-white" : "border border-primary text-primary",
+    variant === "solid" ? "bg-brand-gradient text-white" : "border border-primary text-primary",
     className,
   );
 
