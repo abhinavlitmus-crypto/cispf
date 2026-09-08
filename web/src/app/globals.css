@@ -50,7 +50,9 @@
 
 :root {
   --gradient-brand: linear-gradient(90deg, #EE0000 0%, #FF8A00 100%);
+  --gradient-brand-vertical: linear-gradient(0deg, #EE0000 0%, #FF8A00 100%);
   --gradient-button: linear-gradient(270deg, rgba(238, 0, 0, 0.77) 0%, rgba(255, 138, 0, 0.77) 100%);
+  --gradient-card-overlay: linear-gradient(180deg, rgba(238, 0, 0, 0.72) 0%, rgba(255, 138, 0, 0.72) 100%);
   --color-primary: #EE0000;
   --color-secondary: #FF8A00;
   --font-heading: var(--font-onest, Arial), Helvetica, system-ui, sans-serif;
@@ -103,7 +105,9 @@
 @supports (color: color(display-p3 1 1 1)) {
   :root {
     --gradient-brand: linear-gradient(90deg, color(display-p3 0.855 0.031 0.031) 0%, color(display-p3 1.000 0.569 0.071) 100%);
+    --gradient-brand-vertical: linear-gradient(0deg, color(display-p3 0.855 0.031 0.031) 0%, color(display-p3 1.000 0.569 0.071) 100%);
     --gradient-button: linear-gradient(270deg, color(display-p3 0.855 0.031 0.031 / 0.77) 0%, color(display-p3 1.000 0.569 0.071 / 0.77) 100%);
+    --gradient-card-overlay: linear-gradient(180deg, color(display-p3 0.855 0.031 0.031 / 0.72) 0%, color(display-p3 1.000 0.569 0.071 / 0.72) 100%);
   }
 }
 
