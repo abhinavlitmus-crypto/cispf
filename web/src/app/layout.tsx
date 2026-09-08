@@ -17,7 +17,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <Header />
-        <div className="relative isolate flex flex-1 flex-col">
+        <div className="relative flex flex-1 flex-col">
           {children}
           <Footer />
         </div>
