@@ -1,0 +1,16 @@
+import Button from "@/components/common/Button/Button";
+
+export default function JoinUs() {
+  return (
+    // The footer is the following sibling in the layout and scrolls above this section.
+    <section aria-labelledby="join-heading" className="relative z-0 flex min-h-[22rem] flex-col items-center justify-center gap-6 bg-white px-5 py-20 text-center md:sticky md:top-18 md:min-h-[clamp(24rem,34vw,38rem)] motion-reduce:static md:motion-reduce:static [@media(max-height:600px)]:static">
+      <h2 id="join-heading" className="text-[clamp(1.75rem,3vw,3.5rem)] leading-tight font-medium">JOIN US TO BUILD THE FUTURE</h2>
+      <p className="max-w-xl text-sm leading-relaxed text-neutral-500">Engage with the businesses, policymakers and institutions shaping the next phase of Canada–India relations.</p>
+      <div className="mt-3 flex w-full max-w-lg flex-col justify-center gap-4 sm:flex-row">
+        {/* TODO: Replace the contact destination when the membership flow is available. */}
+        <Button href="/#contact" className="sm:flex-1">BECOME A MEMBER</Button>
+        <Button href="/#contact" variant="outline" className="sm:flex-1">CONTACT US</Button>
+      </div>
+    </section>
+  );
+}

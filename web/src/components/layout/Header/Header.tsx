@@ -88,7 +88,7 @@ export default function Header() {
           </SheetTrigger>
           <SheetContent side="right" className="overflow-y-auto p-6 pt-16 data-[side=right]:w-[min(90vw,24rem)] [&_[data-slot=sheet-close]]:size-11">
             <SheetHeader className="p-0">
-              <SheetTitle>CANADA·INDIA</SheetTitle>
+              {/* <SheetTitle>CANADA·INDIA</SheetTitle> */}
               <SheetDescription className="sr-only">Explore the Canada-India Strategic Partnership Forum.</SheetDescription>
             </SheetHeader>
             <nav aria-label="Mobile navigation">

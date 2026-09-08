@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { onest } from "@/lib/fonts";
 import Header from "@/components/layout/Header/Header";
+import Footer from "@/components/layout/Footer/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,7 +17,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <Header />
-        {children}
+        <div className="relative isolate flex flex-1 flex-col">
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );
