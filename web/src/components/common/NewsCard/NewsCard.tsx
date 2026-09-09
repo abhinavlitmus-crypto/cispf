@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BsArrowUpRight } from "react-icons/bs";
+import { BsArrowRight, BsArrowUpRight } from "react-icons/bs";
 import type { NewsItem } from "@/constants/news";
 
 export default function NewsCard({ item }: { item: NewsItem }) {
@@ -23,6 +23,7 @@ export default function NewsCard({ item }: { item: NewsItem }) {
         <div className="border-b border-neutral-200 py-5 transition-transform delay-150 duration-500 ease-out group-hover:-translate-y-3 group-focus-visible:-translate-y-3 motion-reduce:transition-none motion-reduce:delay-0">
           <h3 id={`${item.id}-title`} className="text-[clamp(1.0625rem,1.2vw,1.375rem)] leading-tight font-medium">{item.title}</h3>
           <p className="mt-3 text-[clamp(0.875rem,0.98vw,1.125rem)] leading-snug font-light">{item.summary}</p>
+          <span className="mt-8 flex items-center gap-6 text-sm font-semibold text-primary md:hidden">READ MORE<BsArrowRight aria-hidden="true" className="size-6 shrink-0" /></span>
         </div>
       </Link>
     </article>
