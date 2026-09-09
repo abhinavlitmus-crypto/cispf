@@ -22,7 +22,7 @@ export default function Subscribe() {
   return (
     <section aria-labelledby="subscribe-heading" className="bg-white px-5 py-12 md:px-[clamp(1rem,2.6vw,3.125rem)] md:py-[clamp(4rem,6vw,7rem)]">
       <div className="mx-auto max-w-[1380px] bg-[#f6f6f68f] px-6 py-12 text-center md:w-[80%] md:px-10 md:py-[clamp(4rem,5vw,6rem)]">
-        <h2 id="subscribe-heading" className="mx-auto w-fit bg-brand-gradient bg-clip-text text-[clamp(1.5rem,2vw,2.375rem)] leading-tight font-medium text-transparent">SUBSCRIBE TO OUR NEWSLETTER</h2>
+        <h2 id="subscribe-heading" className="mx-auto w-fit bg-brand-gradient bg-clip-text text-[clamp(1.75rem,2.4vw,2.75rem)] leading-tight font-medium text-transparent">SUBSCRIBE TO OUR NEWSLETTER</h2>
         <p className="mt-4 text-base leading-relaxed text-neutral-500 md:text-lg">Never miss an update of our latest decisions</p>
         <form onSubmit={handleSubmit} className="mx-auto mt-8 max-w-[564px] md:mt-12">
           <div className="grid gap-6 sm:grid-cols-2">
