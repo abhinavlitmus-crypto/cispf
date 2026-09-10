@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BsArrowUpRight } from "react-icons/bs";
+import { BsArrowRight, BsArrowUpRight } from "react-icons/bs";
 import type { PolicyItem } from "@/constants/policy";
 
 export default function PolicyCard({ item, variant = "portrait" }: { item: PolicyItem; variant?: "portrait" | "landscape" }) {
@@ -23,6 +23,7 @@ export default function PolicyCard({ item, variant = "portrait" }: { item: Polic
           <Image src="/Icon/quaote1.svg" alt="" aria-hidden="true" width={81} height={93} className="pointer-events-none absolute -top-3 left-0 h-auto w-12 lg:w-16" />
           <h3 id={`${item.id}-title`} className="relative text-[clamp(1.0625rem,1.3vw,1.5rem)] leading-[1.3] font-medium">{item.title}</h3>
         </div>
+        <div className="border-b border-neutral-200 pb-8 md:hidden"><span className="mt-8 flex items-center gap-6 text-sm font-semibold text-primary md:hidden">READ MORE<BsArrowRight aria-hidden="true" className="size-6 shrink-0" /></span></div>
       </Link>
     </article>
   );
