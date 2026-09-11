@@ -18,7 +18,7 @@ export default function PolicyDiscussions() {
         </div>
         <div className="mt-12 flex justify-center md:mt-20">
           {/* TODO: Replace with the policy listing route when available. */}
-          <Button href="/#contact" className="group relative isolate max-w-full px-4 text-xs hover:brightness-100 before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:bg-primary before:opacity-0 before:transition-opacity before:duration-500 before:content-[''] hover:before:opacity-100 focus-visible:before:opacity-100 motion-reduce:before:transition-none sm:px-6 sm:text-sm">
+          <Button href="/#contact" className="group max-w-full px-4 text-xs sm:px-6 sm:text-sm">
             <span className="relative inline-flex items-center pr-10">
               <span className="transition-transform duration-500 group-hover:translate-x-10 group-focus-visible:translate-x-10 motion-reduce:transition-none">VIEW ALL POLICY DISCUSSIONS</span>
               <span aria-hidden="true" className="pointer-events-none absolute inset-0 flex items-center justify-end transition-transform duration-500 group-hover:translate-x-[calc(-100%+1.5rem)] group-focus-visible:translate-x-[calc(-100%+1.5rem)] motion-reduce:transition-none"><ArrowRight className="size-6 shrink-0" strokeWidth={1.5} /></span>

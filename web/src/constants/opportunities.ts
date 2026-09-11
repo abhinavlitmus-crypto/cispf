@@ -12,8 +12,8 @@ export type OpportunityItem = {
 export const opportunityItems: OpportunityItem[] = [
   {
     id: "trade",
-    eyebrow: "Trade Opportunities",
-    heading: "Canada-Indian Trade",
+    eyebrow: "TRADE",
+    heading: "Current Trade",
     description: "Two economies with complementary strengths. New corridors for goods and services are opening as trade ties deepen between Canada and India.",
     image: "/Image/placeholder-image-1.png",
     imageAlt: "Cargo ship at a Canadian port",
@@ -21,8 +21,8 @@ export const opportunityItems: OpportunityItem[] = [
   },
   {
     id: "growth",
-    eyebrow: "Growth Opportunities",
-    heading: "Sectors With Growth Potential",
+    eyebrow: "GROWTH",
+    heading: "Sectors with Potential",
     description: "From manufacturing to advanced industry, shared priorities are creating new sectors for joint growth across both markets.",
     image: "/Image/placeholder-image-2.png",
     imageAlt: "Workers on a manufacturing floor",
@@ -30,8 +30,8 @@ export const opportunityItems: OpportunityItem[] = [
   },
   {
     id: "investment",
-    eyebrow: "Investment Opportunities",
-    heading: "Investment Opportunities",
+    eyebrow: "INVESTMENT",
+    heading: "Current Investment",
     description: "Two complementary economies. New avenues for capital. From critical resources and clean energy to technology and infrastructure, new opportunities are emerging across both markets.",
     image: "/Image/placeholder-image-1.png",
     imageAlt: "Person using a virtual reality headset",
@@ -39,8 +39,8 @@ export const opportunityItems: OpportunityItem[] = [
   },
   {
     id: "partnership",
-    eyebrow: "Partnership Opportunities",
-    heading: "Partners in Progress",
+    eyebrow: "PROVINCE-WISE",
+    heading: "Provinces in the Play",
     description: "Business leaders, investors and policymakers are building the relationships needed for sustained, long-term cross-border growth.",
     image: "/Image/placeholder-image-2.png",
     imageAlt: "Delegates seated in a conference hall",

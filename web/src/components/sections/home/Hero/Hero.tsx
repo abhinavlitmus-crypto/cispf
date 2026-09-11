@@ -11,7 +11,7 @@ export default function Hero() {
             CANADA AND <br className="block md:hidden"/> INDIA<br className="hidden md:block" /> PARTNERS <br className=" md:hidden"/> IN PROGRESS.
           </h1>
           <p lang="fr" className="mx-auto mt-4 max-w-[1600px] text-[clamp(1.25rem,2.3vw,2.75rem)] leading-relaxed text-neutral-300">Deux nations.<br className="md:hidden" /> Une nouvelle trajectoire.</p>
-          <Button href={connectLink.href} className="relative isolate mt-8 transition-transform duration-300 hover:scale-105 hover:brightness-100 before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:bg-primary before:opacity-0 before:transition-opacity before:duration-300 before:content-[''] hover:before:opacity-100 focus-visible:before:opacity-100 motion-reduce:transition-none motion-reduce:hover:scale-100 motion-reduce:before:transition-none md:hidden">{connectLink.label}</Button>
+          <Button href={connectLink.href} className="mt-8 transition-transform duration-300 hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100 md:hidden">{connectLink.label}</Button>
         </div>
       </div>
       <OpportunitiesVideo />

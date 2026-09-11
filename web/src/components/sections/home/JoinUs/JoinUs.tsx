@@ -1,10 +1,8 @@
 import Button from "@/components/common/Button/Button";
 
 const memberButtonClasses = [
-  "relative isolate transition-transform duration-300 ease-in-out hover:scale-105 hover:brightness-100",
-  "before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-[inherit] before:bg-primary before:opacity-0 before:content-['']",
-  "before:transition-opacity before:duration-300 before:ease-in-out hover:before:opacity-100 focus-visible:before:opacity-100 active:before:opacity-100",
-  "motion-reduce:transition-none motion-reduce:hover:scale-100 motion-reduce:before:transition-none",
+  "transition-transform duration-300 ease-in-out hover:scale-105",
+  "motion-reduce:transition-none motion-reduce:hover:scale-100",
 ].join(" ");
 
 export default function JoinUs() {
