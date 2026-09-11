@@ -71,15 +71,15 @@ export default function Events() {
           </div>
           <div className="order-last mt-10 flex flex-col items-center gap-10 xl:order-none xl:mt-0 xl:flex-row xl:gap-5">
             <div role="group" aria-label="Event pages" className="flex max-w-full flex-wrap items-center justify-center">
-              <button type="button" disabled={page === 0} onClick={() => slider.current[category]?.slidePrev()} aria-label="Previous event page" className="mr-3 flex size-11 items-center justify-center cursor-pointer bg-brand-gradient disabled:opacity-30"><ArrowLeft aria-hidden="true" className="size-5" /></button>
+              <button type="button" disabled={page === 0} onClick={() => slider.current[category]?.slidePrev()} aria-label="Previous event page" className="mr-3 flex size-11 items-center justify-center cursor-pointer bg-primary disabled:opacity-30"><ArrowLeft aria-hidden="true" className="size-5" /></button>
               {Array.from({ length: Math.min(4, pageCount) }, (_, offset) => firstDot + offset).map((index) => <button key={index} type="button" aria-label={`Show event page ${index + 1}`} aria-current={page === index ? "page" : undefined} onClick={() => slider.current[category]?.slideTo(index)} className="flex min-h-11 min-w-7 items-center justify-center focus-visible:outline-white"><span aria-hidden="true" className={`h-1 transition-[width,background-color] duration-300 motion-reduce:transition-none ${page === index ? "w-7 bg-brand-gradient" : "w-1.5 bg-white/45"}`} /></button>)}
-              <button type="button" disabled={page === pageCount - 1} onClick={() => slider.current[category]?.slideNext()} aria-label="Next event page" className="disabled:opacity-30 ml-3 flex size-11 items-center justify-center cursor-pointer bg-brand-gradient focus-visible:outline-white"><ArrowRight aria-hidden="true" className="size-5" /></button>
+              <button type="button" disabled={page === pageCount - 1} onClick={() => slider.current[category]?.slideNext()} aria-label="Next event page" className="disabled:opacity-30 ml-3 flex size-11 items-center justify-center cursor-pointer bg-primary focus-visible:outline-white"><ArrowRight aria-hidden="true" className="size-5" /></button>
             </div>
             {/* TODO: Replace with the events listing route when available. */}
-            <Link href="/#contact" className="group inline-flex min-h-11 max-w-full items-center justify-center bg-white px-5 py-3 text-xs font-medium focus-visible:outline-white">
+            <Link href="/#contact" className="group inline-flex min-h-11 max-w-full items-center justify-center bg-white px-5 py-3 text-sm font-medium focus-visible:outline-white">
               <span className="relative inline-flex items-center pr-8">
-                <span className="bg-[image:var(--gradient-brand)] bg-clip-text text-transparent transition-transform duration-500 group-hover:translate-x-8 group-hover:bg-none group-hover:text-primary group-focus-visible:translate-x-8 group-focus-visible:bg-none group-focus-visible:text-primary motion-reduce:transition-none">VIEW ALL EVENTS</span>
-                <span aria-hidden="true" className="pointer-events-none absolute inset-0 flex items-center justify-end text-secondary transition-transform duration-500 group-hover:translate-x-[calc(-100%+1.5rem)] group-hover:text-primary group-focus-visible:translate-x-[calc(-100%+1.5rem)] group-focus-visible:text-primary motion-reduce:transition-none"><ArrowRight className="size-6" strokeWidth={1.5} /></span>
+                <span className="text-primary transition-transform duration-500 group-hover:translate-x-8 group-focus-visible:translate-x-8 motion-reduce:transition-none">VIEW ALL EVENTS</span>
+                <span aria-hidden="true" className="pointer-events-none absolute inset-0 flex items-center justify-end text-primary transition-transform duration-500 group-hover:translate-x-[calc(-100%+1.5rem)] group-focus-visible:translate-x-[calc(-100%+1.5rem)] motion-reduce:transition-none"><ArrowRight className="size-6" strokeWidth={1.5} /></span>
               </span>
             </Link>
           </div>

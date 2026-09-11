@@ -9,7 +9,7 @@ export default function NewsMedia() {
       <div className="mx-auto grid grid-cols-1 md:grid-cols-[1fr_auto] md:items-center max-w-[1920px] px-5 py-16 md:px-[clamp(1rem,2.6vw,3.125rem)] md:py-[clamp(4rem,5vw,6rem)]">
           <h2 id="news-heading" className="text-[clamp(2rem,3.1vw,3.625rem)] leading-tight font-medium">NEWS & MEDIA</h2>
           {/* TODO: Replace with the news listing URL when the listing page exists. */}
-          <Button href="/#contact" className="group relative isolate order-last mt-12 justify-self-center md:order-none md:mt-0 md:justify-self-end max-w-full hover:brightness-100 before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:bg-primary before:opacity-0 before:transition-opacity before:duration-500 before:content-[''] hover:before:opacity-100 focus-visible:before:opacity-100 motion-reduce:before:transition-none">
+          <Button href="/#contact" className="group order-last mt-12 justify-self-center md:order-none md:mt-0 md:justify-self-end max-w-full">
             <span className="relative inline-flex items-center pr-10">
               <span className="transition-transform duration-500 group-hover:translate-x-10 group-focus-visible:translate-x-10 motion-reduce:transition-none">VIEW ALL NEWS & MEDIA</span>
               <span aria-hidden="true" className="pointer-events-none absolute inset-0 flex items-center justify-end transition-transform duration-500 group-hover:translate-x-[calc(-100%+1.5rem)] group-focus-visible:translate-x-[calc(-100%+1.5rem)] motion-reduce:transition-none">

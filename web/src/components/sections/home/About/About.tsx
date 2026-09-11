@@ -18,7 +18,7 @@ export default function About() {
           </p>
         </div>
         {/* TODO: Replace the contact destination when the About page is available. */}
-        <Button href="/#contact" className="group relative isolate mt-10 max-w-full hover:brightness-100 before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:bg-primary before:opacity-0 before:transition-opacity before:duration-500 before:content-[''] hover:before:opacity-100 focus-visible:before:opacity-100 motion-reduce:before:transition-none md:mt-16">
+        <Button href="/#contact" className="group mt-10 max-w-full md:mt-16">
           <span className="relative inline-flex items-center pr-10">
             <span className="transition-transform duration-500 group-hover:translate-x-10 group-focus-visible:translate-x-10 motion-reduce:transition-none tracking-wide">MORE ABOUT CISPF</span>
             <span aria-hidden="true" className="pointer-events-none absolute inset-0 flex items-center justify-end transition-transform duration-500 group-hover:translate-x-[calc(-100%+1.5rem)] group-focus-visible:translate-x-[calc(-100%+1.5rem)] motion-reduce:transition-none">
