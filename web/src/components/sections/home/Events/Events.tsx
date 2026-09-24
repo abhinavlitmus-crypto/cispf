@@ -56,8 +56,8 @@ export default function Events() {
   return (
     <section id="events" aria-label="Events" className="relative isolate overflow-hidden bg-black text-white">
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[20rem] md:h-[clamp(28rem,36vw,43rem)]">
-        <Image src="/Image/home-upcoming-past-event-bg.png" alt="" fill sizes="100vw" className="hidden object-cover object-top lg:block" />
-        <Image src="/Image/home-upcoming-past-event-mobile.png" alt="" fill sizes="100vw" className="object-cover object-top lg:hidden" />
+        <Image src="/Image/home-upcoming-past-event-bg.png" alt="" fill sizes="100vw" className="hidden object-cover object-top grayscale lg:block" />
+        <Image src="/Image/home-upcoming-past-event-mobile.png" alt="" fill sizes="100vw" className="object-cover object-top grayscale lg:hidden" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(0,0,0,0.35)_45%,#000_100%)]" />
       </div>
       <div className="mx-auto grid grid-cols-1 xl:grid-cols-[1fr_auto] max-w-[1920px] px-5 pt-44 pb-16 md:px-[clamp(1rem,2.6vw,3.125rem)] lg:pt-[clamp(10rem,19vw,23rem)] md:pb-[clamp(4rem,7vw,8rem)]">
