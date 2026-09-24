@@ -17,7 +17,7 @@ export default function Home() {
         <Opportunities />
         <PolicyDiscussions />
         <Opportunity videoSrc="/videos/home-section-3.mp4" />
-        <NewsMedia />
+        {/* <NewsMedia /> */}
         <Subscribe />
         <Events />
       </main>

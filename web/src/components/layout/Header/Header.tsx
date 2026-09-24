@@ -67,7 +67,7 @@ export default function Header() {
       <div className="mx-auto flex min-h-16 max-w-[1920px] items-center justify-between gap-4 px-5 md:min-h-18 md:gap-3 md:px-[clamp(1rem,2.6vw,3.125rem)]">
         <Link href="/" aria-label="CISPF home" className="shrink-0">
           {/* TODO: Replace with the approved Canada-India logo. */}
-          <Image src="/logos/Logo1.png" alt="Canada-India Strategic Partnership Forum" width={160} height={64} priority className="h-auto w-[116px] md:w-[clamp(6rem,7.5vw,8rem)]" />
+          <Image src="/logos/Logo1.png" alt="Canada-India Strategic Partnership Forum" width={160} height={64} priority className="h-auto w-[156px] md:w-[clamp(7rem,11.5vw,17rem)]" />
         </Link>
 
         <nav aria-label="Main navigation" className="hidden items-center gap-[clamp(0.75rem,3vw,3.75rem)] md:flex">
