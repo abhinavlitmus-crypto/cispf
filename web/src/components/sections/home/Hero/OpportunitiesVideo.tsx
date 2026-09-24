@@ -7,7 +7,7 @@ export default function OpportunitiesVideo() {
   return (
     // Above Header (z-40), below the mobile Sheet (z-50). Keep ancestors free of stacking contexts.
     <div id="opportunities" className="relative z-[45] flex h-[min(80svh,46rem)] min-h-80 items-end justify-center overflow-clip  px-5 pb-12 md:h-[clamp(30rem,45vw,56rem)] md:pb-[clamp(3rem,5vw,6rem)]">
-      <BackgroundVideo src="/videos/opporunities.mp4" />
+      <BackgroundVideo src="/videos/opporunities1.mp4" />
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-opportunities-gradient" />
       <Image src="/Icon/Leaf-opporunities.svg" alt="" aria-hidden="true" width={690} height={743} className="pointer-events-none absolute top-1/2 left-1/2 h-[70%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 object-contain   md:h-[80%]" />
       {/* Bottom-sticky keeps the CTA in view until the panel’s lower edge carries it away.
