@@ -98,7 +98,7 @@ export default function Footer() {
   return (
     <footer id="contact" aria-labelledby="footer-heading" className="relative z-10 isolate bg-brand-gradient text-white">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <Image src="/Icon/Leaf.svg" alt="" width={388} height={419} className="absolute top-7 left-1/2 w-[65%] max-w-[400px] -translate-x-1/2 opacity-30 brightness-0 invert md:top-[20%] md:w-[22%] md:opacity-10" />
+        <Image src="/Icon/Leaf.svg" alt="" width={388} height={419} className="absolute top-7 left-1/2 w-[65%] max-w-[400px] -translate-x-1/2  brightness-0 invert md:top-[20%] md:w-[22%] md:opacity-20" />
       </div>
       <div className="mx-auto max-w-[1920px] px-5 py-12 md:px-[clamp(1rem,2.6vw,3.125rem)] md:py-[clamp(3rem,5.4vw,6.5rem)]">
         {/* Mobile/tablet: Figma orders these blocks differently than desktop, so the two breakpoints render separate trees instead of sharing one reorderable grid. */}
