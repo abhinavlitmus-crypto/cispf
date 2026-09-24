@@ -49,10 +49,12 @@
 }
 
 :root {
-  --gradient-brand: linear-gradient(90deg, #EE0000 0%, #FF8A00 100%);
+  --gradient-brand: linear-gradient(78.74deg, #EE0000 66.48%, #FF8A00 119.02%);
+  --gradient-text: linear-gradient(89.2deg, #EE0000 27.17%, #FF9400 106.5%);
   --gradient-brand-vertical: linear-gradient(0deg, #EE0000 0%, #FF8A00 100%);
   --gradient-button: linear-gradient(270deg, rgba(238, 0, 0, 0.77) 0%, rgba(255, 138, 0, 0.77) 100%);
   --gradient-card-overlay: linear-gradient(180deg, rgba(238, 0, 0, 0.72) 0%, rgba(255, 138, 0, 0.72) 100%);
+  --gradient-opportunities: linear-gradient(283.24deg, rgba(238, 0, 0, 0.82) 68.64%, rgba(255, 138, 0, 0.82) 109.72%);
   --color-primary: #DA0808;
   --color-secondary: #FF8A00;
   --font-heading: var(--font-onest, Arial), Helvetica, system-ui, sans-serif;
@@ -104,10 +106,12 @@
 }
 @supports (color: color(display-p3 1 1 1)) {
   :root {
-    --gradient-brand: linear-gradient(90deg, color(display-p3 0.855 0.031 0.031) 0%, color(display-p3 1.000 0.569 0.071) 100%);
+    --gradient-brand: linear-gradient(78.74deg, color(display-p3 0.855 0.031 0.031) 66.48%, color(display-p3 1.000 0.569 0.071) 119.02%);
+    --gradient-text: linear-gradient(89.2deg, color(display-p3 0.855 0.031 0.031) 27.17%, color(display-p3 1.000 0.604 0.145) 106.5%);
     --gradient-brand-vertical: linear-gradient(0deg, color(display-p3 0.855 0.031 0.031) 0%, color(display-p3 1.000 0.569 0.071) 100%);
     --gradient-button: linear-gradient(270deg, color(display-p3 0.855 0.031 0.031 / 0.77) 0%, color(display-p3 1.000 0.569 0.071 / 0.77) 100%);
     --gradient-card-overlay: linear-gradient(180deg, color(display-p3 0.855 0.031 0.031 / 0.72) 0%, color(display-p3 1.000 0.569 0.071 / 0.72) 100%);
+    --gradient-opportunities: linear-gradient(283.24deg, color(display-p3 0.855 0.031 0.031 / 0.82) 68.64%, color(display-p3 1.000 0.569 0.071 / 0.82) 109.72%);
   }
 }
 
@@ -121,6 +125,8 @@
 @layer utilities {
   .bg-brand-gradient { background-image: var(--gradient-brand); }
   .bg-button-gradient { background-image: var(--gradient-button); }
+  .bg-opportunities-gradient { background-image: var(--gradient-opportunities); }
+  .gradient-text { background-image: var(--gradient-text); background-clip: text; color: transparent; }
 }
 
 @media (prefers-reduced-motion: reduce) {
