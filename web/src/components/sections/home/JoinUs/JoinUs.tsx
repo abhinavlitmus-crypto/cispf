@@ -13,7 +13,7 @@ export default function JoinUs() {
       <p className="max-w-xl text-base md:text-lg leading-relaxed text-neutral-500">Engage with the businesses, policymakers and institutions shaping the next phase of Canada–India relations.</p>
       <div className="mt-3 flex w-full max-w-lg justify-center">
         {/* TODO: Replace the contact destination when the membership flow is available. */}
-        <Button href="/#contact" className={`${memberButtonClasses} min-w-[13.5rem] max-w-full`}>CONTACT US</Button>
+        <Button href="/contact-us" className={`${memberButtonClasses} min-w-[13.5rem] max-w-full`}>CONTACT US</Button>
       </div>
     </section>
   );

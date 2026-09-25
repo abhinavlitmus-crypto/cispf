@@ -12,4 +12,4 @@ export const navigation = [
   { label: "EVENTS", href: "/#events" },
 ];
 
-export const connectLink = { label: "LET’S CONNECT", href: "/#contact" };
+export const connectLink = { label: "LET’S CONNECT", href: "/contact-us" };
