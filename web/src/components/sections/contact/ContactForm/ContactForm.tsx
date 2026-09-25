@@ -64,7 +64,7 @@ export default function ContactForm() {
       <div className="mx-auto max-w-[1920px] md:px-[clamp(1rem,2.6vw,3.125rem)]">
         <div className="grid grid-cols-1 border-neutral-200 pt-14 lg:grid-cols-[minmax(0,1fr)_52%] lg:gap-[clamp(2rem,4vw,5rem)] lg:border-b lg:pt-[clamp(1.5rem,1.6vw,2rem)] lg:pb-[clamp(4rem,5.5vw,6.5rem)]">
           <div className="px-5 pb-20 md:px-0 lg:pb-0">
-            <h1 id="contact-heading" className="gradient-text text-center text-[clamp(2.25rem,3.9vw,4.5rem)] leading-tight font-medium lg:mt-[clamp(2rem,3.5vw,4rem)] lg:text-left">CONTACT US</h1>
+            <h1 id="contact-heading" className="gradient-text text-center text-[clamp(2.25rem,3.9vw,4.5rem)] leading-tight font-semibold lg:mt-[clamp(2rem,3.5vw,4rem)] lg:text-left">CONTACT US</h1>
             <form onSubmit={handleSubmit} noValidate className="mt-12 max-w-[546px] lg:mt-[clamp(4rem,7vw,8.5rem)]">
               <div className="space-y-5">
                 <div>
