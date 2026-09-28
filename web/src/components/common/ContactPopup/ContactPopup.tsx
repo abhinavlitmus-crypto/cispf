@@ -34,7 +34,8 @@ export default function ContactPopup({ children, triggerClassName }: ContactPopu
             <Dialog.Description className="sr-only">Send a message to the Canada-India Strategic Partnership Forum.</Dialog.Description>
             <ContactEnquiryForm
               className="mt-8 md:mt-10"
-              actionsClassName="flex flex-wrap items-center justify-between gap-x-6 gap-y-4"
+              actionsClassName="flex flex-wrap items-center justify-between gap-x-6 gap-y-4 "
+              buttonClassName="cursor-pointer"
               actions={<Link href="/contact-us" className="text-sm text-neutral-500 underline underline-offset-4 hover:text-primary">Try other ways to contact</Link>}
             />
           </div>
