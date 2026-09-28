@@ -2,8 +2,8 @@
 export const navigation = [
   { label: "ABOUT US", href: "#", children: [
     { label: "ABOUT CISPF", href: "/#about" },
-    // TODO: Implement these destination pages.
     { label: "OUR EXPERT TEAM", href: "/about/team" },
+    // TODO: Implement the careers page.
     { label: "CAREERS", href: "/careers" },
   ] },
   { label: "WHAT WE DO", href: "/#what-we-do" },
