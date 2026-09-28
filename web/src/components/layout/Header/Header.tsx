@@ -2,11 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import Button from "@/components/common/Button/Button";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from "@/components/ui/sheet";
-import { connectLink, navigation } from "@/constants/navigation";
+import { cn } from "@/lib/utils";
+import { connectLink, navigation, transparentHeaderRoutes } from "@/constants/navigation";
 
 const connectButtonClasses = [
   "transition-transform duration-300 ease-in-out hover:scale-105",
@@ -21,6 +23,13 @@ const navigationLabelClasses = [
   "after:transition-transform after:duration-200 group-hover:after:scale-x-100 group-focus-visible:after:scale-x-100 group-aria-[current=location]:after:scale-x-100 group-aria-expanded:after:scale-x-100",
   "motion-reduce:transition-none motion-reduce:after:transition-none",
 ].join(" ");
+
+// Desktop-only overrides for pages whose hero sits behind the header. Mobile keeps the white header.
+// The header overlays the hero and stays transparent until the page scrolls.
+const overlayHeaderClasses = "md:fixed md:inset-x-0";
+const transparentHeaderClasses = "md:border-transparent md:bg-transparent";
+const transparentLabelClasses = "md:text-white";
+const transparentConnectClasses = "md:bg-white md:text-black";
 
 function subscribeToLocation(onChange: () => void) {
   window.addEventListener("hashchange", onChange);
@@ -48,12 +57,23 @@ function getServerLocation() {
   return "";
 }
 
+function subscribeToScroll(onChange: () => void) {
+  window.addEventListener("scroll", onChange, { passive: true });
+  return () => window.removeEventListener("scroll", onChange);
+}
+
+const getScrolled = () => window.scrollY > 0;
+const getServerScrolled = () => false;
+
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [mobileMenuHref, setMobileMenuHref] = useState<string | null>(null);
   const [menuHref, setMenuHref] = useState<string | null>(null);
   const expandedMenu = navigation.find((item) => item.href === menuHref && item.children);
   const activeHref = useSyncExternalStore(subscribeToLocation, getLocation, getServerLocation);
+  const overlay = transparentHeaderRoutes.includes(usePathname());
+  const scrolled = useSyncExternalStore(subscribeToScroll, getScrolled, getServerScrolled);
+  const transparent = overlay && !scrolled;
 
   useEffect(() => {
     const desktop = window.matchMedia("(min-width: 768px)");
@@ -63,11 +83,11 @@ export default function Header() {
   }, []);
 
   return (
-    <header onMouseLeave={() => setMenuHref(null)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setMenuHref(null); }} onKeyDown={(event) => { if (event.key === "Escape") setMenuHref(null); }} className="sticky top-0 z-40 border-b border-black/5 bg-white text-foreground">
+    <header onMouseLeave={() => setMenuHref(null)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setMenuHref(null); }} onKeyDown={(event) => { if (event.key === "Escape") setMenuHref(null); }} className={cn("sticky top-0 z-40 border-b border-black/5 bg-white text-foreground transition-colors duration-300 motion-reduce:transition-none", overlay && overlayHeaderClasses, transparent && transparentHeaderClasses)}>
       <div className="mx-auto flex min-h-16 max-w-[1920px] items-center justify-between gap-4 px-5 md:min-h-18 md:gap-3 md:px-[clamp(1rem,2.6vw,3.125rem)]">
         <Link href="/" aria-label="CISPF home" className="shrink-0">
           {/* TODO: Replace with the approved Canada-India logo. */}
-          <Image src="/logos/Logo1.png" alt="Canada-India Strategic Partnership Forum" width={160} height={64} priority className="h-auto w-[156px] md:w-[clamp(7rem,11.5vw,17rem)]" />
+          <Image src="/logos/Logo-transparent.png" alt="Canada-India Strategic Partnership Forum" width={160} height={64} priority className="h-auto w-[156px] md:w-[clamp(7rem,11.5vw,17rem)]" />
         </Link>
 
         <nav aria-label="Main navigation" className="hidden items-center gap-[clamp(0.75rem,3vw,3.75rem)] md:flex">
@@ -75,19 +95,19 @@ export default function Header() {
             {navigation.map(({ label, href, children }) => (
               <li key={href} onMouseEnter={() => setMenuHref(children ? href : null)}>
                 <Link href={href} onFocus={() => setMenuHref(children ? href : null)} onClick={() => setMenuHref(null)} aria-expanded={children ? menuHref === href : undefined} aria-controls={children ? "header-subnavigation" : undefined} onNavigate={(event) => navigateToSection(event, href)} aria-current={activeHref === href ? "location" : undefined} className="group inline-flex min-h-11 items-center whitespace-nowrap text-[clamp(0.625rem,0.75vw,0.875rem)] font-normal ">
-                  <span className={navigationLabelClasses}>{label}</span>
+                  <span className={cn(navigationLabelClasses, transparent && transparentLabelClasses)}>{label}</span>
                 </Link>
               </li>
             ))}
           </ul>
-          <Button href={connectLink.href} className={`${connectButtonClasses} px-[clamp(0.75rem,1.35vw,1.75rem)] text-[clamp(0.6875rem,0.95vw,1.0625rem)]`}>{connectLink.label}</Button>
+          <Button href={connectLink.href} className={cn(connectButtonClasses, "px-[clamp(0.75rem,1.35vw,1.75rem)] text-[clamp(0.6875rem,0.95vw,1.0625rem)]", transparent && transparentConnectClasses)}>{connectLink.label}</Button>
         </nav>
 
         <Sheet open={open} onOpenChange={(nextOpen) => { setOpen(nextOpen); if (!nextOpen) setMobileMenuHref(null); }}>
           <SheetTrigger aria-label="Open navigation menu" className="flex size-11 items-center justify-center md:hidden">
             <Menu aria-hidden="true" className="size-6" />
           </SheetTrigger>
-          <SheetContent side="right" showCloseButton={false} overlayClassName="top-16 bg-transparent backdrop-blur-none supports-backdrop-filter:backdrop-blur-none" className="isolate overflow-y-auto border-0 bg-white p-5 pt-20 shadow-none data-[side=right]:inset-y-auto data-[side=right]:top-16 data-[side=right]:bottom-0 data-[side=right]:h-[calc(100dvh-4rem)] data-[side=right]:w-full data-[side=right]:sm:max-w-none">
+          <SheetContent side="right" showCloseButton={false} overlayClassName="top-17 bg-transparent backdrop-blur-none supports-backdrop-filter:backdrop-blur-none" className="isolate overflow-y-auto border-0 bg-white p-5 pt-20 shadow-none data-[side=right]:inset-y-auto data-[side=right]:top-18 data-[side=right]:bottom-0 data-[side=right]:h-[calc(100dvh-4rem)] data-[side=right]:w-full data-[side=right]:sm:max-w-none">
             <SheetClose aria-label="Close navigation menu" className="absolute top-3 left-3 flex size-11 items-center justify-center"><X aria-hidden="true" className="size-6" strokeWidth={1.25} /></SheetClose>
             <Image src="/Icon/white-leaf.svg" alt="" aria-hidden="true" width={322} height={348} className="pointer-events-none absolute right-0 bottom-0 -z-10 h-auto w-[60%] max-w-[280px]" />
             <SheetHeader className="p-0">

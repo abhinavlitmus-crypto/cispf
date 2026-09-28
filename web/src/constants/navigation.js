@@ -8,8 +8,11 @@ export const navigation = [
   ] },
   { label: "WHAT WE DO", href: "/#what-we-do" },
   { label: "NEWS & MEDIA", href: "/#news-media" },
-  { label: "RESEARCH WORK", href: "/#research" },
-  { label: "EVENTS", href: "/#events" },
+  // { label: "RESEARCH WORK", href: "/#research" },
+  { label: "EVENTS", href: "/events" },
 ];
 
 export const connectLink = { label: "LET’S CONNECT", href: "/contact-us" };
+
+// Routes whose hero sits behind a transparent desktop header.
+export const transparentHeaderRoutes = ["/events"];
