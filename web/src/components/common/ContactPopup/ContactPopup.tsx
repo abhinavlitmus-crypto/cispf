@@ -30,7 +30,7 @@ export default function ContactPopup({ children, triggerClassName }: ContactPopu
           </div>
 
           <div className="px-6 pt-16 pb-10 md:py-[clamp(3rem,5vw,5.5rem)] md:pr-[clamp(2rem,6%,4rem)] md:pl-0">
-            <Dialog.Title className="gradient-text text-[clamp(2rem,2.8vw,2.75rem)] leading-tight  font-medium">CONTACT US</Dialog.Title>
+            <Dialog.Title className="gradient-text text-[clamp(2rem,2.8vw,2.75rem)] leading-tight  font-medium inline">CONTACT US</Dialog.Title>
             <Dialog.Description className="sr-only">Send a message to the Canada-India Strategic Partnership Forum.</Dialog.Description>
             <ContactEnquiryForm
               className="mt-8 md:mt-10"
