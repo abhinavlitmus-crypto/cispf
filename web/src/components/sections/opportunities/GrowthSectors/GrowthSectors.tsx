@@ -11,7 +11,7 @@ export default function GrowthSectors() {
       <div className="mx-auto max-w-[1920px] px-5 md:px-[clamp(1rem,2.6vw,3.125rem)]">
         <div className="border-b border-neutral-200 pt-12 pb-16 lg:pt-[clamp(3rem,5.5vw,6.5rem)] lg:pb-[clamp(4rem,6vw,7rem)]">
           <div className="lg:text-center">
-            <p className="text-base font-medium text-primary lg:text-[clamp(1rem,1vw,1.25rem)]"><span className="mr-3">02</span>SECTORS WITH POTENTIAL</p>
+            <p className="text-base font-semibold text-primary lg:text-[clamp(1rem,1vw,1.25rem)]"><span className="mr-3">02</span>SECTORS WITH POTENTIAL</p>
             <h2 id="growth-sectors-heading" className="mt-3 text-[clamp(2rem,2.9vw,3.5rem)] leading-tight font-semibold">SECTORS WITH GROWTH POTENTIAL</h2>
           </div>
 
