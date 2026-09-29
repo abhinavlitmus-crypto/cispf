@@ -15,6 +15,8 @@ export default function OpportunitiesHero() {
             <Image src="/Image/opportunities-image-mobile.png" alt="Audience attending a forum presentation" fill sizes="100vw" className="object-cover lg:hidden" />
             <Image src="/Image/image-gradient.png" alt="" aria-hidden="true" fill sizes="(min-width: 1024px) 52vw, 100vw" className="pointer-events-none object-cover" />
           </div>
+          
+          <div aria-hidden="true" className="mx-5 mt-16 border-b border-neutral-200 md:mx-0 lg:hidden" />
         </div>
       </div>
     </section>

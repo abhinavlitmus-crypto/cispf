@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import OpportunitiesHero from "@/components/sections/opportunities/OpportunitiesHero/OpportunitiesHero";
 import CurrentTrade from "@/components/sections/opportunities/CurrentTrade/CurrentTrade";
+import GrowthSectors from "@/components/sections/opportunities/GrowthSectors/GrowthSectors";
 
 export const metadata: Metadata = {
   title: "Opportunities | Canada-India Strategic Partnership Forum",
@@ -12,6 +13,7 @@ export default function OpportunitiesPage() {
     <main>
       <OpportunitiesHero />
       <CurrentTrade />
+      <GrowthSectors />
     </main>
   );
 }
