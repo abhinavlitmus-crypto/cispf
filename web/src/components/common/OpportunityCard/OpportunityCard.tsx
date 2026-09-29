@@ -8,7 +8,7 @@ export default function OpportunityCard({ item }: { item: OpportunityItem }) {
     <article className="min-w-0">
       <Link href={item.href} aria-labelledby={`${item.id}-heading`} className="group relative isolate block aspect-[12/13] overflow-hidden bg-neutral-900 text-white md:aspect-[4/7]">
         <Image src={item.image} alt={item.imageAlt} fill sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" className="object-cover grayscale" />
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[image:linear-gradient(0deg,rgba(0,0,0,0.12),rgba(0,0,0,0.12)),linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0.85)_100%),linear-gradient(180deg,rgba(0,0,0,0.68)_0%,rgba(0,0,0,0)_19.39%)]" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[image:linear-gradient(0deg,rgba(0,0,0,0.12),rgba(0,0,0,0.12)),linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0.85)_100%),linear-gradient(180deg,rgba(0,0,0,0.68)_0%,rgba(0,0,0,0)_19.39%)] transition-opacity duration-500 ease-out md:group-hover:opacity-0 md:group-focus-visible:opacity-0 motion-reduce:transition-none" />
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-card-overlay)] opacity-0 transition-opacity duration-500 ease-out md:group-hover:opacity-100 md:group-focus-visible:opacity-100 motion-reduce:transition-none" />
 
         <div aria-hidden="true" className="absolute inset-x-0 top-0 p-6 opacity-100 transition-opacity duration-500 ease-out md:group-hover:opacity-0 md:group-focus-visible:opacity-0 motion-reduce:transition-none md:p-8">
