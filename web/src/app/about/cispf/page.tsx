@@ -18,10 +18,11 @@ export default function AboutCispfPage() {
         <HeroSection />
         <ThreePillars />
         <WhoWeAre/>
-        <StickyImage image="/about/stick1.svg" />
+        <StickyImage image="/about/stick1.jpg" />
         <OurStory />
+         <StickyImage image="/about/stick2.jpg" />
         <OurApproach />
-        <StickyImage image="/about/stick2.svg" />
+       
 
       </main>
       <JoinUs />

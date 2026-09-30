@@ -25,8 +25,8 @@ export default function InvestmentOpportunities() {
           </div>
 
           <div className="relative aspect-690/1122 w-full overflow-hidden lg:aspect-auto">
-            <Image src="/Image/opportunities-section-3-desktop.png" alt="Wind turbines above a solar farm and a field of yellow flowers" fill sizes="44vw" className="hidden object-cover lg:block" />
-            <Image src="/Image/opportunities-section-3-mobile.png" alt="Wind turbines above a solar farm and a field of yellow flowers" fill sizes="100vw" className="object-cover lg:hidden" />
+            <Image src="/Image/opportunities-section-3-desktop.jpg" alt="Wind turbines above a solar farm and a field of yellow flowers" fill sizes="44vw" className="hidden object-cover lg:block" />
+            <Image src="/Image/opportunities-section-3-mobile.jpg" alt="Wind turbines above a solar farm and a field of yellow flowers" fill sizes="100vw" className="object-cover lg:hidden" />
           </div>
         </div>
       </div>

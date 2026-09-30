@@ -40,8 +40,8 @@ export default function EventsListing() {
   return (
     <section aria-labelledby="events-heading" className="relative isolate overflow-hidden bg-black text-white">
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[24rem] md:h-[clamp(34rem,44vw,52rem)]">
-        <Image src="/Image/home-upcoming-past-event-bg.png" alt="" fill priority sizes="100vw" className="hidden object-cover object-top grayscale lg:block" />
-        <Image src="/Image/home-upcoming-past-event-mobile.png" alt="" fill priority sizes="100vw" className="object-cover object-top grayscale lg:hidden" />
+        <Image src="/Image/home-upcoming-past-event-bg.jpg" alt="" fill fetchPriority="high" sizes="100vw" className="hidden object-cover object-top grayscale lg:block" />
+        <Image src="/Image/home-upcoming-past-event-mobile.webp" alt="" fill fetchPriority="high" sizes="100vw" className="object-cover object-top grayscale lg:hidden" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.25)_0%,rgba(0,0,0,0.4)_55%,#000_100%)]" />
       </div>
 

@@ -6,7 +6,7 @@ export default function OpportunitiesHero() {
       id="opportunities-heading"
       title="OPPORTUNITIES"
       description="The Canada–India Strategic Partnership Forum is a platform for leaders who see beyond the current state of the relationship—and the opportunity."
-      image={{ desktop: "/Image/opportunities-image-desktop.png", mobile: "/Image/opportunities-image-mobile.png", alt: "Audience attending a forum presentation" }}
+      image={{ desktop: "/Image/opportunities-image-desktop.webp", mobile: "/Image/opportunities-image-mobile.webp", alt: "Audience attending a forum presentation" }}
       gradient
     />
   );

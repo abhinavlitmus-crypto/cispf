@@ -1,21 +1,24 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { useEffect, useRef } from "react";
 import type { BackgroundVideoProps } from "@/utilities/ComponentTypes";
 
-const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
-
-export default function BackgroundVideo({ src }: BackgroundVideoProps) {
+export default function BackgroundVideo({ src, poster }: BackgroundVideoProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [playing, setPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) return;
+    const video = videoRef.current;
+    if (!container || !video) return;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let visible = false;
-    const syncPlayback = () => setPlaying(visible && !reducedMotion.matches && !document.hidden);
+    // preload="none" means nothing is downloaded until the first play() once the video scrolls into view.
+    const syncPlayback = () => {
+      if (visible && !reducedMotion.matches && !document.hidden) video.play().catch(() => {});
+      else video.pause();
+    };
     const observer = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
       syncPlayback();
@@ -31,8 +34,10 @@ export default function BackgroundVideo({ src }: BackgroundVideoProps) {
   }, []);
 
   return (
-    <div ref={containerRef} aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden [&_video]:size-full [&_video]:object-cover">
-      <ReactPlayer src={src} playing={playing} muted volume={0} loop playsInline controls={false} pip={false} disablePictureInPicture disableRemotePlayback preload="metadata" tabIndex={-1} width="100%" height="100%" style={{ objectFit: "cover" }} />
+    <div ref={containerRef} aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+      {/* Optimized poster shows through until the first video frame paints. */}
+      {poster && <Image src={poster} alt="" fill sizes="100vw" className="object-cover" />}
+      <video ref={videoRef} src={src} muted loop playsInline preload="none" disablePictureInPicture disableRemotePlayback tabIndex={-1} className="relative size-full object-cover" />
     </div>
   );
 }

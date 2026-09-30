@@ -46,7 +46,7 @@ export type PaginationProps = {
 	className?: string;
 };
 
-export type BackgroundVideoProps = { src: string };
+export type BackgroundVideoProps = { src: string; poster?: string };
 export type EventCardProps = { item: EventItem };
 export type JoinUsProps = { className?: string };
 export type NewsCardProps = { item: NewsItem };

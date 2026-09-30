@@ -11,7 +11,7 @@ export default function CurrentTrade() {
         <div className="border-b border-neutral-200 pt-12 pb-16 lg:pt-[clamp(3rem,4.75vw,5.5rem)] lg:pb-[clamp(4rem,6vw,7rem)]">
           <div className="grid grid-cols-1 lg:grid-cols-[40%_minmax(0,1fr)] lg:gap-[clamp(2rem,3.7vw,4.5rem)]">
             <div className="relative hidden aspect-1516/1180 w-full self-start overflow-hidden lg:block">
-              <Image src="/Image/opporunities-section-1-image.png" alt="Shipping containers being loaded at a cargo port" fill sizes="40vw" className="object-cover" />
+              <Image src="/Image/opporunities-section-1-image.jpg" alt="Shipping containers being loaded at a cargo port" fill sizes="40vw" className="object-cover" />
             </div>
 
             <div>

@@ -7,19 +7,19 @@ import { cn } from "@/lib/utils";
 const data = [
   {
     title: "ECONOMIC & COMMERCIAL WORK",
-    image: "/about/pillar1.svg",
+    image: "/about/pillar1.jpg",
     alt: "Container ship loaded with cargo sailing across the ocean",
     description: "Advancing trade, investment and business-friendly policy to unlock the full potential of the Canada–India economic corridor.",
   },
   {
     title: "GEOPOLITICAL & SECURITY CONVERGENCE",
-    image: "/about/pillar2.svg",
+    image: "/about/pillar2.jpg",
     alt: "Engineer holding a laptop inside a high-tech facility",
     description: "Aligning strategic interests on security, technology and supply-chain resilience across the Indo-Pacific and beyond.",
   },
   {
     title: "PEOPLE-TO-PEOPLE TIES",
-    image: "/about/pillar3.svg",
+    image: "/about/pillar3.jpg",
     alt: "People from Canada and India connecting together",
     description: "Strengthening the education, cultural and diaspora links that form the foundation of the Canada–India relationship.",
   },

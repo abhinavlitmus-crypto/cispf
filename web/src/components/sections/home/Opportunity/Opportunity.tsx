@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Opportunity() {
   return (
     <section aria-label="Our opportunity" className="relative isolate overflow-hidden bg-[image:var(--gradient-opportunity)] text-white">
-      <Image src="/Image/home-opporunity.png" alt="" aria-hidden="true" fill sizes="100vw" className="-z-10 object-cover" />
+      <Image src="/Image/home-opporunity.jpg" alt="" aria-hidden="true" fill sizes="100vw" className="-z-10 object-cover" />
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-card-overlay)]" />
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
         <Image src="/Icon/leaf-home-section-3.svg" alt="" width={468} height={504} className="absolute bottom-4 left-1/2 h-auto w-[70%] -translate-x-1/2 opacity-30 md:top-1/2 md:left-auto md:right-[5%] md:bottom-auto md:w-[26%] md:max-w-[500px] md:translate-x-0 md:-translate-y-1/2" />

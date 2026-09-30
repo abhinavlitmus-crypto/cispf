@@ -11,9 +11,9 @@ export type EventItem = {
 };
 
 const images = [
-  { image: "/Image/placeholder-image-3.png", imageAlt: "Business representatives in discussion" },
-  { image: "/Image/placeholder-image-1.png", imageAlt: "Speaker addressing an audience" },
-  { image: "/Image/placeholder-image-2.png", imageAlt: "Business representatives greeting each other" },
+  { image: "/Image/placeholder-image-3.jpg", imageAlt: "Business representatives in discussion" },
+  { image: "/Image/placeholder-image-1.jpg", imageAlt: "Speaker addressing an audience" },
+  { image: "/Image/placeholder-image-2.jpg", imageAlt: "Business representatives greeting each other" },
 ];
 
 // Design fixtures for four pages per tab. Replace with CMS events and detail URLs.

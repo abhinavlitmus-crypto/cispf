@@ -15,7 +15,7 @@ export default function PartnersInProgress() {
         {/* Mobile keeps the image at the top of the card and lets the content overlap its faded edge. */}
         <div className="relative isolate mt-12 bg-black px-9 pt-[72%] pb-14 text-white lg:mt-[clamp(3rem,3.6vw,4.25rem)] lg:flex lg:aspect-3640/1574 lg:w-full lg:flex-col lg:justify-center lg:px-[clamp(2rem,4.4vw,5.25rem)] lg:py-[clamp(3rem,5vw,6rem)]">
           <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 aspect-690/666 overflow-hidden lg:inset-0 lg:aspect-auto">
-            <Image src="/Image/opportunities-section-4-image-desktop.png" alt="" fill sizes="92vw" className="hidden object-cover lg:block" />
+            <Image src="/Image/opportunities-section-4-image-desktop.webp" alt="" fill sizes="92vw" className="hidden object-cover lg:block" />
             <Image src="/Image/opportunities-section-4-image-mobile.png" alt="" fill sizes="100vw" className="object-cover lg:hidden" />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_35%,#000_100%)] lg:hidden" />
           </div>

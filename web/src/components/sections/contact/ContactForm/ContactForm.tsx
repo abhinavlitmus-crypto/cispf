@@ -12,8 +12,8 @@ export default function ContactForm() {
           </div>
 
           <div className="relative aspect-786/1006 w-full self-start overflow-hidden lg:aspect-1980/1384">
-            <Image src="/Image/contact-us-image-desktop.png" alt="Business leaders in discussion around a meeting table" fill sizes="52vw" className="hidden object-cover lg:block" />
-            <Image src="/Image/contact-us-image-mobile.png" alt="Business leaders in discussion around a meeting table" fill sizes="100vw" className="object-cover lg:hidden" />
+            <Image src="/Image/contact-us-image-desktop.jpg" alt="Business leaders in discussion around a meeting table" fill fetchPriority="high" sizes="52vw" className="hidden object-cover lg:block" />
+            <Image src="/Image/contact-us-image-mobile.jpg" alt="Business leaders in discussion around a meeting table" fill fetchPriority="high" sizes="100vw" className="object-cover lg:hidden" />
             <Image src="/Image/image-gradient.png" alt="" aria-hidden="true" fill sizes="(min-width: 1024px) 52vw, 100vw" className="pointer-events-none object-cover" />
           </div>
         </div>
