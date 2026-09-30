@@ -3,12 +3,24 @@ import Link from "next/link";
 import { BsArrowRight, BsArrowUpRight } from "react-icons/bs";
 import type { PolicyCardProps } from "@/utilities/ComponentTypes";
 
+const aspectClasses = {
+  portrait: "aspect-[3/4]",
+  landscape: "aspect-[16/9]",
+  listing: "aspect-1056/778",
+};
+
+const imageSizes = {
+  portrait: "(min-width: 1920px) 430px, (min-width: 1024px) 24vw, (min-width: 640px) 46vw, 100vw",
+  landscape: "(min-width: 1920px) 780px, (min-width: 1024px) 43vw, 100vw",
+  listing: "(min-width: 1920px) 560px, (min-width: 1024px) 30vw, (min-width: 640px) 46vw, 100vw",
+};
+
 export default function PolicyCard({ item, variant = "portrait" }: PolicyCardProps) {
   return (
     <article className="min-w-0">
       <Link href={item.href} aria-labelledby={`${item.id}-title`} className="group block">
-        <div className={`relative overflow-hidden ${variant === "portrait" ? "aspect-[3/4]" : "aspect-[16/9]"}`}>
-          <Image src={item.image} alt={item.imageAlt} fill sizes={variant === "portrait" ? "(min-width: 1920px) 430px, (min-width: 1024px) 24vw, (min-width: 640px) 46vw, 100vw" : "(min-width: 1920px) 780px, (min-width: 1024px) 43vw, 100vw"} className="object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-focus-visible:scale-110 motion-reduce:transition-none motion-reduce:group-hover:scale-100 motion-reduce:group-focus-visible:scale-100" />
+        <div className={`relative overflow-hidden ${aspectClasses[variant]}`}>
+          <Image src={item.image} alt={item.imageAlt} fill sizes={imageSizes[variant]} className="object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-focus-visible:scale-110 motion-reduce:transition-none motion-reduce:group-hover:scale-100 motion-reduce:group-focus-visible:scale-100" />
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-card-overlay)] opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none" />
           <span aria-hidden="true" className="pointer-events-none absolute inset-0 flex translate-y-2 items-center justify-center text-white opacity-0 transition-[translate,opacity] duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 motion-reduce:transition-none">
             <BsArrowUpRight className="size-8" />

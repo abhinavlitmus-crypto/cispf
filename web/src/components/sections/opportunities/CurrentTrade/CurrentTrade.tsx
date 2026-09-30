@@ -6,7 +6,7 @@ const statColumns: Record<number, string> = { 3: "lg:grid-cols-3", 4: "lg:grid-c
 
 export default function CurrentTrade() {
   return (
-    <section aria-labelledby="current-trade-heading" className="bg-white text-black">
+    <section id="current-trade" aria-labelledby="current-trade-heading" className="bg-white text-black">
       <div className="mx-auto max-w-[1920px] px-5 md:px-[clamp(1rem,2.6vw,3.125rem)]">
         <div className="border-b border-neutral-200 pt-12 pb-16 lg:pt-[clamp(3rem,4.75vw,5.5rem)] lg:pb-[clamp(4rem,6vw,7rem)]">
           <div className="grid grid-cols-1 lg:grid-cols-[40%_minmax(0,1fr)] lg:gap-[clamp(2rem,3.7vw,4.5rem)]">

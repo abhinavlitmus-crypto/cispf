@@ -1,6 +1,6 @@
 export const footerContact = {
   address: ["145 King St W, Suite 720", "Toronto, ON M5H 1J8", "Canada"],
-  email: "example@domain.com",
+  email: "cispf@cispf.org",
   phone: "+91 0909090909",
   phoneHref: "tel:+910909090909",
 };

@@ -7,7 +7,7 @@ const imageClasses = "object-cover transition-transform duration-500 ease-out gr
 
 export default function GrowthSectors() {
   return (
-    <section aria-labelledby="growth-sectors-heading" className="bg-white text-black">
+    <section id="growth-sectors" aria-labelledby="growth-sectors-heading" className="bg-white text-black">
       <div className="mx-auto max-w-[1920px] px-5 md:px-[clamp(1rem,2.6vw,3.125rem)]">
         <div className="border-b border-neutral-200 pt-12 pb-16 lg:pt-[clamp(3rem,5.5vw,6.5rem)] lg:pb-[clamp(4rem,6vw,7rem)]">
           <div className="lg:text-center">

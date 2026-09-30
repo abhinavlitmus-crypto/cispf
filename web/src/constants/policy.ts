@@ -8,13 +8,16 @@ export type PolicyItem = {
   href: string;
 };
 
-// Design placeholders. Replace the contact links when discussion detail pages exist.
-const title = "Senior leaders examined renewed policy coordination, institutional trust, trade, investment, talent mobility and community ties.";
-const details = { title, date: "2026-05-11", dateLabel: "May 11, 2026", href: "/#contact" };
-
-export const policyItems: PolicyItem[] = [
-  { ...details, id: "policy-1", image: "/Image/placeholder-image-1.jpg", imageAlt: "Speaker addressing an audience" },
-  { ...details, id: "policy-3", image: "/Image/placeholder-image-2.jpg", imageAlt: "Business representatives meeting" },
-  { ...details, id: "policy-4", image: "/Image/placeholder-image-3.jpg", imageAlt: "Business representatives in discussion" },
-  { ...details, id: "policy-2", image: "/Image/placeholder-image-5.jpg", imageAlt: "Policy discussion" },
+// Replace the contact links when discussion detail pages exist.
+const discussions: PolicyItem[] = [
+  { id: "potash-partnership", title: "Beyond Buyer–Seller: Enhancing the Canada-India Potash Partnership", date: "2026-05-11", dateLabel: "May 11, 2026", image: "/Policy Discussion/policy-discussion-image-1.png", imageAlt: "Speaker line-up for the Canada–India potash partnership discussion", href: "/#contact" },
+  { id: "calgary-stampede-roundtable", title: "India Roundtable at Calgary Stampede", date: "2026-06-04", dateLabel: "June 4, 2026", image: "/Policy Discussion/policy-discussion-image-2.png", imageAlt: "Delegates in conversation at the Calgary Stampede", href: "/#contact" },
+  { id: "senior-leaders-policy-coordination", title: "Senior leaders examined renewed policy coordination, institutional trust, trade, investment, talent mobility and community ties.", date: "2026-05-11", dateLabel: "May 11, 2026", image: "/Policy Discussion/policy-discussion-image-3.png", imageAlt: "Speaker addressing an audience", href: "/#contact" },
 ];
+
+const [potash, calgary, seniorLeaders] = discussions;
+
+// Home section order: portrait, landscape, portrait.
+export const policyItems: PolicyItem[] = [seniorLeaders, potash, calgary];
+
+export const policyDiscussionItems: PolicyItem[] = discussions;

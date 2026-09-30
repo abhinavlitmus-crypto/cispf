@@ -7,11 +7,11 @@ export const navigation = [
     { label: "CAREERS", href: "/careers" },
   ] },
   { label: "WHAT WE DO", href: "/#what-we-do", children: [
-    // TODO: Implement the policy discussions page.
     { label: "POLICY DISCUSSIONS", href: "/what-we-do/policy-discussions" },
     { label: "OPPORTUNITIES", href: "/what-we-do/opportunities" },
   ] },
-  { label: "NEWS & MEDIA", href: "/#news-media" },
+  // TODO: Implement the news & media page.
+  { label: "NEWS & MEDIA", href: "/news-media" },
   // { label: "RESEARCH WORK", href: "/#research" },
   { label: "EVENTS", href: "/events" },
 ];

@@ -5,7 +5,7 @@ const partners = ["Invest Alberta", "Invest Ottawa", "Invest India"];
 
 export default function PartnersInProgress() {
   return (
-    <section aria-labelledby="partners-heading" className="bg-white text-black">
+    <section id="partners" aria-labelledby="partners-heading" className="bg-white text-black">
       <div className="mx-auto max-w-[1920px] px-5 pt-12 pb-16 md:px-[clamp(1rem,2.6vw,3.125rem)] lg:pt-[clamp(3rem,5.5vw,6.5rem)] lg:pb-[clamp(4rem,6vw,7rem)]">
         <div className="lg:text-center">
           <p className="text-base font-semibold text-primary lg:text-[clamp(1rem,1vw,1.25rem)]"><span className="mr-3">04</span>PROVINCES IN THE PLAY</p>
