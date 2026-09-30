@@ -3,7 +3,7 @@ import { investmentAreas } from "@/constants/investment";
 
 export default function InvestmentOpportunities() {
   return (
-    <section aria-labelledby="investment-heading" className="bg-white text-black">
+    <section id="investment" aria-labelledby="investment-heading" className="bg-white text-black">
       <div className="mx-auto max-w-[1920px] px-5 md:px-[clamp(1rem,2.6vw,3.125rem)]">
         <div className="grid grid-cols-1 gap-14 border-b border-neutral-200 pt-12 pb-16 lg:grid-cols-[minmax(0,1fr)_44%] lg:gap-[clamp(2rem,2.6vw,3rem)] lg:pt-[clamp(3rem,5.5vw,6.5rem)] lg:pb-[clamp(4rem,6vw,7rem)]">
           <div>

@@ -44,6 +44,7 @@ export type PaginationProps = {
 	onPageChange: (page: number) => void;
 	label?: string;
 	className?: string;
+	tone?: "dark" | "light";
 };
 
 export type BackgroundVideoProps = { src: string; poster?: string };
@@ -61,7 +62,7 @@ export type PageHeroProps = {
 };
 export type PolicyCardProps = {
 	item: PolicyItem;
-	variant?: "portrait" | "landscape";
+	variant?: "portrait" | "landscape" | "listing";
 };
 export type TeamCardProps = { member: TeamMember };
 
