@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BsArrowRight, BsArrowUpRight } from "react-icons/bs";
-import type { EventItem } from "@/constants/events";
+import type { EventCardProps } from "@/utilities/ComponentTypes";
 
-export default function EventCard({ item }: { item: EventItem }) {
+export default function EventCard({ item }: EventCardProps) {
   return (
     <article className="min-w-0">
       <Link href={item.href} aria-labelledby={`${item.id}-title`} className="group grid grid-cols-2 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] gap-4 text-white focus-visible:outline-white lg:gap-6">

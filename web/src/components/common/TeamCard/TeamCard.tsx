@@ -5,9 +5,9 @@ import { Dialog } from "@base-ui/react/dialog";
 import { BsArrowUpRight } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa";
 import { TfiClose } from "react-icons/tfi";
-import type { TeamMember } from "@/constants/team";
+import type { TeamCardProps } from "@/utilities/ComponentTypes";
 
-export default function TeamCard({ member }: { member: TeamMember }) {
+export default function TeamCard({ member }: TeamCardProps) {
   return (
     <article aria-labelledby={`${member.id}-name`} className="border-b border-black/10 pb-8 last:border-0 sm:border-0 sm:pb-0">
       <Dialog.Root>

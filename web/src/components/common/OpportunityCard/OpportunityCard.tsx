@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BsArrowRight, BsArrowUpRight } from "react-icons/bs";
-import type { OpportunityItem } from "@/constants/opportunities";
+import type { OpportunityCardProps } from "@/utilities/ComponentTypes";
 
-export default function OpportunityCard({ item }: { item: OpportunityItem }) {
+export default function OpportunityCard({ item }: OpportunityCardProps) {
   return (
     <article className="min-w-0">
       <Link href={item.href} aria-labelledby={`${item.id}-heading`} className="group relative isolate block aspect-[12/13] overflow-hidden bg-neutral-900 text-white md:aspect-[4/7]">

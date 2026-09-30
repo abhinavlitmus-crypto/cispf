@@ -2,15 +2,7 @@
 
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import { cn } from "@/lib/utils";
-
-type PaginationProps = {
-  /** 1-based current page. */
-  page: number;
-  pageCount: number;
-  onPageChange: (page: number) => void;
-  label?: string;
-  className?: string;
-};
+import type { PaginationProps } from "@/utilities/ComponentTypes";
 
 // Keeps the first and last page visible and collapses the rest around the current page.
 function getPageItems(page: number, pageCount: number): (number | "gap")[] {

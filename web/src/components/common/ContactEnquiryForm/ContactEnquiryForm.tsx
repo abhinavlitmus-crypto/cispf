@@ -1,21 +1,14 @@
 "use client";
 
-import { useId, useRef, useState, type ChangeEvent, type FormEvent, type ReactNode } from "react";
+import { useId, useRef, useState, type ChangeEvent, type FormEvent } from "react";
 import Button from "@/components/common/Button/Button";
 import { cn } from "@/lib/utils";
-
-type Field = "name" | "email" | "message";
-type Values = Record<Field, string>;
-type Errors = Partial<Record<Field, string>>;
-
-type ContactEnquiryFormProps = {
-  className?: string;
-  actionsClassName?: string;
-  buttonClassName?: string;
-  /** Rendered beside the send button, e.g. a link to other contact options. */
-  actions?: ReactNode;
-  pendingMessage?: string;
-};
+import type {
+  ContactEnquiryErrors,
+  ContactEnquiryField,
+  ContactEnquiryFormProps,
+  ContactEnquiryValues,
+} from "@/utilities/ComponentTypes";
 
 const namePattern = /^[\p{L}\s]+$/u;
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -27,8 +20,8 @@ const sendButtonClasses = [
 
 const inputClasses = "w-full min-w-0 border-0 border-b bg-transparent py-3 text-base text-black placeholder:text-neutral-500 focus:outline-none aria-invalid:border-primary";
 
-function validate({ name, email }: Values): Errors {
-  const errors: Errors = {};
+function validate({ name, email }: ContactEnquiryValues): ContactEnquiryErrors {
+  const errors: ContactEnquiryErrors = {};
   if (!name.trim()) errors.name = "Please enter your company or organization name.";
   else if (!namePattern.test(name.trim())) errors.name = "Name can only contain letters and spaces.";
   if (!email.trim()) errors.email = "Please enter your email address.";
@@ -44,11 +37,11 @@ export default function ContactEnquiryForm({
   pendingMessage = "Contact form submissions are coming soon.",
 }: ContactEnquiryFormProps) {
   const id = useId();
-  const [values, setValues] = useState<Values>({ name: "", email: "", message: "" });
-  const [errors, setErrors] = useState<Errors>({});
+  const [values, setValues] = useState<ContactEnquiryValues>({ name: "", email: "", message: "" });
+  const [errors, setErrors] = useState<ContactEnquiryErrors>({});
   const [submitted, setSubmitted] = useState(false);
   const [status, setStatus] = useState("");
-  const fieldRefs = useRef<Partial<Record<Field, HTMLInputElement | HTMLTextAreaElement | null>>>({});
+  const fieldRefs = useRef<Partial<Record<ContactEnquiryField, HTMLInputElement | HTMLTextAreaElement | null>>>({});
 
   function handleChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = event.target;
@@ -73,7 +66,7 @@ export default function ContactEnquiryForm({
     setStatus(pendingMessage);
   }
 
-  const fieldClasses = (field: Field) => `${inputClasses} ${errors[field] ? "" : "border-neutral-400 focus:border-primary"}`;
+  const fieldClasses = (field: ContactEnquiryField) => `${inputClasses} ${errors[field] ? "" : "border-neutral-400 focus:border-primary"}`;
 
   return (
     <form onSubmit={handleSubmit} noValidate className={className}>

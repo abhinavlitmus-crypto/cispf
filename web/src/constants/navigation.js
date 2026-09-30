@@ -1,7 +1,7 @@
 // TODO: Connect these destinations when the corresponding sections are built.
 export const navigation = [
   { label: "ABOUT US", href: "#", children: [
-    { label: "ABOUT CISPF", href: "/#about" },
+    { label: "ABOUT CISPF", href: "/about/cispf" },
     { label: "OUR EXPERT TEAM", href: "/about/team" },
     // TODO: Implement the careers page.
     { label: "CAREERS", href: "/careers" },

@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BsArrowRight, BsArrowUpRight } from "react-icons/bs";
-import type { PolicyItem } from "@/constants/policy";
+import type { PolicyCardProps } from "@/utilities/ComponentTypes";
 
-export default function PolicyCard({ item, variant = "portrait" }: { item: PolicyItem; variant?: "portrait" | "landscape" }) {
+export default function PolicyCard({ item, variant = "portrait" }: PolicyCardProps) {
   return (
     <article className="min-w-0">
       <Link href={item.href} aria-labelledby={`${item.id}-title`} className="group block">

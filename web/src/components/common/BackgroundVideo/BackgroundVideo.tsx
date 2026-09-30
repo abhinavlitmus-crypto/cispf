@@ -2,10 +2,11 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
+import type { BackgroundVideoProps } from "@/utilities/ComponentTypes";
 
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
-export default function BackgroundVideo({ src }: { src: string }) {
+export default function BackgroundVideo({ src }: BackgroundVideoProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [playing, setPlaying] = useState(false);
 

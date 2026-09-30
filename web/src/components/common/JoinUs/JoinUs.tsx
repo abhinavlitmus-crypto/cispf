@@ -1,12 +1,13 @@
 import ContactPopup from "@/components/common/ContactPopup/ContactPopup";
 import { cn } from "@/lib/utils";
+import type { JoinUsProps } from "@/utilities/ComponentTypes";
 
 const memberButtonClasses = [
   "transition-transform duration-300 ease-in-out hover:scale-105",
   "motion-reduce:transition-none motion-reduce:hover:scale-100",
 ].join(" ");
 
-export default function JoinUs({ className }: { className?: string }) {
+export default function JoinUs({ className }: JoinUsProps) {
   return (
     <section aria-labelledby="join-heading" className={cn("relative z-0 flex min-h-[22rem] flex-col items-center justify-center gap-6 bg-white px-5 py-20 text-center md:sticky md:top-18 md:min-h-[clamp(24rem,34vw,38rem)] motion-reduce:static md:motion-reduce:static [@media(max-height:600px)]:static", className)}>
       <h2 id="join-heading" className="text-[clamp(1.75rem,3vw,3.5rem)] leading-tight font-medium">LET&rsquo;S BUILD THE FUTURE</h2>

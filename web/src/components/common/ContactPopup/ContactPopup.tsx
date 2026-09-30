@@ -1,18 +1,12 @@
 "use client";
 
-import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Dialog } from "@base-ui/react/dialog";
 import { TfiClose } from "react-icons/tfi";
 import Button from "@/components/common/Button/Button";
 import ContactEnquiryForm from "@/components/common/ContactEnquiryForm/ContactEnquiryForm";
-
-type ContactPopupProps = {
-  /** Content of the button that opens the popup. */
-  children: ReactNode;
-  triggerClassName?: string;
-};
+import type { ContactPopupProps } from "@/utilities/ComponentTypes";
 
 export default function ContactPopup({ children, triggerClassName }: ContactPopupProps) {
   return (

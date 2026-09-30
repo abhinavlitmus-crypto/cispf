@@ -2,15 +2,7 @@
 
 import { useRef, type KeyboardEvent } from "react";
 import { cn } from "@/lib/utils";
-import type { EventCategory } from "@/constants/events";
-
-type EventTabsProps = {
-  value: EventCategory;
-  onChange: (value: EventCategory) => void;
-  /** Tabs get `${idPrefix}-tab-${value}` and control `${idPrefix}-panel-${value}`. */
-  idPrefix: string;
-  className?: string;
-};
+import type { EventTabsProps } from "@/utilities/ComponentTypes";
 
 export const eventTabs = [
   { value: "upcoming", label: "UPCOMING EVENTS" },

@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BsArrowRight, BsArrowUpRight } from "react-icons/bs";
-import type { NewsItem } from "@/constants/news";
+import type { NewsCardProps } from "@/utilities/ComponentTypes";
 
-export default function NewsCard({ item }: { item: NewsItem }) {
+export default function NewsCard({ item }: NewsCardProps) {
   return (
     <article className="min-w-0">
       <Link href={item.href} aria-labelledby={`${item.id}-title`} className="group block">
