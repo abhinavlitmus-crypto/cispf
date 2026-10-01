@@ -35,7 +35,8 @@ export default function PolicyDiscussionsListing() {
 
         <ul ref={listRef} tabIndex={-1} className="mt-12 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:mt-[clamp(3rem,3.8vw,4.5rem)] lg:grid-cols-3 lg:gap-0">
           {/* Desktop cells are split by a left rule between columns and a top rule from the second row on. */}
-          {pageItems.map((item) => <li key={item.id} className="min-w-0 border-neutral-200 lg:px-[clamp(1.5rem,3vw,3.5rem)] lg:py-[clamp(2rem,3vw,3.5rem)] lg:nth-[3n+1]:pl-0 lg:nth-[3n]:pr-0 lg:nth-[-n+3]:pt-0 lg:not-nth-[3n+1]:border-l lg:nth-[n+4]:border-t"><PolicyCard item={item} variant="listing" /></li>)}
+          <PolicyCard item={policyDiscussionItems[0]} variant="listing" />
+          {/* {pageItems.map((item) => <li key={item.id} className="min-w-0 border-neutral-200 lg:px-[clamp(1.5rem,3vw,3.5rem)] lg:py-[clamp(2rem,3vw,3.5rem)] lg:nth-[3n+1]:pl-0 lg:nth-[3n]:pr-0 lg:nth-[-n+3]:pt-0 lg:not-nth-[3n+1]:border-l lg:nth-[n+4]:border-t"><PolicyCard item={item} variant="listing" /></li>)} */}
         </ul>
 
         <Pagination page={page} pageCount={pageCount} onPageChange={changePage} label="Policy discussion pages" tone="light" className="mt-16 md:mt-[clamp(4rem,5vw,6rem)]" />

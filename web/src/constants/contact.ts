@@ -8,6 +8,6 @@ export const contactMapUrl = `https://www.google.com/maps/search/?api=1&query=${
 
 // TODO: Replace the placeholder phone numbers and email addresses with approved contact details.
 export const contactPeople = [
-  { name: "Maha Siddiqui", role: "Director, Policy and Strategy, CISPF", phone: "+91 0909090909", email: "example@domain.com" },
-  { name: "Oindrilla Ray", role: "Intern, CISPF", phone: "+91 0909090909", email: "example@domain.com" },
+  { name: "Maha Siddiqui", role: "Director, Policy and Strategy, CISPF", phone: "+1 (778) 266-2701", email: "msiddiqui@cispf.org" },
+  // { name: "Oindrilla Ray", role: "Intern, CISPF", phone: "+91 0909090909", email: "example@domain.com" },
 ];
