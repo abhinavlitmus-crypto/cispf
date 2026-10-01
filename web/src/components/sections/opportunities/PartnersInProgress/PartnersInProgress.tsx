@@ -29,10 +29,10 @@ export default function PartnersInProgress() {
           </div>
 
           <div className="mt-14 flex flex-col gap-8 border-t border-white/25 pt-14 lg:mt-[clamp(3rem,8vw,10rem)] lg:flex-row lg:items-center lg:gap-[clamp(3rem,7vw,8.5rem)] lg:pt-[clamp(2rem,3vw,3.5rem)]">
-            <p id="partners-list-label" className="text-lg font-semibold lg:text-[clamp(1rem,1.1vw,1.375rem)]">Our Partners :</p>
-            <ul aria-labelledby="partners-list-label" className="flex flex-col gap-8 lg:flex-row lg:gap-[clamp(3rem,4.5vw,5.5rem)]">
+            {/* <p id="partners-list-label" className="text-lg font-semibold lg:text-[clamp(1rem,1.1vw,1.375rem)]">Our Partners :</p> */}
+            {/* <ul aria-labelledby="partners-list-label" className="flex flex-col gap-8 lg:flex-row lg:gap-[clamp(3rem,4.5vw,5.5rem)]">
               {partners.map((partner) => <li key={partner} className="text-lg font-semibold lg:text-[clamp(1rem,1.1vw,1.375rem)]">{partner}</li>)}
-            </ul>
+            </ul> */}
           </div>
         </div>
       </div>
