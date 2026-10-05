@@ -7,7 +7,7 @@ import Button from "@/components/common/Button/Button";
 import EventCard from "@/components/common/EventCard/EventCard";
 import EventTabs from "@/components/common/EventTabs/EventTabs";
 import Pagination from "@/components/common/Pagination/Pagination";
-import { emptyEventMessages, eventItems, type EventCategory } from "@/constants/events";
+import { defaultEventCategory, emptyEventMessages, eventItems, type EventCategory } from "@/constants/events";
 
 const pageSize = 6;
 
@@ -17,7 +17,7 @@ const filterButtonClasses = [
 ].join(" ");
 
 export default function EventsListing() {
-  const [category, setCategory] = useState<EventCategory>("upcoming");
+  const [category, setCategory] = useState<EventCategory>(defaultEventCategory);
   const [page, setPage] = useState(1);
   const panelRef = useRef<HTMLDivElement>(null);
   const items = eventItems[category];

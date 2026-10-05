@@ -10,7 +10,7 @@ import type { Swiper as SwiperInstance } from "swiper";
 import "swiper/css";
 import EventCard from "@/components/common/EventCard/EventCard";
 import EventTabs, { eventTabs } from "@/components/common/EventTabs/EventTabs";
-import { emptyEventMessages, eventItems, type EventCategory } from "@/constants/events";
+import { defaultEventCategory, emptyEventMessages, eventItems, type EventCategory } from "@/constants/events";
 
 // The grouping changes at the same breakpoint as the card layout.
 function subscribeToViewport(callback: () => void) {
@@ -25,7 +25,7 @@ export default function Events() {
   const desktop = useSyncExternalStore(subscribeToViewport, getDesktopSnapshot, getServerSnapshot);
   const pageSize = desktop ? 4 : 1;
   const slider = useRef<Partial<Record<EventCategory, SwiperInstance>>>({});
-  const [category, setCategory] = useState<EventCategory>("upcoming");
+  const [category, setCategory] = useState<EventCategory>(defaultEventCategory);
   const [page, setPage] = useState(0);
   const items = eventItems[category];
   const pageCount = Math.ceil(items.length / pageSize);

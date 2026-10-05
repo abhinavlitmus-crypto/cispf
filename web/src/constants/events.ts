@@ -63,3 +63,6 @@ export const eventItems: Record<EventCategory, EventItem[]> = {
   upcoming: [],
   past: [executiveRoundtable, calgaryRoundtable],
 };
+
+// Open on past events while nothing is scheduled.
+export const defaultEventCategory: EventCategory = eventItems.upcoming.length ? "upcoming" : "past";
