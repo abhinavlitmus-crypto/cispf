@@ -7,7 +7,7 @@ import Button from "@/components/common/Button/Button";
 import EventCard from "@/components/common/EventCard/EventCard";
 import EventTabs from "@/components/common/EventTabs/EventTabs";
 import Pagination from "@/components/common/Pagination/Pagination";
-import { eventItems, type EventCategory } from "@/constants/events";
+import { defaultEventCategory, emptyEventMessages, eventItems, type EventCategory } from "@/constants/events";
 
 const pageSize = 6;
 
@@ -17,7 +17,7 @@ const filterButtonClasses = [
 ].join(" ");
 
 export default function EventsListing() {
-  const [category, setCategory] = useState<EventCategory>("upcoming");
+  const [category, setCategory] = useState<EventCategory>(defaultEventCategory);
   const [page, setPage] = useState(1);
   const panelRef = useRef<HTMLDivElement>(null);
   const items = eventItems[category];
@@ -55,11 +55,11 @@ export default function EventsListing() {
         </div>
 
         <div ref={panelRef} id={`events-listing-panel-${category}`} role="tabpanel" aria-labelledby={`events-listing-tab-${category}`} tabIndex={-1} className="mt-8 grid gap-x-[clamp(2rem,4vw,5rem)] gap-y-14 focus-visible:outline-white md:mt-12 lg:grid-cols-2 lg:gap-y-[clamp(3.5rem,5vw,6rem)]">
-          {pageItems.map((item) => <EventCard key={item.id} item={item} />)}
+          {pageItems.length ? pageItems.map((item) => <EventCard key={item.id} item={item} />) : <p className="border-t border-white/20 pt-10 text-lg text-white/75 lg:col-span-2">{emptyEventMessages[category]}</p>}
         </div>
 
         <Pagination page={page} pageCount={pageCount} onPageChange={changePage} label="Event pages" className="mt-16 md:mt-[clamp(4rem,5vw,6rem)]" />
-        <p role="status" className="sr-only">{category === "upcoming" ? "Upcoming events" : "Past events"}, page {page} of {pageCount}</p>
+        <p role="status" className="sr-only">{category === "upcoming" ? "Upcoming events" : "Past events"}{pageCount ? `, page ${page} of ${pageCount}` : ": none available"}</p>
       </div>
     </section>
   );

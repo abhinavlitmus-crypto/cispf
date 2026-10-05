@@ -10,7 +10,7 @@ import type { Swiper as SwiperInstance } from "swiper";
 import "swiper/css";
 import EventCard from "@/components/common/EventCard/EventCard";
 import EventTabs, { eventTabs } from "@/components/common/EventTabs/EventTabs";
-import { eventItems, type EventCategory } from "@/constants/events";
+import { defaultEventCategory, emptyEventMessages, eventItems, type EventCategory } from "@/constants/events";
 
 // The grouping changes at the same breakpoint as the card layout.
 function subscribeToViewport(callback: () => void) {
@@ -25,7 +25,7 @@ export default function Events() {
   const desktop = useSyncExternalStore(subscribeToViewport, getDesktopSnapshot, getServerSnapshot);
   const pageSize = desktop ? 4 : 1;
   const slider = useRef<Partial<Record<EventCategory, SwiperInstance>>>({});
-  const [category, setCategory] = useState<EventCategory>("upcoming");
+  const [category, setCategory] = useState<EventCategory>(defaultEventCategory);
   const [page, setPage] = useState(0);
   const items = eventItems[category];
   const pageCount = Math.ceil(items.length / pageSize);
@@ -52,7 +52,7 @@ export default function Events() {
             <div role="group" aria-label="Event pages" className="flex max-w-full flex-wrap items-center justify-center">
               <button type="button" disabled={page === 0} onClick={() => slider.current[category]?.slidePrev()} aria-label="Previous event page" className="mr-3 flex size-11 items-center justify-center cursor-pointer bg-primary disabled:opacity-30"><ArrowLeft aria-hidden="true" className="size-5" /></button>
               {Array.from({ length: Math.min(4, pageCount) }, (_, offset) => firstDot + offset).map((index) => <button key={index} type="button" aria-label={`Show event page ${index + 1}`} aria-current={page === index ? "page" : undefined} onClick={() => slider.current[category]?.slideTo(index)} className="flex min-h-11 min-w-7 items-center justify-center focus-visible:outline-white"><span aria-hidden="true" className={`h-1 transition-[width,background-color] duration-300 motion-reduce:transition-none ${page === index ? "w-7 bg-brand-gradient" : "w-1.5 bg-white/45"}`} /></button>)}
-              <button type="button" disabled={page === pageCount - 1} onClick={() => slider.current[category]?.slideNext()} aria-label="Next event page" className="disabled:opacity-30 ml-3 flex size-11 items-center justify-center cursor-pointer bg-primary focus-visible:outline-white"><ArrowRight aria-hidden="true" className="size-5" /></button>
+              <button type="button" disabled={page >= pageCount - 1} onClick={() => slider.current[category]?.slideNext()} aria-label="Next event page" className="disabled:opacity-30 ml-3 flex size-11 items-center justify-center cursor-pointer bg-primary focus-visible:outline-white"><ArrowRight aria-hidden="true" className="size-5" /></button>
             </div>
             <Link href="/events" className="group inline-flex min-h-11 max-w-full items-center justify-center bg-white px-5 py-3 text-sm font-medium focus-visible:outline-white">
               <span className="relative inline-flex items-center pr-8">
@@ -63,7 +63,7 @@ export default function Events() {
           </div>
         <div className="grid min-w-0 xl:col-span-2 mt-8 md:mt-12">
         {eventTabs.map((tab) => <div key={tab.value} id={`events-panel-${tab.value}`} role="tabpanel" aria-labelledby={`events-tab-${tab.value}`} aria-hidden={category !== tab.value} inert={category !== tab.value} tabIndex={category === tab.value ? 0 : -1} className={`col-start-1 row-start-1 min-w-0 transition-opacity duration-500 ease-in-out focus-visible:outline-white motion-reduce:transition-none ${category === tab.value ? "z-10 opacity-100" : "pointer-events-none opacity-0"}`}>
-          <Swiper
+          {eventItems[tab.value].length === 0 ? <p className="border-t border-white/20 pt-10 text-lg text-white/75">{emptyEventMessages[tab.value]}</p> : <Swiper
             key={tab.value + pageSize}
             modules={[A11y]}
             slidesPerView={1}
@@ -81,10 +81,10 @@ export default function Events() {
                 {eventItems[tab.value].slice(index * pageSize, (index + 1) * pageSize).map((item) => <EventCard key={item.id} item={item} />)}
               </div>
             </SwiperSlide>)}
-          </Swiper>
+          </Swiper>}
         </div>)}
         </div>
-        <p role="status" className="sr-only">{category === "upcoming" ? "Upcoming events" : "Past events"}, page {page + 1} of {pageCount}</p>
+        <p role="status" className="sr-only">{category === "upcoming" ? "Upcoming events" : "Past events"}{pageCount ? `, page ${page + 1} of ${pageCount}` : ": none available"}</p>
       </div>
     </section>
   );

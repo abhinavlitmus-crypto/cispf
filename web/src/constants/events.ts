@@ -54,24 +54,15 @@ const calgaryRoundtable: EventItem = {
   ],
 };
 
-function createPlaceholderEvents(category: EventCategory, count: number): EventItem[] {
-  return Array.from({ length: count }, (_, index) => {
-    const number = index + 1;
-    const date = category === "upcoming" ? "2026-11-11" : "2025-08-11";
-
-    return {
-      id: `${category}-${category === "past" ? number + 2 : number}`,
-      title: category === "upcoming" ? "Upcoming event" : "Past event",
-      summary: "Event details will be added soon.",
-      image: "/Image/placeholder-image-3.jpg",
-      imageAlt: "Placeholder image for an event",
-      date,
-      dateLabel: category === "upcoming" ? "Nov 11, 2026" : "Aug 11, 2025",
-    };
-  });
-}
+export const emptyEventMessages: Record<EventCategory, string> = {
+  upcoming: "There are no upcoming events at the moment. Please check back soon.",
+  past: "There are no past events to show yet.",
+};
 
 export const eventItems: Record<EventCategory, EventItem[]> = {
-  upcoming: createPlaceholderEvents("upcoming", 16),
-  past: [executiveRoundtable, calgaryRoundtable, ...createPlaceholderEvents("past", 14)],
+  upcoming: [],
+  past: [executiveRoundtable, calgaryRoundtable],
 };
+
+// Open on past events while nothing is scheduled.
+export const defaultEventCategory: EventCategory = eventItems.upcoming.length ? "upcoming" : "past";
