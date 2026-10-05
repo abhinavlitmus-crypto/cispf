@@ -55,7 +55,7 @@ export default async function PolicyDiscussionPage({ params }: PolicyDiscussionP
             <div className="mt-5 lg:mt-0">
               <h1
                 id="policy-discussion-heading"
-                className="text-[clamp(2.5rem,4.7vw,4rem)] leading-[1.1] font-bold text-primary uppercase"
+                className="text-[clamp(2.5rem,4.3vw,3.6rem)] leading-[1.1] font-bold text-primary uppercase"
               >
                 {discussion.detailTitle}
               </h1>
