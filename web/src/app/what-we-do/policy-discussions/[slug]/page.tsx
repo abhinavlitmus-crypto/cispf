@@ -102,7 +102,20 @@ export default async function PolicyDiscussionPage({ params }: PolicyDiscussionP
                   <h2 id={`policy-discussion-section-${sectionIndex}`} className="text-[clamp(1.5rem,1.6vw,1.75rem)] leading-tight font-medium">{section.title}</h2>
                 )}
 
-                {section.blocks.map((block, blockIndex) => (
+                {section.blocks.map((block, blockIndex) => block.type === "box" ? (
+                  <div key={blockIndex} className="mt-8 bg-primary/[0.03] px-5 py-7 md:px-8 md:py-9">
+                    {block.groups.map((group, groupIndex) => (
+                      <div key={group.heading} className={groupIndex ? "mt-8 md:mt-10" : ""}>
+                        <h3 className="text-base leading-relaxed font-semibold md:text-lg">{group.heading}</h3>
+                        {group.paragraphs.map((paragraph, paragraphIndex) => (
+                          <p key={paragraphIndex} className={`${paragraphClasses} ${paragraphIndex ? "mt-6 md:mt-8" : "mt-4"}`}>
+                            {renderText(paragraph, references)}
+                          </p>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                ) : (
                   <div key={blockIndex} className={`mt-8 ${block.type === "text" && block.boxed ? "bg-primary/[0.03] px-5 py-7 md:px-8 md:py-9" : ""}`}>
                     {block.heading && <h3 className="mb-2 text-base leading-relaxed font-semibold md:text-lg">{block.heading}</h3>}
                     {block.type === "list" ? (

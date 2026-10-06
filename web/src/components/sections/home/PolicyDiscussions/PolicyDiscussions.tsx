@@ -9,10 +9,11 @@ export default function PolicyDiscussions() {
       <div className="mx-auto max-w-[1920px] px-5 py-16 md:px-[clamp(1rem,2.6vw,3.125rem)] md:py-[clamp(4rem,7vw,8rem)]">
         <h2 id="policy-heading" className="text-center text-[clamp(2rem,3.1vw,3.625rem)] leading-tight font-medium">RECENT POLICY DISCUSSIONS</h2>
         <div className="mt-10 grid items-start gap-x-8 gap-y-12 sm:grid-cols-2 md:mt-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.8fr)_minmax(0,1fr)] lg:gap-x-10">
-          <PolicyCard item={policyItems[1]} />
-          {/* <div className="min-w-0 sm:col-span-2 sm:row-start-2 lg:col-span-1 lg:col-start-2 lg:row-start-1 lg:self-stretch lg:border-x lg:border-neutral-100 lg:px-5">
+          {/* <PolicyCard item={policyItems[0]} /> */}
+          {/* Add sm:row-start-2, lg:row-start-1 and the lg:border-x lg:border-neutral-100 rules back when the side cards return. */}
+          <div className="min-w-0 sm:col-span-2 lg:col-span-1 lg:col-start-2 lg:self-stretch lg:px-5">
             <PolicyCard item={policyItems[1]} variant="landscape" />
-          </div> */}
+          </div>
           {/* <div className="sm:col-start-2 sm:row-start-1 lg:col-start-3"><PolicyCard item={policyItems[2]} /></div> */}
         </div>
         <div className="mt-12 flex justify-center md:mt-20">
