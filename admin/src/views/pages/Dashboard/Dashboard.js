@@ -1,106 +1,81 @@
-import { AppstoreOutlined, CheckCircleOutlined, ClockCircleOutlined, DeleteOutlined, EditOutlined, ExperimentOutlined, FileTextOutlined, HddOutlined, InboxOutlined, InfoCircleOutlined, MedicineBoxOutlined, TeamOutlined, UserOutlined } from '@ant-design/icons';
-import { useQueryClient } from '@tanstack/react-query';
-
-import {
-    Avatar,
-    Button,
-    Card,
-    Col,
-    Form,
-    Input,
-    message,
-    Modal,
-    Popconfirm,
-    Row,
-    Select,
-    Table,
-    InputNumber,
-    DatePicker,
-    Tooltip,
-} from "antd";
-import { IoIosArrowUp } from "react-icons/io";
-import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
-import { QUERY_ASSET_LIST } from '../../../constants/query.constants';
-import { useAssetDeleteMutation, useAssetSaveMutation, useGetAssetQuery } from '../../../query/asset.query'
-import UploadImage from '../../../utils/UploadImage';
-import util from '../../../utils/util';
-import DataNotLoaded from '../../components/DataNotLoaded';
-import MyPagination from '../../components/Pagination';
+import { Card } from "antd";
 import dayjs from 'dayjs';
-import moment from 'moment';
-import { json2csv } from 'json-2-csv';
-import { useGetManagementQuery } from '../../../query/management.query';
-import { useGetClientQuery } from '../../../query/client.query';
-import { useGetInventoryQuery } from '../../../query/inventory.query';
-import { useGetEnagementQuery } from '../../../query/engagement.query';
-import { useGetArtQuery } from '../../../query/art.query';
+import React, { useMemo } from 'react';
 import ReactApexChart from "react-apexcharts";
 import { Link } from 'react-router-dom';
-import { useGetUserQuery } from '../../../query/user.query';
 import { useGetCourseQuery } from '../../../query/course.query';
+import { useGetUserQuery } from '../../../query/user.query';
 
 const AssetKPI = ({ userWholeData, courseWholeData }) => {
-
-
     const dashboardKpis = [
         {
             key: "user",
-            title: "Total User",
+            title: "Total Users",
             value: (userWholeData?.length || 0),
-            sub: "Registered",
-            icon: <TeamOutlined />,
             route: "/usersapp"
         },
         {
             key: "course",
-            title: "Course",
+            title: "Courses",
             value: (courseWholeData?.length || 0),
-            sub: "Recorded",
-            icon: <ExperimentOutlined />,
             route: "/course"
         },
     ];
 
-    const gradients = [
-        "bg-[linear-gradient(322.46deg,_#BABC42_-0.77%,_#566642_39.81%,_#253E50_91.24%)]",
-        "bg-[linear-gradient(322.46deg,_#253E50_-0.77%,_#566642_39.81%,_#BABC42_91.24%)]"
-    ];
     return (
-        <Row gutter={[26, 40]} className='mb-4'>
+        <div className="flex flex-wrap gap-4">
             {
-                dashboardKpis.map((item, index) => (
-                    <Col xs={24} sm={12} md={8} key={item.key}>
-                        <Link to={`${item.route ? item.route : ""}`} >
-                            <Card size='small' bordered className={`h-full shadow-md transition-all duration-200 hover:shadow-lg hover:scale-105 py-2 px-3 bg-[linear-gradient(322.46deg,_#BABC42_-0.77%,_#566642_39.81%,_#253E50_91.24%)] text-white rounded-2xl ${gradients[index % gradients.length]}`}>
-                                <div className="flex flex-col gap-6">
-
-                                    <div className="flex items-center gap-4 text-white text-lg">
-                                        <div className="text-4xl">{item.icon}</div>
-                                        <span >{item.title}</span>
-                                    </div>
-
-                                    <div className="flex items-center justify-between">
-                                        <div className="text-5xl font-semibold text-white">
-                                            {item.value}
-                                        </div>
-
-                                        <div className="w-9 aspect-square flex items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
-                                            {/* <span className="text-white text-sm">↗</span> */}
-                                            <IoIosArrowUp size={18} className='rotate-45 text-black'/> 
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </Card>
-                        </Link>
-                    </Col>
+                dashboardKpis.map((item) => (
+                    <Link to={`${item.route ? item.route : ""}`} key={item.key}>
+                        <div className="min-w-[130px] rounded-lg border border-[#E3E8EC] bg-white px-6 py-4 text-center shadow-sm transition-shadow duration-200 hover:shadow-md">
+                            <div className="text-4xl font-medium leading-tight text-primary">
+                                {item.value}
+                            </div>
+                            <div className="mt-1 text-xs text-[#6B7280]">{item.title}</div>
+                        </div>
+                    </Link>
                 ))
-
             }
-        </Row>
+        </div>
     )
 }
 
+const UsersChart = ({ userWholeData }) => {
+    const { categories, counts } = useMemo(() => {
+        const months = Array.from({ length: 12 }, (_, i) => dayjs().subtract(11 - i, "month"));
+        const byMonth = {};
+        (userWholeData || []).forEach((user) => {
+            if (!user?.createdAt) return;
+            const key = dayjs(user.createdAt).format("YYYY-MM");
+            byMonth[key] = (byMonth[key] || 0) + 1;
+        });
+        return {
+            categories: months.map((m) => m.format("MMM YY")),
+            counts: months.map((m) => byMonth[m.format("YYYY-MM")] || 0),
+        };
+    }, [userWholeData]);
+
+    const options = {
+        chart: { type: "area", toolbar: { show: false }, zoom: { enabled: false }, fontFamily: "inherit" },
+        colors: ["#0D7077"],
+        stroke: { curve: "straight", width: 2 },
+        fill: { type: "solid", colors: ["#C5DBDF"], opacity: 0.9 },
+        dataLabels: { enabled: false },
+        markers: { size: 0, hover: { size: 5 } },
+        grid: { borderColor: "#E3E8EC", strokeDashArray: 3 },
+        xaxis: { categories, axisBorder: { show: false }, axisTicks: { show: false }, labels: { style: { colors: "#6B7280" } } },
+        yaxis: { min: 0, forceNiceScale: true, labels: { style: { colors: "#6B7280" }, formatter: (v) => Math.round(v) } },
+        tooltip: { y: { formatter: (v) => `${v} users` } },
+    };
+
+    return (
+        <div className="mt-6 rounded-lg bg-white p-4 shadow-sm">
+            <h3 className="text-sm font-semibold text-[#374151]">Users</h3>
+            <p className="text-xs text-[#6B7280]">Monthly Users Summary</p>
+            <ReactApexChart options={options} series={[{ name: "New users", data: counts }]} type="area" height={300} />
+        </div>
+    );
+};
 
 export const Dashboard = () => {
     const { data: userWholeData } = useGetUserQuery({ isAll: true, isDeleted: false });
@@ -111,35 +86,10 @@ export const Dashboard = () => {
                 bordered={false}
                 size="small"
                 className='p-0'
-                title={"Dashboard"}
+                title={"App Overview"}
             >
-
                 <AssetKPI userWholeData={userWholeData?.data} courseWholeData={courseWholeData?.data} />
-
-                {/* <Row gutter={[16, 16]} className='my-10'>
-                    <Col xs={24} md={12}>
-                        <HivStatusBarChart
-                            ClientWholeData={ClientWholeData?.data || []}
-                            hivPositiveWholeData={positiveData?.data || []}
-                            hivNegativeWholeData={negativeData?.data || []}
-                            hivPendingWholeData={pendingData?.data || []}
-                        />
-                    </Col>
-                    <Col xs={24} md={12}>
-                        <InventoryCategoryDonut InventoryWholeData={InventoryWholeData?.data} />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col span={24} >
-
-                        <ArtStatusBarChart
-                            hivPositiveWholeData={positiveData?.data || []}
-                            ArtPendingData={ArtPendingData?.data || []}
-                            ArtWholeData={ArtWholeData?.data || []}
-                        />
-
-                    </Col>
-                </Row> */}
+                <UsersChart userWholeData={userWholeData?.data} />
             </Card>
         </div>
     )

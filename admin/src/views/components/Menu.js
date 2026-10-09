@@ -1,9 +1,8 @@
 import { Menu } from "antd";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import routes from "../layout/route";
 import { Link, useLocation } from "react-router-dom";
 
-const items = [...routes];
 // function convertMultiToSingle(arr, prevBaseUrl = "") {
 // 	arr.forEach((v, i) => {
 // 		if (v.children?.length) {
@@ -32,75 +31,54 @@ const items = [...routes];
 // 		}
 // 	});
 // }
-function convertMultiToSingle(arr,prevBaseUrl=""){
+// key -> keys of the submenus that contain it
+const parentKeys = {};
 
-	arr.forEach((v,i)=>{
+function convertMultiToSingle(arr, prevBaseUrl = "", parents = []) {
+	return arr.filter((v) => !v.hidden || v.children?.length).map((v) => {
 		if (v.type === "group") {
-            arr[i] = {
-                type: "group",
-                label: v.title,
-                children: v.children ? convertMultiToSingle(v.children, prevBaseUrl) : [],
-            };
-            return;
-        }
-		const fullUrl = prevBaseUrl + v.url;
-		arr[i]={
-			...v,
-			key: fullUrl,
-			icon: v.icon? <v.icon/> : null,
-			label : v.children?.length ? v.title : <Link to={fullUrl}>{v.title}</Link>,
-			children : v.children ? convertMultiToSingle(v.children,fullUrl) : undefined,
+			return {
+				type: "group",
+				label: v.title,
+				children: convertMultiToSingle(v.children || [], prevBaseUrl, parents),
+			};
 		}
-	})
-	return arr;
+		const fullUrl = prevBaseUrl + v.url;
+		parentKeys[fullUrl] = parents;
+		return {
+			key: fullUrl,
+			title: v.title,
+			icon: v.icon ? <v.icon /> : null,
+			label: v.children?.length ? v.title : <Link to={fullUrl}>{v.title}</Link>,
+			children: v.children ? convertMultiToSingle(v.children, fullUrl, [...parents, fullUrl]) : undefined,
+		};
+	});
 }
 
+const items = convertMultiToSingle(routes);
 
-
-convertMultiToSingle(items);
-
-const App = () => {
+const App = ({ collapsed = false }) => {
 	const { pathname } = useLocation();
-	// const paths = [];
-	// useLocation()
-	// 	.pathname.split("/")
-	// 	?.reduce((prev, cur) => {
-	// 		return prev + "/" + cur;
-	// 	});
 	const [openKeys, setOpenKeys] = useState([]);
-	const paths = useMemo(() => {
-		const segments = pathname.split('/').filter(Boolean);
-		const arr = [];
 
-		segments.reduce((prev, cur) => {
-			const newPath = prev + "/" + cur;
-			arr.push(newPath);
-			return newPath;
-		}, "");
-		return arr;
-	}, [pathname])
-	// console.log("paths",paths);
+	// open the section of the current page
 	useEffect(() => {
-		setOpenKeys(paths.slice(0, -1));
-	}, [paths]);
+		setOpenKeys(parentKeys[pathname] || []);
+	}, [pathname]);
 
-
+	// only one section stays open at a time
+	const handleOpenChange = (keys) => {
+		const opened = keys.find((k) => !openKeys.includes(k));
+		setOpenKeys(opened ? [...(parentKeys[opened] || []), opened] : keys);
+	};
 
 	return (
 		<Menu
 			selectedKeys={[pathname]}
-			openKeys={openKeys}
-			onOpenChange={(keys) => setOpenKeys(keys)}
-			// defaultSelectedKeys={[paths.pop()]}
-			// defaultOpenKeys={[...paths]}
+			{...(collapsed ? {} : { openKeys, onOpenChange: handleOpenChange })}
 			mode="inline"
-			// theme="dark"
+			theme="dark"
 			items={items}
-			style={{
-				height: "calc(100vh - 64px)",
-				overflowX: "hidden",
-				overflowY: "auto",
-			}}
 		/>
 	);
 };

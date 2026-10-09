@@ -17,7 +17,15 @@ import {
   FormOutlined,
   RedoOutlined,
   InboxOutlined,
-  ControlOutlined
+  ControlOutlined,
+  ReadOutlined,
+  EnvironmentOutlined,
+  GlobalOutlined,
+  TranslationOutlined,
+  TagsOutlined,
+  QuestionCircleOutlined,
+  FileDoneOutlined,
+  IdcardOutlined
 } from "@ant-design/icons";
 import { Blog } from "../pages/Blog/Blog";
 
@@ -180,7 +188,7 @@ const allRoutes = [
       {
         title: "Course",
         url: "/course",
-        icon: TeamOutlined,
+        icon: ReadOutlined,
         component: Course,
         hidden: !util.checkRightAccess("course"),
       },
@@ -192,20 +200,20 @@ const allRoutes = [
     children: [
       {
         title: "Users",
-        icon: CalendarOutlined,
+        icon: TeamOutlined,
         hidden: !util.checkRightAccess("SuperAdmin"),
 
         url: "/users",
         children: [
           {
             title: "Portal Users",
-            icon: CalendarOutlined,
+            icon: SafetyOutlined,
             url: "data",
             component: SubAdmin,
           },
           {
             title: "App Users",
-            icon: CalendarOutlined,
+            icon: UserOutlined,
             url: "app",
             component: User,
           },
@@ -213,48 +221,48 @@ const allRoutes = [
       },
       {
         title: "Category",
-        icon: CalendarOutlined,
+        icon: AppstoreOutlined,
         url: "/category",
         hidden: !util.checkRightAccess("category"),
         children: [
           {
             title: "City",
-            icon: CalendarOutlined,
+            icon: EnvironmentOutlined,
             url: "/city",
             component: City,
             hidden: !util.checkRightAccess("city"),
           },
           {
             title: "State",
-            icon: CalendarOutlined,
+            icon: GlobalOutlined,
             url: "/state",
             component: State,
             hidden: !util.checkRightAccess("state"),
           },
           {
             title: "Language",
-            icon: CalendarOutlined,
+            icon: TranslationOutlined,
             url: "/language",
             component: Language,
             hidden: !util.checkRightAccess("language"),
           },
           {
             title: "Course Type",
-            icon: CalendarOutlined,
+            icon: TagsOutlined,
             url: "/course-type",
             component: CourseType,
             hidden: !util.checkRightAccess("course-type"),
           },
           {
             title: "Quiz",
-            icon: CalendarOutlined,
+            icon: QuestionCircleOutlined,
             url: "/quiz",
             component: Quiz,
             hidden: !util.checkRightAccess("quiz"),
           },
           {
-            title: "Assesment",
-            icon: CalendarOutlined,
+            title: "Assessment",
+            icon: FileDoneOutlined,
             url: "/assesment",
             component: Assessment,
             hidden: !util.checkRightAccess("assesment"),
@@ -270,7 +278,7 @@ const allRoutes = [
   // -----------------------
   {
     title: "Profile",
-    icon: AccountBookFilled,
+    icon: IdcardOutlined,
     url: "/profile",
     component: Profile,
     // hidden: !util.checkRightAccess("SuperAdmin"),

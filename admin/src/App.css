@@ -99,12 +99,26 @@
   overflow: auto;
   height: calc(100vh - 204px)
 } */
+.ant-tabs-nav::before {
+  border-bottom: none !important;
+}
+
+.ant-tabs-ink-bar {
+  display: none;
+}
+
 .ant-tabs-tab {
-  border-top: 2px solid transparent !important;
+  padding: 5px 16px !important;
+  margin: 0 8px 0 0 !important;
+  border-radius: 999px;
 }
 
 .ant-tabs-tab.ant-tabs-tab-active {
-  border-top: 2px solid red !important;
+  background: #2B96A1;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #ffffff !important;
 }
 
 .ant-message .anticon {
@@ -265,16 +279,147 @@ ul.ant-menu-horizontal li:first-child {
   }
 }
 
-.ant-menu-submenu-selected.ant-menu-title-content a {
-  /* color: #000000; Set the text color to white8 */
-  color: #ffffff
+/* Sidebar */
+.admin-sider {
+  background: linear-gradient(180deg, #097483 0%, #05636E 55%, #07545C 100%) !important;
 }
 
-.ant-menu-item.ant-menu-item-selected{
-  /* background: #EFF1F7 !important; */
-  /* background: #FB904D !important; */
-  background: #7F802D !important;
-  color: #ffffff !important;
+.admin-sider .ant-menu {
+  background: transparent;
+  border-inline-end: none !important;
+}
+
+.admin-sider .ant-menu-item-group-title {
+  padding: 14px 24px 6px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.admin-sider ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.admin-sider ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.admin-sider .ant-menu-item,
+.admin-sider .ant-menu-submenu-title {
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-sider .ant-menu-item-selected {
+  box-shadow: inset 3px 0 0 #ffffff;
+}
+
+/* Module opening */
+@keyframes admin-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.admin-page {
+  animation: admin-page-in 0.25s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-page {
+    animation: none;
+  }
+}
+
+/* Cleaner tables: no vertical grid lines, roomier rows */
+.admin-content .ant-table-wrapper .ant-table-bordered .ant-table-thead > tr > th,
+.admin-content .ant-table-wrapper .ant-table-bordered .ant-table-tbody > tr > td {
+  border-inline-end: none !important;
+}
+
+.admin-content .ant-table-wrapper .ant-table.ant-table-small .ant-table-thead > tr > th,
+.admin-content .ant-table-wrapper .ant-table.ant-table-small .ant-table-tbody > tr > td {
+  padding: 10px 14px;
+}
+
+.admin-content .ant-table-wrapper .ant-table-tbody > tr > td {
+  transition: background-color 0.15s ease;
+}
+
+/* Row options (edit / delete): soft tinted icon buttons */
+.admin-content .ant-table-tbody .ant-btn-primary.ant-btn-sm.ant-btn-icon-only {
+  background: #E6F4F6;
+  color: #0B7180;
+  box-shadow: none;
+}
+
+.admin-content .ant-table-tbody .ant-btn-primary.ant-btn-sm.ant-btn-icon-only:not(:disabled):hover {
+  background: #0B7180;
+  color: #ffffff;
+}
+
+.admin-content .ant-table-tbody .ant-btn-primary.ant-btn-dangerous.ant-btn-sm.ant-btn-icon-only {
+  background: #FDECEC;
+  color: #D92D20;
+}
+
+.admin-content .ant-table-tbody .ant-btn-primary.ant-btn-dangerous.ant-btn-sm.ant-btn-icon-only:not(:disabled):hover {
+  background: #D92D20;
+  color: #ffffff;
+}
+
+/* Add / edit dialogs */
+.ant-modal .ant-modal-content {
+  border-radius: 12px;
+}
+
+.ant-modal .ant-modal-header {
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #E3E8EC;
+}
+
+.ant-modal .ant-modal-footer {
+  padding-top: 12px;
+  margin-top: 16px;
+  border-top: 1px solid #E3E8EC;
+}
+
+.ant-modal:not(.ant-modal-fullscreen):not(.ant-modal-confirm) .ant-modal-body {
+  max-height: calc(100vh - 200px);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Content cards and tables */
+.admin-content .ant-card {
+  box-shadow: 0 1px 4px rgba(16, 24, 40, 0.06);
+}
+
+.admin-content .ant-table-wrapper .ant-table-tbody > tr:nth-child(even) > td {
+  background: #F6FBFC;
+}
+
+.admin-content .ant-table-wrapper .ant-table-title {
+  background: #ffffff;
+}
+
+/* Login */
+.login-form .ant-input,
+.login-form .ant-input-affix-wrapper {
+  border-radius: 999px;
+  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  padding-inline: 20px;
+}
+
+.login-form .ant-input-affix-wrapper .ant-input {
+  background: transparent;
+  padding-inline: 0;
 }
 
 .ant-pagination-item {
