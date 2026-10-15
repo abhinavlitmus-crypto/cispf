@@ -55,7 +55,7 @@
   --gradient-button: linear-gradient(270deg, rgba(238, 0, 0, 0.77) 0%, rgba(255, 138, 0, 0.77) 100%);
   --gradient-opportunity: linear-gradient(0deg, #DA0808, #DA0808);
   --gradient-card-overlay: linear-gradient(0deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12)), linear-gradient(0deg, rgba(218, 8, 8, 0.75), rgba(218, 8, 8, 0.8));
-  --gradient-opportunities: linear-gradient(283.24deg, rgba(238, 0, 0, 0.82) 68.64%, rgba(255, 138, 0, 0.82) 109.72%);
+  --gradient-opportunities: linear-gradient(283.24deg, rgba(238, 0, 0, 0.59) 63.64%, rgba(255, 138, 0, 0.59) 109.72%);
   --color-primary: #DA0808;
   --color-secondary: #FF8A00;
   --font-heading: var(--font-onest, Arial), Helvetica, system-ui, sans-serif;
@@ -113,7 +113,7 @@
     --gradient-button: linear-gradient(270deg, color(display-p3 0.855 0.031 0.031 / 0.77) 0%, color(display-p3 1.000 0.569 0.071 / 0.77) 100%);
     --gradient-opportunity: linear-gradient(0deg, color(display-p3 0.855 0.031 0.031), color(display-p3 0.855 0.031 0.031));
     --gradient-card-overlay: linear-gradient(0deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12)), linear-gradient(0deg, color(display-p3 0.855 0.031 0.031 / 0.75), color(display-p3 0.855 0.031 0.031 / 0.8));
-    --gradient-opportunities: linear-gradient(283.24deg, color(display-p3 0.855 0.031 0.031 / 0.82) 68.64%, color(display-p3 1.000 0.569 0.071 / 0.82) 109.72%);
+    --gradient-opportunities: linear-gradient(283.24deg, color(display-p3 0.855 0.031 0.031 / 0.59) 63.64%, color(display-p3 1.000 0.569 0.071 / 0.59) 109.72%);
   }
 }
 
