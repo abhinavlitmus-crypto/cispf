@@ -6,10 +6,10 @@ export const footerContact = {
 };
 
 export const socialLinks: { label: string; icon: "x" | "instagram" | "facebook" | "linkedin" | "youtube"; href: string | null }[] = [
-  { label: "X", icon: "x", href: null },
-  { label: "Instagram", icon: "instagram", href: null },
+  { label: "X", icon: "x", href: "https://x.com/CISPFORUM" },
+  { label: "Instagram", icon: "instagram", href: "https://www.instagram.com/cispforum?obrf=MXkxeXZtOHVvODg3Yw==" },
   { label: "Facebook", icon: "facebook", href: null },
-  { label: "LinkedIn", icon: "linkedin", href: null },
+  { label: "LinkedIn", icon: "linkedin", href: "https://www.linkedin.com/company/cispf/" },
   { label: "YouTube", icon: "youtube", href: null },
 ];
 
