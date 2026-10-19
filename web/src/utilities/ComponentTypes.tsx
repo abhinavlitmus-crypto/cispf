@@ -56,7 +56,8 @@ export type PageHeroProps = {
 	id: string;
 	title: string;
 	description: string;
-	image: { desktop: string; mobile: string; alt: string };
+	// Without a mobile image, the desktop one is used at every width.
+	image: { desktop: string; mobile?: string; alt: string };
 	gradient?: boolean;
 	border?: boolean;
 };

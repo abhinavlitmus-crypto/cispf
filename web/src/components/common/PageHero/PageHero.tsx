@@ -13,8 +13,14 @@ export default function PageHero({ id, title, description, image, gradient = fal
           </div>
 
           <div className="relative aspect-786/1006 w-full self-start overflow-hidden lg:aspect-1980/1384">
-            <Image src={image.desktop} alt={image.alt} fill fetchPriority="high" sizes="52vw" className="hidden object-cover lg:block" />
-            <Image src={image.mobile} alt={image.alt} fill fetchPriority="high" sizes="100vw" className="object-cover lg:hidden" />
+            {image.mobile ? (
+              <>
+                <Image src={image.desktop} alt={image.alt} fill fetchPriority="high" sizes="52vw" className="hidden object-cover lg:block" />
+                <Image src={image.mobile} alt={image.alt} fill fetchPriority="high" sizes="100vw" className="object-cover lg:hidden" />
+              </>
+            ) : (
+              <Image src={image.desktop} alt={image.alt} fill fetchPriority="high" sizes="(min-width: 1024px) 52vw, 100vw" className="object-cover" />
+            )}
             {gradient && <Image src="/Image/image-gradient.png" alt="" aria-hidden="true" fill sizes="(min-width: 1024px) 52vw, 100vw" className="pointer-events-none object-cover" />}
           </div>
 
