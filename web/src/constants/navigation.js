@@ -2,7 +2,7 @@
 export const navigation = [
   { label: "ABOUT US", href: "/about/cispf", children: [
     { label: "ABOUT CISPF", href: "/about/cispf" },
-    { label: "OUR EXPERT TEAM", href: "/about/team" },
+    { label: "OUR TEAM", href: "/about/team" },
     // TODO: Implement the careers page.
     // { label: "CAREERS", href: "/careers" },
   ] },
