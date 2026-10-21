@@ -8,3 +8,6 @@ mentblue-google-service-account.json
 logs/.*-audit.json
 logs/app.*.log
 logs/app.*.log.gz
+
+# temp copies of uploads before they go to Cloudinary
+public/*.m

@@ -4,7 +4,8 @@
 		"colorInfo": "#0B7180",
 		"colorLink": "#0B7180",
 		"colorBgLayout": "#F2F3F7",
-		"borderRadius": 6
+		"borderRadius": 6,
+		"zIndexPopupBase": 2000
 	},
 	"components": {
 		"Layout": {

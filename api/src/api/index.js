@@ -19,6 +19,8 @@ const adminLanguageRoute = require("./modules/admin/language/route")
 const adminCourseTypeRoute = require("./modules/admin/courseType/route")
 const adminProgressRoute = require("./modules/admin/progress/route")
 const adminAssessmentRoute = require("./modules/admin/assessment/route")
+const adminNewsletterRoute = require("./modules/admin/newsletter/route")
+const adminWebsitePageRoute = require("./modules/admin/websitePage/route")
 
 
 // APP Route
@@ -31,6 +33,7 @@ const appCityRoute = require("./modules/app/city/route")
 const appFileRoute = require("./modules/admin/file/route")
 const appProgressRoute = require("./modules/app/progress/route")
 const appAssessmentRoute = require("./modules/app/assessment/route")
+const appWebsitePageRoute = require("./modules/app/websitePage/route")
 
 const api = (app) => {
 
@@ -98,7 +101,8 @@ const api = (app) => {
   app.use("/admin/course-type", validateToken, adminCourseTypeRoute);
   app.use("/admin/progress", validateToken, adminProgressRoute);
   app.use("/admin/assessment", validateToken, adminAssessmentRoute);
-
+  app.use("/admin/newsletter", validateToken, adminNewsletterRoute);
+  app.use("/admin/website-page", validateToken, adminWebsitePageRoute);
 
   // App Route
   app.use("/app/course",appCourseRoute)
@@ -110,6 +114,7 @@ const api = (app) => {
   app.use("/app/file", appFileRoute);
   app.use("/app/progress", validateToken, appProgressRoute);
   app.use("/app/assessment", validateToken, appAssessmentRoute);
+  app.use("/app/website-page", appWebsitePageRoute);
 };
 
 module.exports = api;

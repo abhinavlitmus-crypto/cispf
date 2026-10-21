@@ -25,7 +25,12 @@ import {
   TagsOutlined,
   QuestionCircleOutlined,
   FileDoneOutlined,
-  IdcardOutlined
+  IdcardOutlined,
+  MailOutlined,
+  GlobalOutlined as WebsiteOutlined,
+  CalendarOutlined as EventOutlined,
+  CommentOutlined as DiscussionOutlined,
+  TeamOutlined as MembersOutlined,
 } from "@ant-design/icons";
 import { Blog } from "../pages/Blog/Blog";
 
@@ -93,6 +98,8 @@ import { Course } from "../pages/Course/Course";
 import { Quiz } from "../pages/Quiz/Quiz";
 import { Assessment } from "../pages/Assessment/Assessment";
 import { FormBuilder } from "../pages/FormBuilder/FormBuilder";
+import { Newsletter } from "../pages/Newsletter/Newsletter";
+import { Events, PolicyDiscussion, Team } from "../pages/WebsitePage/WebsitePage";
 import { State } from "../pages/State/State";
 import { Language } from "../pages/Language/Language";
 import { CourseType } from "../pages/CourseType/CourseType";
@@ -291,6 +298,44 @@ const allRoutes = [
     url: "/form-builder",
     component: FormBuilder,
     hidden: !util.checkRightAccess("SuperAdmin"),
+  },
+
+  {
+    title: "Newsletter",
+    icon: MailOutlined,
+    url: "/newsletter",
+    component: Newsletter,
+    hidden: !util.checkRightAccess("newsletter"),
+  },
+
+  {
+    title: "Website Pages",
+    icon: WebsiteOutlined,
+    url: "/website-pages",
+    hidden: !util.checkRightAccess("website-pages"),
+    children: [
+      {
+        title: "Events",
+        icon: EventOutlined,
+        url: "/events",
+        component: Events,
+        hidden: !util.checkRightAccess("events"),
+      },
+      {
+        title: "Policy Discussion",
+        icon: DiscussionOutlined,
+        url: "/policy-discussion",
+        component: PolicyDiscussion,
+        hidden: !util.checkRightAccess("policy-discussion"),
+      },
+      {
+        title: "Team",
+        icon: MembersOutlined,
+        url: "/team",
+        component: Team,
+        hidden: !util.checkRightAccess("team"),
+      },
+    ],
   },
 
 

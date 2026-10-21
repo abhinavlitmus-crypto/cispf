@@ -106,6 +106,8 @@ export const QUERY_FORM_BUILDER_KEY = "form-builder";
 export const QUERY_ASSESSMENT_KEY = "assessment";
 export const QUERY_STATE_KEY = "state";
 export const QUERY_LANGUAGE_KEY = "language";
+export const QUERY_NEWSLETTER_KEY = "newsletter";
+export const QUERY_WEBSITE_PAGE_KEY = "website-page";
 export const QUERY_CITY_LIST = "city"
 export const QUERY_COURSE_TYPE_KEY = "city"
 
