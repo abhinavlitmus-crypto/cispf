@@ -39,7 +39,7 @@ export const opportunityItems: OpportunityItem[] = [
   },
   {
     id: "partnership",
-    eyebrow: "PROVINCE-WISE",
+    eyebrow: "PROVINCE",
     heading: "Provinces in the Play",
     description: "The right conversations can change the trajectory. CISPF convenes business, government and policy leaders around the questions that will shape Canada–India relations.",
     image: "/Image/home-provience-in-play.png",
