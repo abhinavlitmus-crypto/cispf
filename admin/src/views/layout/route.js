@@ -182,104 +182,104 @@ const allRoutes = [
 
   // Menu Heading
 
-  {
-    title: "Overview",
-    type: "group",
-    children: [
-      {
-        title: "Dashboard",
-        url: "/dashboard",
-        icon: DashboardOutlined,
-        component: Dashboard,
-      },
-      {
-        title: "Course",
-        url: "/course",
-        icon: ReadOutlined,
-        component: Course,
-        hidden: !util.checkRightAccess("course"),
-      },
-    ],
-  },
-  {
-    title: "Management",
-    type: "group",
-    children: [
-      {
-        title: "Users",
-        icon: TeamOutlined,
-        hidden: !util.checkRightAccess("SuperAdmin"),
+  // {
+  //   title: "Overview",
+  //   type: "group",
+  //   children: [
+  //     {
+  //       title: "Dashboard",
+  //       url: "/dashboard",
+  //       icon: DashboardOutlined,
+  //       component: Dashboard,
+  //     },
+  //     {
+  //       title: "Course",
+  //       url: "/course",
+  //       icon: ReadOutlined,
+  //       component: Course,
+  //       hidden: !util.checkRightAccess("course"),
+  //     },
+  //   ],
+  // },
+  // {
+  //   title: "Management",
+  //   type: "group",
+  //   children: [
+  //     // {
+  //     //   title: "Users",
+  //     //   icon: TeamOutlined,
+  //     //   hidden: !util.checkRightAccess("SuperAdmin"),
 
-        url: "/users",
-        children: [
-          {
-            title: "Portal Users",
-            icon: SafetyOutlined,
-            url: "data",
-            component: SubAdmin,
-          },
-          {
-            title: "App Users",
-            icon: UserOutlined,
-            url: "app",
-            component: User,
-          },
-        ],
-      },
-      {
-        title: "Category",
-        icon: AppstoreOutlined,
-        url: "/category",
-        hidden: !util.checkRightAccess("category"),
-        children: [
-          {
-            title: "City",
-            icon: EnvironmentOutlined,
-            url: "/city",
-            component: City,
-            hidden: !util.checkRightAccess("city"),
-          },
-          {
-            title: "State",
-            icon: GlobalOutlined,
-            url: "/state",
-            component: State,
-            hidden: !util.checkRightAccess("state"),
-          },
-          {
-            title: "Language",
-            icon: TranslationOutlined,
-            url: "/language",
-            component: Language,
-            hidden: !util.checkRightAccess("language"),
-          },
-          {
-            title: "Course Type",
-            icon: TagsOutlined,
-            url: "/course-type",
-            component: CourseType,
-            hidden: !util.checkRightAccess("course-type"),
-          },
-          {
-            title: "Quiz",
-            icon: QuestionCircleOutlined,
-            url: "/quiz",
-            component: Quiz,
-            hidden: !util.checkRightAccess("quiz"),
-          },
-          {
-            title: "Assessment",
-            icon: FileDoneOutlined,
-            url: "/assesment",
-            component: Assessment,
-            hidden: !util.checkRightAccess("assesment"),
-          },
-        ],
+  //     //   url: "/users",
+  //     //   children: [
+  //     //     {
+  //     //       title: "Portal Users",
+  //     //       icon: SafetyOutlined,
+  //     //       url: "data",
+  //     //       component: SubAdmin,
+  //     //     },
+  //     //     {
+  //     //       title: "App Users",
+  //     //       icon: UserOutlined,
+  //     //       url: "app",
+  //     //       component: User,
+  //     //     },
+  //     //   ],
+  //     // },
+  //     {
+  //       title: "Category",
+  //       icon: AppstoreOutlined,
+  //       url: "/category",
+  //       hidden: !util.checkRightAccess("category"),
+  //       children: [
+  //         {
+  //           title: "City",
+  //           icon: EnvironmentOutlined,
+  //           url: "/city",
+  //           component: City,
+  //           hidden: !util.checkRightAccess("city"),
+  //         },
+  //         {
+  //           title: "State",
+  //           icon: GlobalOutlined,
+  //           url: "/state",
+  //           component: State,
+  //           hidden: !util.checkRightAccess("state"),
+  //         },
+  //         {
+  //           title: "Language",
+  //           icon: TranslationOutlined,
+  //           url: "/language",
+  //           component: Language,
+  //           hidden: !util.checkRightAccess("language"),
+  //         },
+  //         {
+  //           title: "Course Type",
+  //           icon: TagsOutlined,
+  //           url: "/course-type",
+  //           component: CourseType,
+  //           hidden: !util.checkRightAccess("course-type"),
+  //         },
+  //         {
+  //           title: "Quiz",
+  //           icon: QuestionCircleOutlined,
+  //           url: "/quiz",
+  //           component: Quiz,
+  //           hidden: !util.checkRightAccess("quiz"),
+  //         },
+  //         {
+  //           title: "Assessment",
+  //           icon: FileDoneOutlined,
+  //           url: "/assesment",
+  //           component: Assessment,
+  //           hidden: !util.checkRightAccess("assesment"),
+  //         },
+  //       ],
 
-      },
+  //     },
 
-    ],
-  },
+  //   ],
+  // },
 
 
   // -----------------------
@@ -292,13 +292,13 @@ const allRoutes = [
 
   },
 
-  {
-    title: "Form Builder",
-    icon: FormOutlined,
-    url: "/form-builder",
-    component: FormBuilder,
-    hidden: !util.checkRightAccess("SuperAdmin"),
-  },
+  // {
+  //   title: "Form Builder",
+  //   icon: FormOutlined,
+  //   url: "/form-builder",
+  //   component: FormBuilder,
+  //   hidden: !util.checkRightAccess("SuperAdmin"),
+  // },
 
   {
     title: "Newsletter",
