@@ -75,6 +75,20 @@ export default function Header() {
   const scrolled = useSyncExternalStore(subscribeToScroll, getScrolled, getServerScrolled);
   const transparent = overlay && !scrolled;
 
+  const [footerVisible, setFooterVisible] = useState(false);
+
+  // The header slides away once the footer reaches the screen. Short pages that show the footer without scrolling keep it.
+  useEffect(() => {
+    const footer = document.querySelector("footer");
+    if (!footer) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setFooterVisible(entry.isIntersecting);
+      if (entry.isIntersecting) setMenuHref(null);
+    });
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     const desktop = window.matchMedia("(min-width: 768px)");
     const closeOnDesktop = () => { if (desktop.matches) setOpen(false); };
@@ -83,7 +97,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header onMouseLeave={() => setMenuHref(null)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setMenuHref(null); }} onKeyDown={(event) => { if (event.key === "Escape") setMenuHref(null); }} className={cn("sticky top-0 z-40 border-b border-black/5 bg-white text-foreground transition-colors duration-300 motion-reduce:transition-none", overlay && overlayHeaderClasses, transparent && transparentHeaderClasses)}>
+    <header onMouseLeave={() => setMenuHref(null)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setMenuHref(null); }} onKeyDown={(event) => { if (event.key === "Escape") setMenuHref(null); }} className={cn("sticky top-0 z-40 border-b border-black/5 bg-white text-foreground transition-[color,background-color,border-color,translate] duration-300 motion-reduce:transition-none", overlay && overlayHeaderClasses, transparent && transparentHeaderClasses, footerVisible && scrolled && "-translate-y-full focus-within:translate-y-0")}>
       <div className="mx-auto flex min-h-16 max-w-[1920px] items-center justify-between gap-4 px-5 md:min-h-18 md:gap-3 md:px-[clamp(1rem,2.6vw,3.125rem)]">
         <Link href="/" aria-label="CISPF home" className="shrink-0">
           {/* TODO: Replace with the approved Canada-India logo. */}
