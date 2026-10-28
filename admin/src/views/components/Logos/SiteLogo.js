@@ -3,7 +3,7 @@ export const SiteLogoBig = () => {
 };
 
 export const SiteLogoSmall = () => {
-	return <img src="/favicon.svg" alt="logo" className="w-16"/>;
+	return <img src={`${process.env.PUBLIC_URL}/favicon.svg`} alt="logo" className="w-16"/>;
 };
 
 

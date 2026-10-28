@@ -17,7 +17,7 @@ const Loader = () => {
 			</svg> */}
 			<div className="relative w-20 h-20">
       <div className="absolute inset-0 border-4 border-white border-t-black rounded-full animate-spin"></div>
-      {/* <img src="/image/plane.svg" className="absolute  text-2xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -rotate-45" /> */}
+      {/* <img src={`${process.env.PUBLIC_URL}/image/plane.svg`} className="absolute  text-2xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -rotate-45" /> */}
     </div>
 		</div>
 	);

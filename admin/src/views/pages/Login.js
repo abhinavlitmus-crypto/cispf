@@ -33,7 +33,7 @@ export default function Login() {
 
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center bg-[linear-gradient(160deg,#097483_0%,#05636E_50%,#07545C_100%)] px-6 text-white">
-      <img src="/logo-white.png" alt="CISPF" className="mb-10 w-[min(280px,70vw)] object-contain" />
+      <img src={`${process.env.PUBLIC_URL}/logo-white.png`} alt="CISPF" className="mb-10 w-[min(280px,70vw)] object-contain" />
       <Form
         layout="vertical"
         size="large"

@@ -854,7 +854,7 @@ const generateAcknowledgementHTML = (data) => {
         <table width="100%" style=" margin-bottom:10px;">
             <tr>
                 <td width="20%">
-                    <img src="/image/logo-unfpa.png" style="width:80px;" />
+                    <img src="${process.env.PUBLIC_URL}/image/logo-unfpa.png" style="width:80px;" />
                 </td>
                 <td width="60%" style="text-align:center;">
                     <div style="font-size:12px;">MISSION SHAKTI – DIGISHAKTI PROGRAM</div>

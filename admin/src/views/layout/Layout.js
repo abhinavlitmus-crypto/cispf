@@ -59,7 +59,7 @@ export default function MyLayout() {
 				<span className="text-lg font-semibold tracking-wide text-white">CI</span>
 			) : (
 				<img
-					src="/logo-white.png"
+					src={`${process.env.PUBLIC_URL}/logo-white.png`}
 					alt="CISPF"
 					className="max-h-[60px] w-auto max-w-full object-contain"
 				/>

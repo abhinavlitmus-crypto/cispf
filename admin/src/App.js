@@ -94,7 +94,7 @@ function AuthGate() {
 
 function App() {
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter basename="/admin">
       <Routes>
         {/* ✅ Public page: NO auth, NO menu, NO layout */}
         <Route path="/consent" element={<Consent />} />
