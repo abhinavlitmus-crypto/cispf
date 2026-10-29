@@ -8,6 +8,20 @@ const str = (v) => (typeof v === "string" ? v.trim() : "");
 const arr = (v) => (Array.isArray(v) ? v : []);
 const strArr = (v) => arr(v).filter((x) => typeof x === "string" && x);
 
+// Only http(s) links on linkedin.com (or a subdomain like www./in.) are kept
+const linkedinUrl = (v) => {
+    const url = str(v);
+    if (!url) return "";
+    try {
+        const { protocol, hostname } = new URL(url);
+        const host = hostname.toLowerCase();
+        const ok = ["http:", "https:"].includes(protocol) && (host === "linkedin.com" || host.endsWith(".linkedin.com"));
+        return ok ? url : "";
+    } catch {
+        return "";
+    }
+};
+
 // Keeps only the known fields per type so random keys can't end up in `details`
 const CLEANERS = {
     EVENT: (details) => ({
@@ -47,6 +61,9 @@ const CLEANERS = {
             name: str(s?.name),
             designation: str(s?.designation),
             description: str(s?.description),
+            socialLinks: {
+                linkedin: linkedinUrl(s?.socialLinks?.linkedin),
+            },
         })),
     }),
 };

@@ -1,4 +1,4 @@
-import { DeleteOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
+import { DeleteOutlined, EditOutlined, LinkedinFilled, PlusOutlined } from '@ant-design/icons';
 import { useQueryClient } from '@tanstack/react-query';
 import {
     Avatar,
@@ -55,6 +55,19 @@ const MultiImage = ({ value, onChange }) => (
 
 // Fields that differ per page type. `set(key, value)` writes to details.<key>,
 // `setSection(index, key, value)` writes to details.sections.<index>.<key>
+// Empty is allowed; otherwise must be an http(s) link on linkedin.com (www., in., etc.)
+const isLinkedinUrl = (value) => {
+    const url = (value || "").trim();
+    if (!url) return true;
+    try {
+        const { protocol, hostname } = new URL(url);
+        const host = hostname.toLowerCase();
+        return ["http:", "https:"].includes(protocol) && (host === "linkedin.com" || host.endsWith(".linkedin.com"));
+    } catch {
+        return false;
+    }
+};
+
 const PAGE_CONFIG = {
     EVENT: {
         hasPublishDate: true,
@@ -159,7 +172,12 @@ const PAGE_CONFIG = {
         hideMainImage: true,
         sectionLabel: "Member",
         newDetails: () => ({ sections: [PAGE_CONFIG.TEAM.newSection()] }),
-        newSection: () => ({ images: [], name: "", designation: "", description: "" }),
+        newSection: () => ({ images: [], name: "", designation: "", description: "", socialLinks: { linkedin: "" } }),
+        // Returns an error message to block saving, or nothing
+        validate: (details) => {
+            const badIndex = (details.sections || []).findIndex((s) => !isLinkedinUrl(s?.socialLinks?.linkedin));
+            if (badIndex !== -1) return `Member ${badIndex + 1}: LinkedIn link must be a linkedin.com URL`;
+        },
         SectionFields: ({ section, index, setSection }) => (
             <Row gutter={[12, 0]}>
                 <Col span={12}>
@@ -175,6 +193,21 @@ const PAGE_CONFIG = {
                 <Col span={24}>
                     <Form.Item label="Description">
                         <Input.TextArea rows={3} value={section.description} onChange={(e) => setSection(index, "description", e.target.value)} />
+                    </Form.Item>
+                </Col>
+                <Col span={24}>
+                    <h4 className='font-semibold mb-2'>Social Links</h4>
+                    <Form.Item
+                        label="LinkedIn"
+                        validateStatus={isLinkedinUrl(section.socialLinks?.linkedin) ? "" : "error"}
+                        help={isLinkedinUrl(section.socialLinks?.linkedin) ? undefined : "Only linkedin.com URLs are allowed"}
+                    >
+                        <Input
+                            prefix={<LinkedinFilled style={{ color: "#0A66C2" }} />}
+                            placeholder="https://www.linkedin.com/in/username"
+                            value={section.socialLinks?.linkedin}
+                            onChange={(e) => setSection(index, "socialLinks", { ...section.socialLinks, linkedin: e.target.value })}
+                        />
                     </Form.Item>
                 </Col>
                 <Col span={24}>
@@ -391,6 +424,8 @@ const AddEditFormModal = forwardRef((props, ref) => {
 
     const save = () => {
         const { _id, status, details } = data;
+        const error = config.validate?.(details || {});
+        if (error) return message.error(error);
         useSave.mutate(
             { _id, type, status, details },
             {
