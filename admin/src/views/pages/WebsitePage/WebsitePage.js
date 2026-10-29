@@ -19,6 +19,7 @@ import dayjs from 'dayjs';
 import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { QUERY_WEBSITE_PAGE_KEY } from '../../../constants/query.constants';
 import { useGetWebsitePageQuery, useWebsitePageDeleteMutation, useWebsitePageSaveMutation } from '../../../query/websitePage.query';
+import TinyMce from '../../../utils/TinyMce';
 import UploadImage from '../../../utils/UploadImage';
 import util from '../../../utils/util';
 import DataNotLoaded from '../../components/DataNotLoaded';
@@ -137,7 +138,11 @@ const PAGE_CONFIG = {
                 </Col>
                 <Col span={24}>
                     <Form.Item label="Main Description">
-                        <Input.TextArea rows={4} value={section.mainDescription} onChange={(e) => setSection(index, "mainDescription", e.target.value)} />
+                        <TinyMce
+                            value={section.mainDescription}
+                            editorHeight={350}
+                            onChange={(v) => setSection(index, "mainDescription", v)}
+                        />
                     </Form.Item>
                 </Col>
                 <Col span={24}>
