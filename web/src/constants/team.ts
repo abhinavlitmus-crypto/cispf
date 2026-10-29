@@ -1,5 +1,4 @@
-import members from "./team.json";
-
+// Team content comes from the admin portal (Website Pages → Team), see src/lib/content.ts.
 export type TeamMember = {
   id: string;
   name: string;
@@ -9,4 +8,7 @@ export type TeamMember = {
   linkedinUrl?: string;
 };
 
-export const teamMembers: TeamMember[] = members;
+export type TeamPage = {
+  title: string;
+  members: TeamMember[];
+};

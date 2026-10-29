@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
     // Serve AVIF where supported (smallest), falling back to WebP.
     formats: ["image/avif", "image/webp"],
     qualities: [75],
+    // Images uploaded through the admin portal.
+    remotePatterns: [{ protocol: "https", hostname: "res.cloudinary.com", pathname: "/dikjjag54/**" }],
   },
 };
 
