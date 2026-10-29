@@ -176,6 +176,13 @@
   display: none !important;
 }
 
+/* antd popups start at z-index 2000 (theme.json zIndexPopupBase), so lift TinyMCE's
+   dialogs/menus/dropdowns and fullscreen mode above an antd Modal */
+.tox-tinymce-aux,
+.tox.tox-tinymce.tox-fullscreen {
+  z-index: 2100 !important;
+}
+
 .search-form .ant-row div.ant-col:last-child {
   margin-left: auto;
 }
