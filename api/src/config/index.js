@@ -100,6 +100,15 @@ cloudinary :{
     nodemailerPasscode: process.env.NODEMAILER_PASSCODE,
     nodemailerEmail: process.env.NODEMAILER_EMAIL,
     nodemailerSecurityEmail: process.env.NODEMAILER_SECURITY_EMAIL
+  },
+
+  mailchimp: {
+    apiKey: process.env.MAILCHIMP_API_KEY,
+    serverPrefix: process.env.MAILCHIMP_SERVER_PREFIX,
+    audienceId: process.env.MAILCHIMP_AUDIENCE_ID,
+    tag: process.env.MAILCHIMP_TAG || "CISPF Website Newsletter",
+    // The form's consent checkbox subscribes people directly; set "true" to send Mailchimp's confirmation email first.
+    doubleOptIn: process.env.MAILCHIMP_DOUBLE_OPT_IN === "true",
   }
 };
 

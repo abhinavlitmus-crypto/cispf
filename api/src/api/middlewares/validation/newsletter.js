@@ -24,6 +24,19 @@ const validations = {
         check("_id").optional({ checkFalsy: true }).isMongoId().withMessage("Invalid newsletter id"),
         formValidation,
     ],
+
+    // Public website signup form
+    subscribeValidation: [
+        check("name").optional({ checkFalsy: true }).isString().withMessage("Name is invalid").bail()
+            .trim().isLength({ max: 120 }).withMessage("Name must be 120 characters or fewer"),
+        check("email").isString().withMessage("Please enter your email address").bail()
+            .trim().notEmpty().withMessage("Please enter your email address").bail()
+            .isLength({ max: 254 }).withMessage("Please enter a valid email address").bail()
+            .isEmail().withMessage("Please enter a valid email address"),
+        check("consent").custom((value) => value === true || value === "true")
+            .withMessage("Please confirm that you would like to receive the CISPF newsletter"),
+        formValidation,
+    ],
 };
 
 module.exports = validations;

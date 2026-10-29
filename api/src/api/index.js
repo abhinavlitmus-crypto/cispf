@@ -34,6 +34,7 @@ const appFileRoute = require("./modules/admin/file/route")
 const appProgressRoute = require("./modules/app/progress/route")
 const appAssessmentRoute = require("./modules/app/assessment/route")
 const appWebsitePageRoute = require("./modules/app/websitePage/route")
+const appNewsletterRoute = require("./modules/app/newsletter/route")
 
 const api = (app) => {
 
@@ -115,6 +116,7 @@ const api = (app) => {
   app.use("/app/progress", validateToken, appProgressRoute);
   app.use("/app/assessment", validateToken, appAssessmentRoute);
   app.use("/app/website-page", appWebsitePageRoute);
+  app.use("/app/newsletter", appNewsletterRoute);
 };
 
 module.exports = api;
