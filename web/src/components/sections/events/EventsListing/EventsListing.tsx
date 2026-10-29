@@ -7,7 +7,7 @@ import Button from "@/components/common/Button/Button";
 import EventCard from "@/components/common/EventCard/EventCard";
 import EventTabs from "@/components/common/EventTabs/EventTabs";
 import Pagination from "@/components/common/Pagination/Pagination";
-import { defaultEventCategory, emptyEventMessages, eventItems, type EventCategory } from "@/constants/events";
+import { emptyEventMessages, getDefaultEventCategory, type EventCategory, type EventGroups } from "@/constants/events";
 
 const pageSize = 6;
 
@@ -16,11 +16,11 @@ const filterButtonClasses = [
   "motion-reduce:transition-none motion-reduce:hover:scale-100",
 ].join(" ");
 
-export default function EventsListing() {
-  const [category, setCategory] = useState<EventCategory>(defaultEventCategory);
+export default function EventsListing({ events }: { events: EventGroups }) {
+  const [category, setCategory] = useState<EventCategory>(() => getDefaultEventCategory(events));
   const [page, setPage] = useState(1);
   const panelRef = useRef<HTMLDivElement>(null);
-  const items = eventItems[category];
+  const items = events[category];
   const pageCount = Math.ceil(items.length / pageSize);
   const pageItems = items.slice((page - 1) * pageSize, page * pageSize);
 

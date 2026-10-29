@@ -10,7 +10,7 @@ import type { Swiper as SwiperInstance } from "swiper";
 import "swiper/css";
 import EventCard from "@/components/common/EventCard/EventCard";
 import EventTabs, { eventTabs } from "@/components/common/EventTabs/EventTabs";
-import { defaultEventCategory, emptyEventMessages, eventItems, type EventCategory } from "@/constants/events";
+import { emptyEventMessages, getDefaultEventCategory, type EventCategory, type EventGroups } from "@/constants/events";
 
 // The grouping changes at the same breakpoint as the card layout.
 function subscribeToViewport(callback: () => void) {
@@ -21,13 +21,13 @@ function subscribeToViewport(callback: () => void) {
 const getDesktopSnapshot = () => window.matchMedia("(min-width: 1024px)").matches;
 const getServerSnapshot = () => true;
 
-export default function Events() {
+export default function Events({ events }: { events: EventGroups }) {
   const desktop = useSyncExternalStore(subscribeToViewport, getDesktopSnapshot, getServerSnapshot);
   const pageSize = desktop ? 4 : 1;
   const slider = useRef<Partial<Record<EventCategory, SwiperInstance>>>({});
-  const [category, setCategory] = useState<EventCategory>(defaultEventCategory);
+  const [category, setCategory] = useState<EventCategory>(() => getDefaultEventCategory(events));
   const [page, setPage] = useState(0);
-  const items = eventItems[category];
+  const items = events[category];
   const pageCount = Math.ceil(items.length / pageSize);
   const firstDot = Math.min(Math.max(page - 1, 0), Math.max(pageCount - 4, 0));
 
@@ -63,7 +63,7 @@ export default function Events() {
           </div>
         <div className="grid min-w-0 xl:col-span-2 mt-8 md:mt-12">
         {eventTabs.map((tab) => <div key={tab.value} id={`events-panel-${tab.value}`} role="tabpanel" aria-labelledby={`events-tab-${tab.value}`} aria-hidden={category !== tab.value} inert={category !== tab.value} tabIndex={category === tab.value ? 0 : -1} className={`col-start-1 row-start-1 min-w-0 transition-opacity duration-500 ease-in-out focus-visible:outline-white motion-reduce:transition-none ${category === tab.value ? "z-10 opacity-100" : "pointer-events-none opacity-0"}`}>
-          {eventItems[tab.value].length === 0 ? <p className="border-t border-white/20 pt-10 text-lg text-white/75">{emptyEventMessages[tab.value]}</p> : <Swiper
+          {events[tab.value].length === 0 ? <p className="border-t border-white/20 pt-10 text-lg text-white/75">{emptyEventMessages[tab.value]}</p> : <Swiper
             key={tab.value + pageSize}
             modules={[A11y]}
             slidesPerView={1}
@@ -76,9 +76,9 @@ export default function Events() {
             }}
             className="w-full"
           >
-            {Array.from({ length: Math.ceil(eventItems[tab.value].length / pageSize) }, (_, index) => <SwiperSlide key={index}>
+            {Array.from({ length: Math.ceil(events[tab.value].length / pageSize) }, (_, index) => <SwiperSlide key={index}>
               <div className="grid gap-x-[clamp(2rem,4vw,5rem)] gap-y-14 lg:grid-cols-2">
-                {eventItems[tab.value].slice(index * pageSize, (index + 1) * pageSize).map((item) => <EventCard key={item.id} item={item} />)}
+                {events[tab.value].slice(index * pageSize, (index + 1) * pageSize).map((item) => <EventCard key={item.id} item={item} />)}
               </div>
             </SwiperSlide>)}
           </Swiper>}
