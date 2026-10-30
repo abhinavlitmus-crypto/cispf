@@ -3,11 +3,10 @@ import Link from "next/link";
 import { BsArrowRight, BsArrowUpRight } from "react-icons/bs";
 import type { NewsCardProps } from "@/utilities/ComponentTypes";
 
-export default function NewsCard({ item }: NewsCardProps) {
-  return (
-    <article className="min-w-0">
-      <Link href={item.href} aria-labelledby={`${item.id}-title`} className="group block">
-        <div className="relative aspect-square overflow-hidden">
+export default function NewsCard({ item, variant = "default" }: NewsCardProps) {
+  const content = (
+    <>
+        <div className={`relative overflow-hidden ${variant === "listing" ? "aspect-1056/778 lg:aspect-square" : "aspect-square"}`}>
           <Image src={item.image} alt={item.imageAlt} fill sizes="(min-width: 1920px) 440px, (min-width: 1024px) 23vw, (min-width: 640px) 46vw, 100vw" className="object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-focus-visible:scale-110 motion-reduce:transition-none" />
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-card-overlay)] opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none" />
           <span aria-hidden="true" className="pointer-events-none absolute inset-0 flex translate-y-2 items-center justify-center text-white opacity-0 transition-[translate,opacity] duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 motion-reduce:transition-none">
@@ -20,12 +19,21 @@ export default function NewsCard({ item }: NewsCardProps) {
             <time dateTime={item.publishedAt}>{item.publishedLabel}</time>
           </p>
         </div>
-        <div className="border-b border-neutral-200 py-5 transition-transform delay-150 duration-500 ease-out group-hover:-translate-y-3 group-focus-visible:-translate-y-3 motion-reduce:transition-none motion-reduce:delay-0">
+        <div className={`border-b border-neutral-200 break-words py-5 transition-transform delay-150 duration-500 ease-out group-hover:-translate-y-3 group-focus-visible:-translate-y-3 motion-reduce:transition-none motion-reduce:delay-0 ${variant === "listing" ? "pb-8 lg:pb-5" : ""}`}>
           <h3 id={`${item.id}-title`} className="text-[clamp(1.0625rem,1.2vw,1.375rem)] leading-tight font-medium">{item.title}</h3>
           <p className="mt-3 text-[clamp(0.875rem,0.98vw,1.125rem)] leading-snug font-light">{item.summary}</p>
-          <span className="mt-8 flex items-center gap-6 text-sm font-semibold text-primary md:hidden">READ MORE<BsArrowRight aria-hidden="true" className="size-6 shrink-0" /></span>
+          {item.href && <span className="mt-8 flex items-center gap-6 text-sm font-semibold text-primary md:hidden">READ MORE<BsArrowRight aria-hidden="true" className="size-6 shrink-0" /></span>}
         </div>
-      </Link>
+    </>
+  );
+
+  return (
+    <article className="min-w-0">
+      {item.href ? (
+        <Link href={item.href} aria-labelledby={`${item.id}-title`} className="group block" target="_blank">
+          {content}
+        </Link>
+      ) : <div>{content}</div>}
     </article>
   );
 }

@@ -68,7 +68,56 @@ const isLinkedinUrl = (value) => {
     }
 };
 
+const isExternalUrl = (value) => {
+    try {
+        const url = new URL((value || "").trim());
+        return ["http:", "https:"].includes(url.protocol) && !!url.hostname;
+    } catch {
+        return false;
+    }
+};
+
 const PAGE_CONFIG = {
+    NEWSLETTER: {
+        newDetails: () => ({ sections: [PAGE_CONFIG.NEWSLETTER.newSection()] }),
+        newSection: () => ({ image: "", publishedDate: dayjs().toISOString(), title: "", description: "", externalLink: "" }),
+        validate: (details) => {
+            if (!details.sections?.length) return "Add at least one section";
+            for (const [index, section] of details.sections.entries()) {
+                if (!section.image || !section.publishedDate || !section.title?.trim() || !section.description?.trim()) {
+                    return `Section ${index + 1}: image, published date, title and description are required`;
+                }
+                if (!isExternalUrl(section.externalLink)) return `Section ${index + 1}: enter a valid HTTP or HTTPS URL`;
+            }
+        },
+        SectionFields: ({ section, index, setSection }) => (
+            <Row gutter={[12, 0]}>
+                <Col span={6}>
+                    <Form.Item label="Image" required>
+                        <SingleImage value={section.image} onChange={(v) => setSection(index, "image", v)} />
+                    </Form.Item>
+                </Col>
+                <Col span={18}>
+                    <Form.Item label="Published Date" required>
+                        <DateInput value={section.publishedDate} onChange={(v) => setSection(index, "publishedDate", v)} />
+                    </Form.Item>
+                    <Form.Item label="Title" required>
+                        <Input value={section.title} onChange={(e) => setSection(index, "title", e.target.value)} />
+                    </Form.Item>
+                </Col>
+                <Col span={24}>
+                    <Form.Item label="Description" required>
+                        <Input.TextArea rows={4} value={section.description} onChange={(e) => setSection(index, "description", e.target.value)} />
+                    </Form.Item>
+                    <Form.Item label="External Link" required
+                        validateStatus={section.externalLink && !isExternalUrl(section.externalLink) ? "error" : ""}
+                        help={section.externalLink && !isExternalUrl(section.externalLink) ? "Enter a valid HTTP or HTTPS URL" : undefined}>
+                        <Input type="url" placeholder="https://example.com/article" value={section.externalLink} onChange={(e) => setSection(index, "externalLink", e.target.value)} />
+                    </Form.Item>
+                </Col>
+            </Row>
+        ),
+    },
     EVENT: {
         hasPublishDate: true,
         newDetails: () => ({ publishDate: dayjs().toISOString(), sections: [PAGE_CONFIG.EVENT.newSection()], featureImages: [] }),
@@ -222,6 +271,12 @@ const PAGE_CONFIG = {
 
 // One page per sidebar entry; `type` is fixed by the menu item, never picked by the admin
 export const WebsitePage = ({ type, label }) => {
+    const singleDocument = ["NEWSLETTER", "POLICY", "POLICY_DISCUSSION", "TEAM"].includes(type);
+    // Check without search filters so an empty search cannot enable a second document.
+    const { data: existingPages, isLoading: checkingExisting, isError: existingCheckFailed } = useGetWebsitePageQuery(
+        { type, page: 1, limit: 1 }, { enabled: singleDocument }
+    );
+    const canAdd = !singleDocument || (!checkingExisting && !existingCheckFailed && existingPages?.data?.length === 0);
     const [qData, setQData] = useState({ page: 1, limit: 20, total: 0, getTotal: false, type });
     const { data: pages, isLoading, isError } = useGetWebsitePageQuery(qData);
     const useDelete = useWebsitePageDeleteMutation();
@@ -305,7 +360,7 @@ export const WebsitePage = ({ type, label }) => {
         bordered: true,
         loading: isLoading,
         size: "small",
-        title: () => <Search {...{ addFormRef, qData, setQData, label }} />,
+        title: () => <Search {...{ addFormRef, qData, setQData, label, canAdd }} />,
         showHeader: true,
         footer: () => <MyPagination {...{ qData, setQData }} />,
         tableLayout: undefined,
@@ -338,8 +393,9 @@ export const WebsitePage = ({ type, label }) => {
 export const Events = () => <WebsitePage type="EVENT" label="Event" />;
 export const PolicyDiscussion = () => <WebsitePage type="POLICY_DISCUSSION" label="Policy Discussion" />;
 export const Team = () => <WebsitePage type="TEAM" label="Team" />;
+export const NewsletterPage = () => <WebsitePage type="NEWSLETTER" label="New & media" />;
 
-function Search({ qData, setQData, addFormRef, label }) {
+function Search({ qData, setQData, addFormRef, label, canAdd }) {
     const [searchFields, setSearchFields] = useState({});
     const handleSearch = () => {
         setQData({ ...qData, ...searchFields, page: 1 });
@@ -368,7 +424,7 @@ function Search({ qData, setQData, addFormRef, label }) {
                     </Row>
                 </Col>
                 <Col span={6} className='flex justify-end'>
-                    <Button type="primary" onClick={() => addFormRef.current.openForm()}>Add New</Button>
+                    {canAdd && <Button type="primary" onClick={() => addFormRef.current.openForm()}>Add New</Button>}
                 </Col>
             </Row>
         </Form>
@@ -497,12 +553,12 @@ const AddEditFormModal = forwardRef((props, ref) => {
                     {config.TopFields && <config.TopFields {...{ details, set }} />}
                 </Row>
 
-                <div className='flex items-center justify-between mb-2 mt-2'>
+                {!config.hideSections && <div className='flex items-center justify-between mb-2 mt-2'>
                     <h3 className='font-semibold text-base'>{config.sectionLabel ? `${config.sectionLabel}s` : "Sections"}</h3>
                     <Button icon={<PlusOutlined />} onClick={addSection}>Add {config.sectionLabel || "Section"}</Button>
-                </div>
+                </div>}
 
-                {sections.map((section, index) => (
+                {!config.hideSections && sections.map((section, index) => (
                     <Card
                         key={index}
                         size="small"

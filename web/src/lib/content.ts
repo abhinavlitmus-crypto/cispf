@@ -6,6 +6,7 @@ import { getWebsitePageList, type WebsitePage } from "@/api/websitePage";
 import type { EventGroups, EventItem } from "@/constants/events";
 import type { PolicyDiscussionsPage, PolicyItem } from "@/constants/policy";
 import type { TeamPage } from "@/constants/team";
+import type { NewsItem } from "@/constants/news";
 
 type EventDetails = {
   publishDate?: string | null;
@@ -61,6 +62,42 @@ function toCalendarDate(value?: string | null) {
 
 const dateLabelFormat = new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
 const formatDate = (calendarDate: string) => (calendarDate ? dateLabelFormat.format(new Date(calendarDate)) : "");
+
+export const getNewsMediaPage = cache(async () => {
+  const [page] = await getPages<{
+    title?: string; description?: string; mainImage?: string;
+    sections?: { image?: string; publishedDate?: string | null; title?: string; description?: string; externalLink?: string }[];
+  }>("newsletter");
+
+  const details = page?.details ?? {};
+  const items = (details.sections ?? []).flatMap((section, index): NewsItem[] => {
+      if (!section.title || !section.image || !section.externalLink) return [];
+      try {
+        const url = new URL(section.externalLink);
+        if (!["http:", "https:"].includes(url.protocol)) return [];
+      } catch { return []; }
+      const date = toCalendarDate(section.publishedDate);
+      return [{
+        id: `${page!._id}-${index}`,
+        title: section.title,
+        summary: section.description ?? "",
+        image: secureUrl(section.image),
+        imageAlt: section.title,
+        publishedAt: date,
+        publishedLabel: formatDate(date),
+        href: section.externalLink.trim(),
+      }];
+    }).sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+
+  return {
+    title: details.title ?? "",
+    description: details.description ?? "",
+    heroImage: secureUrl(details.mainImage),
+    items,
+  };
+});
+
+export const getNewsletters = cache(async (): Promise<NewsItem[]> => (await getNewsMediaPage()).items);
 
 // Events dated today or later in Toronto count as upcoming.
 const todayInToronto = () => new Intl.DateTimeFormat("en-CA", { timeZone: "America/Toronto" }).format(new Date());

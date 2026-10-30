@@ -99,7 +99,7 @@ import { Quiz } from "../pages/Quiz/Quiz";
 import { Assessment } from "../pages/Assessment/Assessment";
 import { FormBuilder } from "../pages/FormBuilder/FormBuilder";
 import { Newsletter } from "../pages/Newsletter/Newsletter";
-import { Events, PolicyDiscussion, Team } from "../pages/WebsitePage/WebsitePage";
+import { Events, PolicyDiscussion, Team, NewsletterPage } from "../pages/WebsitePage/WebsitePage";
 import { State } from "../pages/State/State";
 import { Language } from "../pages/Language/Language";
 import { CourseType } from "../pages/CourseType/CourseType";
@@ -314,6 +314,13 @@ const allRoutes = [
     url: "/website-pages",
     hidden: !util.checkRightAccess("website-pages"),
     children: [
+      {
+        title: "New & media",
+        icon: MailOutlined,
+        url: "/website-newsletter",
+        component: NewsletterPage,
+        hidden: !util.checkRightAccess("website-pages"),
+      },
       {
         title: "Events",
         icon: EventOutlined,

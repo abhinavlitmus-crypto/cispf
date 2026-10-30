@@ -1,12 +1,32 @@
 import type { Metadata } from "next";
-import ComingSoon from "@/components/common/ComingSoon/ComingSoon";
+import PageHero from "@/components/common/PageHero/PageHero";
+import NewsMediaListing from "@/components/sections/news-media/NewsMediaListing";
+import { getNewsMediaPage } from "@/lib/content";
+import JoinUs from "@/components/common/JoinUs/JoinUs";
 
-export const metadata: Metadata = {
-  title: "News & Media | Canada-India Strategic Partnership Forum",
-  description: "News and media from the Canada-India Strategic Partnership Forum.",
-};
+// Read current admin content on every request.
+export const dynamic = "force-dynamic";
 
-// TODO: Replace with the news & media page once it is designed.
-export default function NewsMediaPage() {
-  return <ComingSoon />;
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getNewsMediaPage();
+  return { title: page.title || undefined, description: page.description || undefined };
+}
+
+export default async function NewsMediaPage() {
+  const page = await getNewsMediaPage();
+  return (
+    <main>
+      {page.title && page.heroImage && (
+        <PageHero
+          id="news-media-heading"
+          title={page.title}
+          description={page.description}
+          image={{ desktop: page.heroImage, alt: page.title }}
+          border={false}
+        />
+      )}
+      <NewsMediaListing items={page.items} />
+       <JoinUs />
+    </main>
+  );
 }

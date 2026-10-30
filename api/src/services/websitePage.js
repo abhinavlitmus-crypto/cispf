@@ -24,6 +24,19 @@ const linkedinUrl = (v) => {
 
 // Keeps only the known fields per type so random keys can't end up in `details`
 const CLEANERS = {
+    NEWSLETTER: (details) => ({
+        title: str(details.title),
+        slug: str(details.slug),
+        mainImage: str(details.mainImage),
+        description: str(details.description),
+        sections: arr(details.sections).map((section) => ({
+            image: str(section?.image),
+            publishedDate: section?.publishedDate || null,
+            title: str(section?.title),
+            description: str(section?.description),
+            externalLink: str(section?.externalLink),
+        })),
+    }),
     EVENT: (details) => ({
         publishDate: details.publishDate || null,
         mainImage: str(details.mainImage),
@@ -137,6 +150,10 @@ class websitePageService {
         const _id = data._id;
         const response = { data: {}, status: false };
         try {
+            if (!_id && ["NEWSLETTER", "POLICY", "POLICY_DISCUSSION", "TEAM"].includes(data.type)) {
+                const existing = await websitePageModel.exists({ type: data.type, isDeleted: false });
+                if (existing) throw new Error("Only one document is allowed for this page. Edit the existing document.");
+            }
             const docData = _id ? await websitePageModel.findById(_id) : new websitePageModel();
 
             // type is fixed once the page is created

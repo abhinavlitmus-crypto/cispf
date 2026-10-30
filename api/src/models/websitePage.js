@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 // Every static website page type lives in this one collection.
 // Add a new type here, then add a sidebar entry for it in the admin portal.
-const PAGE_TYPES = ["EVENT", "POLICY", "POLICY_DISCUSSION", "TEAM"];
+const PAGE_TYPES = ["EVENT", "POLICY", "POLICY_DISCUSSION", "TEAM", "NEWSLETTER"];
 
 const websitePageSchema = new mongoose.Schema({
     type: {

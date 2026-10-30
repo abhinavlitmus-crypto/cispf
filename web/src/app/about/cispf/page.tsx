@@ -22,8 +22,6 @@ export default function AboutCispfPage() {
         <OurStory />
          <StickyImage image="/about/stick2.jpg" />
         <OurApproach />
-       
-
       </main>
       <JoinUs />
     </>
