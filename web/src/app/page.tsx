@@ -23,7 +23,7 @@ export default async function Home() {
         <Opportunities />
         <PolicyDiscussions items={discussions} />
         <Opportunity />
-        {/* <NewsMedia /> */}
+        <NewsMedia />
         <Subscribe />
         <Events events={events} />
       </main>

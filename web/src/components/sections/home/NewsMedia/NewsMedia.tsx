@@ -5,6 +5,8 @@ import { getNewsletters } from "@/lib/content";
 
 export default async function NewsMedia() {
   const newsItems = (await getNewsletters()).slice(0, 4);
+  if (!newsItems.length) return null;
+
   return (
     <section id="news-media" aria-labelledby="news-heading" className="bg-white text-black">
       <div className="mx-auto grid grid-cols-1 md:grid-cols-[1fr_auto] md:items-center max-w-[1920px] px-5 py-16 md:px-[clamp(1rem,2.6vw,3.125rem)] md:py-[clamp(4rem,5vw,6rem)]">

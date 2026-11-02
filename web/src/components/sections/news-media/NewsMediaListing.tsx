@@ -24,7 +24,7 @@ export default function NewsMediaListing({ items }: { items: NewsItem[] }) {
   }
 
   return (
-    <section aria-label="News and media publications" className="bg-white text-black">
+    <section aria-labelledby="news-media-heading" className="bg-white text-black">
       <div className="mx-auto max-w-[1920px] px-5 pt-12 pb-16 md:px-[clamp(1rem,2.6vw,3.125rem)] lg:pt-0 lg:pb-[clamp(4rem,5vw,6rem)]">
         <div className="flex items-start gap-[clamp(1.5rem,2vw,2.25rem)]">
           <div aria-hidden="true" className="hidden flex-1 border-t border-neutral-200 md:block" />
