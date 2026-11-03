@@ -18,7 +18,7 @@ const linkClasses = "underline-offset-4 hover:underline focus-visible:outline-wh
 
 export default function Footer() {
   const heading = (
-    <h2 id="footer-heading" className="text-[clamp(2rem,3.35vw,4rem)] leading-[1.28] font-medium tracking-tight">
+    <h2 id="footer-heading" className="text-[clamp(2rem,2.6vw,3.125rem)] leading-[1.28] font-medium tracking-tight">
       TOGETHER, SHAPING<br />WHAT’S NEXT.
     </h2>
   );
@@ -100,7 +100,7 @@ export default function Footer() {
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <Image src="/Icon/Leaf.svg" alt="" width={388} height={419} className="absolute top-7 left-1/2 w-[65%] max-w-[400px] -translate-x-1/2  brightness-0 invert md:top-[20%] md:w-[22%] opacity-20" />
       </div>
-      <div className="mx-auto max-w-[1920px] px-5 py-12 md:px-[clamp(1rem,2.6vw,3.125rem)] md:py-[clamp(3rem,5.4vw,6.5rem)]">
+      <div className="mx-auto max-w-[1920px] px-5 py-12 md:px-[clamp(1rem,2.6vw,3.125rem)] md:pt-[clamp(3rem,4.2vw,5rem)] md:pb-[clamp(2rem,2.5vw,3rem)]">
         {/* Mobile/tablet: Figma orders these blocks differently than desktop, so the two breakpoints render separate trees instead of sharing one reorderable grid. */}
         <div className="flex flex-col gap-10 md:hidden">
           {heading}
@@ -113,7 +113,7 @@ export default function Footer() {
           {copyright}
         </div>
 
-        <div className="hidden md:flex md:flex-col md:gap-12">
+        <div className="hidden md:flex md:flex-col md:gap-8">
           <div className="grid gap-12 md:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] md:gap-8">
             <div>
               {heading}
@@ -122,7 +122,7 @@ export default function Footer() {
             <div>
               {followUs}
               <div className="mt-6">{paragraph}</div>
-              <div className="mt-8 lg:mt-[clamp(2rem,4.2vw,5rem)]">{address}</div>
+              <div className="mt-8 lg:mt-[clamp(1.5rem,2.4vw,3rem)]">{address}</div>
             </div>
           </div>
           <div className=" grid items-end gap-8 lg:grid-cols-[minmax(0,0.25fr)_minmax(0,1fr)] lg:gap-8">
