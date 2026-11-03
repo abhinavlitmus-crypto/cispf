@@ -3,11 +3,34 @@ import Link from "next/link";
 import { BsArrowRight, BsArrowUpRight } from "react-icons/bs";
 import type { NewsCardProps } from "@/utilities/ComponentTypes";
 
+const aspectClasses = {
+  default: "aspect-square",
+  listing: "aspect-1056/778 lg:aspect-square",
+  featured: "aspect-[16/9]",
+};
+
+const imageSizes = {
+  default: "(min-width: 1920px) 440px, (min-width: 1024px) 23vw, (min-width: 640px) 46vw, 100vw",
+  listing: "(min-width: 1920px) 440px, (min-width: 1024px) 23vw, (min-width: 640px) 46vw, 100vw",
+  featured: "(min-width: 1920px) 780px, (min-width: 1024px) 43vw, 100vw",
+};
+
+// A lone card sits centred at the width of the featured policy discussion on the home page.
+export function CenteredNewsCard({ item }: { item: NewsCardProps["item"] }) {
+  return (
+    <div className="grid sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.8fr)_minmax(0,1fr)] lg:gap-x-10">
+      <div className="min-w-0 sm:col-span-2 lg:col-span-1 lg:col-start-2 lg:px-5">
+        <NewsCard item={item} variant="featured" />
+      </div>
+    </div>
+  );
+}
+
 export default function NewsCard({ item, variant = "default" }: NewsCardProps) {
   const content = (
     <>
-        <div className={`relative overflow-hidden ${variant === "listing" ? "aspect-1056/778 lg:aspect-square" : "aspect-square"}`}>
-          <Image src={item.image} alt={item.imageAlt} fill sizes="(min-width: 1920px) 440px, (min-width: 1024px) 23vw, (min-width: 640px) 46vw, 100vw" className="object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-focus-visible:scale-110 motion-reduce:transition-none" />
+        <div className={`relative overflow-hidden ${aspectClasses[variant]}`}>
+          <Image src={item.image} alt={item.imageAlt} fill sizes={imageSizes[variant]} className="object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-focus-visible:scale-110 motion-reduce:transition-none" />
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-card-overlay)] opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none" />
           <span aria-hidden="true" className="pointer-events-none absolute inset-0 flex translate-y-2 items-center justify-center text-white opacity-0 transition-[translate,opacity] duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 motion-reduce:transition-none">
             <BsArrowUpRight className="size-8" />
