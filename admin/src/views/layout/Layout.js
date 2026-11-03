@@ -2,6 +2,7 @@ import { Drawer, Grid, Layout } from "antd";
 import { AlignJustify } from "lucide-react";
 import React, { useState } from "react";
 import { Link, Navigate, Route, Routes, useLocation } from "react-router-dom";
+import Footer from "../components/Footer";
 import Menu from "../components/Menu";
 import Top from "../components/Top";
 import Error404 from "../pages/errors/Error404";
@@ -207,27 +208,7 @@ export default function MyLayout() {
 					</div>
 				</Layout.Content>
 
-				<Layout.Footer
-					style={{
-						position: "fixed",
-						bottom: 0,
-						left: sidebarOffset,
-						right: 0,
-						height: FOOTER_HEIGHT,
-						padding: "0 16px",
-						background: "#fff",
-						borderTop: "1px solid #E3E8EC",
-						transition: "left 0.2s ease",
-						zIndex: 1000,
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "center",
-					}}
-				>
-					<div style={{ fontSize: 12, color: "#666" }}>
-						© {new Date().getFullYear()} CISPF. All rights reserved.
-					</div>
-				</Layout.Footer>
+				<Footer left={sidebarOffset} height={FOOTER_HEIGHT} />
 			</Layout>
 		</Layout>
 	);

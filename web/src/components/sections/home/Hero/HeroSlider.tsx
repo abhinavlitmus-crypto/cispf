@@ -20,7 +20,6 @@ const slides = [
   "/Image/slider/slider-8.webp",
   "/Image/slider/slider-9.webp",
   "/Image/slider/slider-10.webp",
-  "/Image/slider/slider-11.webp",
   "/Image/slider/slider-12.webp",
   "/Image/slider/slider-13.webp",
   "/Image/slider/slider-14.webp",
@@ -32,7 +31,6 @@ const slides = [
   "/Image/slider/slider-20.webp",
   "/Image/slider/slider-21.webp",
   "/Image/slider/slider-22.webp",
-  "/Image/slider/slider-23.webp",
   "/Image/slider/slider-24.webp",
   "/Image/slider/slider-25.webp",
 ];

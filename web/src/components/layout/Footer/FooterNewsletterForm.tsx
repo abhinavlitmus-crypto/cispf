@@ -71,13 +71,13 @@ export default function FooterNewsletterForm() {
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-[1fr_1fr_auto] sm:items-end sm:gap-3">
           <div>
             <label htmlFor={`${id}-name`} className="sr-only">Your name</label>
-            <input id={`${id}-name`} name="name" type="text" autoComplete="name" maxLength={120} placeholder="Your Name" className="min-h-11 w-full min-w-0 border-0 border-b border-white/40 bg-transparent py-2 text-sm text-white placeholder:text-white/70 focus:border-white focus:outline-none" />
+            <input id={`${id}-name`} name="name" type="text" autoComplete="name" maxLength={120} placeholder="Your Name" className="min-h-11 md:min-h-10 w-full min-w-0 border-0 border-b border-white/40 bg-transparent py-2 text-sm text-white placeholder:text-white/70 focus:border-white focus:outline-none" />
           </div>
           <div>
             <label htmlFor={`${id}-email`} className="sr-only">Your email (required)</label>
-            <input id={`${id}-email`} name="email" type="email" autoComplete="email" required maxLength={254} placeholder="Your Email *" aria-invalid={invalidField === "email"} aria-describedby={`${id}-message`} onChange={() => invalidField === "email" && setInvalidField(null)} className="min-h-11 w-full min-w-0 border-0 border-b border-white/40 bg-transparent py-2 text-sm text-white placeholder:text-white/70 focus:border-white focus:outline-none aria-invalid:border-white" />
+            <input id={`${id}-email`} name="email" type="email" autoComplete="email" required maxLength={254} placeholder="Your Email *" aria-invalid={invalidField === "email"} aria-describedby={`${id}-message`} onChange={() => invalidField === "email" && setInvalidField(null)} className="min-h-11 md:min-h-10 w-full min-w-0 border-0 border-b border-white/40 bg-transparent py-2 text-sm text-white placeholder:text-white/70 focus:border-white focus:outline-none aria-invalid:border-white" />
           </div>
-          <button type="submit" disabled={loading} aria-label={loading ? "Subscribing" : "Subscribe"} className="group flex size-11 shrink-0 cursor-pointer items-center justify-center bg-white text-primary focus-visible:outline-white disabled:cursor-wait disabled:opacity-80">
+          <button type="submit" disabled={loading} aria-label={loading ? "Subscribing" : "Subscribe"} className="group flex size-11 md:size-10 shrink-0 cursor-pointer items-center justify-center bg-white text-primary focus-visible:outline-white disabled:cursor-wait disabled:opacity-80">
             {loading ? (
               <LoaderCircle aria-hidden="true" className="size-4 animate-spin motion-reduce:animate-none" />
             ) : (
