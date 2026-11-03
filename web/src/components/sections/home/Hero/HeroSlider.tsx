@@ -8,7 +8,34 @@ import type { Swiper as SwiperInstance } from "swiper";
 import "swiper/css";
 import "swiper/css/effect-fade";
 
-const slides = Array.from({ length: 12 }, (_, index) => `/Image/slider/slider-${index + 1}.webp`);
+
+const slides = [
+  "/Image/slider/slider-1.webp",
+  "/Image/slider/slider-2.webp",
+  "/Image/slider/slider-3.webp",
+  "/Image/slider/slider-4.webp",
+  "/Image/slider/slider-5.webp",
+  "/Image/slider/slider-6.webp",
+  "/Image/slider/slider-7.webp",
+  "/Image/slider/slider-8.webp",
+  "/Image/slider/slider-9.webp",
+  "/Image/slider/slider-10.webp",
+  "/Image/slider/slider-11.webp",
+  "/Image/slider/slider-12.webp",
+  "/Image/slider/slider-13.jpg",
+  "/Image/slider/slider-14.jpg",
+  "/Image/slider/slider-15.jpg",
+  "/Image/slider/slider-16.jpg",
+  "/Image/slider/slider-17.jpg",
+  "/Image/slider/slider-18.jpg",
+  "/Image/slider/slider-19.jpg",
+  "/Image/slider/slider-20.jpg",
+  "/Image/slider/slider-21.jpg",
+  "/Image/slider/slider-22.jpg",
+  "/Image/slider/slider-23.jpg",
+  "/Image/slider/slider-24.jpg",
+  "/Image/slider/slider-25.jpg",
+];
 
 // Fills its positioned parent; the parent's gradient and leaf sit on top of the photos.
 export default function HeroSlider() {
@@ -21,6 +48,7 @@ export default function HeroSlider() {
         modules={[A11y, Autoplay, EffectFade]}
         effect="fade"
         fadeEffect={{ crossFade: true }}
+        // Continues from the last photo straight on to the first.
         loop
         speed={800}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
@@ -29,7 +57,8 @@ export default function HeroSlider() {
           // Visitors who prefer reduced motion change photos with the dots instead.
           if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) instance.autoplay.stop();
         }}
-        onSlideChange={(instance) => setActive(instance.realIndex)}
+        // Loop mode reorders slides, so realIndex is the photo's position in `slides`.
+        onRealIndexChange={(instance) => setActive(instance.realIndex)}
         className="h-full w-full"
       >
         {slides.map((src, index) => (
