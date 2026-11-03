@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { BsFilterLeft } from "react-icons/bs";
 import Button from "@/components/common/Button/Button";
-import NewsCard from "@/components/common/NewsCard/NewsCard";
+import NewsCard, { CenteredNewsCard } from "@/components/common/NewsCard/NewsCard";
 import Pagination from "@/components/common/Pagination/Pagination";
 import type { NewsItem } from "@/constants/news";
 
@@ -39,8 +39,8 @@ export default function NewsMediaListing({ items }: { items: NewsItem[] }) {
             </select>
           </div>
         )}
-        <div ref={panelRef} tabIndex={-1} className="mt-12 grid grid-cols-1 scroll-mt-8 items-start gap-x-8 gap-y-12 sm:grid-cols-2 lg:mt-[clamp(3rem,4vw,5rem)] lg:grid-cols-4 lg:gap-x-[clamp(1.5rem,2.6vw,3rem)] lg:gap-y-14">
-          {filtered.slice((page - 1) * pageSize, page * pageSize).map((item) => <NewsCard key={item.id} item={item} variant="listing" />)}
+        <div ref={panelRef} tabIndex={-1} className={filtered.length === 1 ? "mt-12 scroll-mt-8 lg:mt-[clamp(3rem,4vw,5rem)]" : "mt-12 grid grid-cols-1 scroll-mt-8 items-start gap-x-8 gap-y-12 sm:grid-cols-2 lg:mt-[clamp(3rem,4vw,5rem)] lg:grid-cols-4 lg:gap-x-[clamp(1.5rem,2.6vw,3rem)] lg:gap-y-14"}>
+          {filtered.length === 1 ? <CenteredNewsCard item={filtered[0]} /> : filtered.slice((page - 1) * pageSize, page * pageSize).map((item) => <NewsCard key={item.id} item={item} variant="listing" />)}
           {!filtered.length && <p className="py-10 text-neutral-600 sm:col-span-2 lg:col-span-4">{year ? `No publications for ${year}.` : "News and media publications will be available soon."}</p>}
         </div>
         <Pagination page={page} pageCount={pageCount} onPageChange={changePage} tone="light" label="News and media pages" className="mt-16 md:mt-20" />

@@ -50,7 +50,7 @@ export type PaginationProps = {
 export type BackgroundVideoProps = { src: string; poster?: string };
 export type EventCardProps = { item: EventItem };
 export type JoinUsProps = { className?: string };
-export type NewsCardProps = { item: NewsItem; variant?: "default" | "listing" };
+export type NewsCardProps = { item: NewsItem; variant?: "default" | "listing" | "featured" };
 export type OpportunityCardProps = { item: OpportunityItem };
 export type PageHeroProps = {
 	id: string;
