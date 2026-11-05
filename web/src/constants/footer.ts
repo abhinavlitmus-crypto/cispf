@@ -14,6 +14,6 @@ export const socialLinks: { label: string; icon: "x" | "instagram" | "facebook" 
 ];
 
 export const legalLinks: { label: string; href: string | null }[] = [
-  { label: "Privacy Policy", href: null },
-  { label: "Terms of Use", href: null },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms of Use", href: "/terms-of-use" },
 ];

@@ -14,7 +14,7 @@ export default function About() {
             CISPF is a platform for advancing the next phase of Canada–India economic engagement. We bring together business leaders, investors, policymakers and government to strengthen trade, unlock investment and build the relationships needed for sustained cross-border growth.
           </p>
           <p className="font-light">
-            Building on the experience of the US-India Strategic Partnership Forum, CISPF brings a focused Canada–India lens to a relationship with growing economic and strategic significance.
+            Building on the experience of the <a href="https://usispf.org/" target="_blank" className="underline">US-India Strategic Partnership Forum</a>, CISPF brings a focused Canada–India lens to a relationship with growing economic and strategic significance.
           </p>
         </div>
         {/* TODO: Replace the contact destination when the About page is available. */}

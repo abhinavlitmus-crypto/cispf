@@ -7,21 +7,21 @@ const data = [
     icon: Target,
     image: "/about/tag1.jpg",
     alt: "Stock market chart glowing over a city skyline at night",
-    description: "To accelerate the Canada–India partnership through business, policy and strategic engagement.",
+    description: "To advance the Canada–India partnership through trade, investment and strategic engagement. We help businesses navigate opportunities and strengthen the relationships that support sustained cross-border growth.",
   },
   {
     title: "VISION",
     icon: Binoculars,
     image: "/about/tag2.jpg",
     alt: "Business leaders shaking hands in a meeting room",
-    description: "To accelerate the Canada–India partnership through business, policy and strategic engagement.",
+    description: "A resilient Canada–India partnership where complementary economic strengths, shared strategic interests and strong people-to-people ties create lasting prosperity for both countries.",
   },
   {
     title: "OUR ROLE",
     icon: BriefcaseBusiness,
     image: "/about/tag3.jpg",
     alt: "Hands assembling a complex network of connectors",
-    description: "To accelerate the Canada–India partnership through business, policy and strategic engagement.",
+    description: "We connect business leaders, investors and policymakers across Canada and India. Through focused dialogue, policy insights and practical partnerships, we help turn shared opportunities into action.",
   },
 ];
 
