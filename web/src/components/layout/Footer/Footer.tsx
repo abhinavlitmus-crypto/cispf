@@ -53,8 +53,8 @@ export default function Footer() {
   );
 
   const address = (
-    <address className="grid gap-6 border-y border-white/20 py-6 text-sm leading-relaxed not-italic md:leading-snug lg:grid-cols-[1fr_1.2fr] lg:gap-x-8 lg:gap-y-3 lg:py-4 xl:grid-cols-[1.3fr_1.2fr_1fr] xl:gap-x-6">
-      <div className="flex items-start gap-3">
+    <address className="grid gap-6 border-y border-white/20 py-6 text-sm leading-relaxed not-italic md:leading-snug lg:grid-cols-[1fr_1.2fr] lg:gap-x-4 lg:gap-y-3 lg:py-4 xl:grid-cols-[minmax(0,1.3fr)_minmax(0,1.2fr)_auto]">
+      <div className="flex items-start gap-0">
         <MapPin aria-hidden="true" className="mt-0.5 size-5 shrink-0" strokeWidth={1.25} />
         <p>{footerContact.address.map((line) => <span key={line} className="block">{line}</span>)}</p>
       </div>
@@ -62,7 +62,7 @@ export default function Footer() {
         <Mail aria-hidden="true" className="mt-0.5 size-5 shrink-0" strokeWidth={1.25} />
         <span className="break-all">{footerContact.email}</span>
       </a>
-      <a href={footerContact.phoneHref} className={`flex items-center gap-3 ${linkClasses}`}>
+      <a href={footerContact.phoneHref} className={`flex items-start gap-3 whitespace-nowrap ${linkClasses}`}>
         <Phone aria-hidden="true" className="size-5 shrink-0" strokeWidth={1.25} />
         {footerContact.phone}
       </a>
