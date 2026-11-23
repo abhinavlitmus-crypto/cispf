@@ -19,4 +19,4 @@ export const navigation = [
 export const connectLink = { label: "LET’S CONNECT", href: "/contact-us" };
 
 // Routes whose hero sits behind a transparent desktop header.
-export const transparentHeaderRoutes = ["/events"];
+export const transparentHeaderRoutes = ["/", "/events"];

@@ -25,8 +25,8 @@ export default async function NewsMediaPage() {
           <h1 id="news-media-heading" className="gradient-text mx-auto max-w-[19rem] text-center md:mx-0 md:w-fit md:max-w-none md:text-left text-[clamp(2.5rem,4.5vw,5.5rem)] leading-[1.1] font-medium uppercase">{page.title || "News & Media"}</h1>
         </div>
         <NewsMediaListing items={page.items} />
+        <JoinUs />
       </main>
-      <JoinUs />
     </>
   );
 }

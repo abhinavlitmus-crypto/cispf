@@ -16,18 +16,17 @@ export default async function Home() {
   const [events, { discussions }] = await Promise.all([getEvents(), getPolicyDiscussionsPage()]);
 
   return (
-    <>
-      <main>
-        <Hero />
-        <About />
-        <Opportunities />
-        <PolicyDiscussions items={discussions} />
-        <Opportunity />
-        <NewsMedia />
-        <Subscribe />
-        <Events events={events} />
-      </main>
+
+    <main>
+      <Hero />
+      <About />
+      <Opportunities />
+      <Events events={events} />
+      <Opportunity />
+      <PolicyDiscussions items={discussions} />
+      <NewsMedia />
+      <Subscribe />
       <JoinUs />
-    </>
+    </main>
   );
 }

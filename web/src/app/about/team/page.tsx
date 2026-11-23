@@ -23,8 +23,8 @@ export default async function TeamPage() {
             {members.map((member) => <TeamCard key={member.id} member={member} />)}
           </div>
         </section>
+        <JoinUs />
       </main>
-      <JoinUs />
     </>
   );
 }

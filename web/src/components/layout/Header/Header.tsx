@@ -29,7 +29,6 @@ const navigationLabelClasses = [
 const overlayHeaderClasses = "md:fixed md:inset-x-0";
 const transparentHeaderClasses = "md:border-transparent md:bg-transparent";
 const transparentLabelClasses = "md:text-white";
-const transparentConnectClasses = "md:bg-white md:text-black";
 
 function subscribeToLocation(onChange: () => void) {
   window.addEventListener("hashchange", onChange);
@@ -101,7 +100,9 @@ export default function Header() {
       <div className="mx-auto flex min-h-16 max-w-[1920px] items-center justify-between gap-4 px-5 md:min-h-18 md:gap-3 md:px-[clamp(1rem,2.6vw,3.125rem)]">
         <Link href="/" aria-label="CISPF home" className="shrink-0">
           {/* TODO: Replace with the approved Canada-India logo. */}
-          <Image src="/logos/Logo-transparent.png" alt="Canada-India Strategic Partnership Forum" width={160} height={64} preload className="h-auto w-[156px] md:w-[clamp(7rem,11.5vw,17rem)]" />
+          <Image src="/logos/Logo-transparent.png" alt="Canada-India Strategic Partnership Forum" width={160} height={64} preload className={cn("h-auto w-[156px] md:w-[clamp(7rem,11.5vw,17rem)]", transparent && "md:hidden")} />
+          {/* Over the home hero video the tagline needs to be white; mobile keeps the white header and the normal logo. */}
+          {transparent && <Image src="/logos/logo-description-white.png" alt="Canada-India Strategic Partnership Forum" width={336} height={166} className="hidden h-auto md:block md:w-[clamp(7rem,11.5vw,17rem)]" />}
         </Link>
 
         <nav aria-label="Main navigation" className="hidden items-center gap-[clamp(0.75rem,3vw,3.75rem)] md:flex">
@@ -114,7 +115,7 @@ export default function Header() {
               </li>
             ))}
           </ul>
-          <Button href={connectLink.href} className={cn(connectButtonClasses, "px-[clamp(0.75rem,1.35vw,1.75rem)] text-[clamp(0.6875rem,0.95vw,1.0625rem)]", transparent && transparentConnectClasses)}>{connectLink.label}</Button>
+          <Button href={connectLink.href} className={cn(connectButtonClasses, "px-[clamp(0.75rem,1.35vw,1.75rem)] text-[clamp(0.6875rem,0.95vw,1.0625rem)]")}>{connectLink.label}</Button>
         </nav>
 
         <Sheet open={open} onOpenChange={(nextOpen) => { setOpen(nextOpen); if (!nextOpen) setMobileMenuHref(null); }}>

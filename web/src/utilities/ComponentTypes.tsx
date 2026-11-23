@@ -36,6 +36,9 @@ export type EventTabsProps = {
 	onChange: (value: EventCategory) => void;
 	idPrefix: string;
 	className?: string;
+	// "light" is the white home page section; the events page stays dark.
+	tone?: "dark" | "light";
+	pastFirst?: boolean;
 };
 
 export type PaginationProps = {
@@ -48,7 +51,7 @@ export type PaginationProps = {
 };
 
 export type BackgroundVideoProps = { src: string; poster?: string };
-export type EventCardProps = { item: EventItem };
+export type EventCardProps = { item: EventItem; tone?: "dark" | "light" };
 export type JoinUsProps = { className?: string };
 export type NewsCardProps = { item: NewsItem; variant?: "default" | "listing" | "featured" };
 export type OpportunityCardProps = { item: OpportunityItem };
@@ -63,7 +66,7 @@ export type PageHeroProps = {
 };
 export type PolicyCardProps = {
 	item: PolicyItem;
-	variant?: "portrait" | "landscape" | "listing";
+	variant?: "portrait" | "landscape" | "listing" | "square";
 };
 export type TeamCardProps = { member: TeamMember };
 

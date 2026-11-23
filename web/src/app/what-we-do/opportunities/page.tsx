@@ -20,8 +20,8 @@ export default function OpportunitiesPage() {
         <GrowthSectors />
         <InvestmentOpportunities />
         <PartnersInProgress />
+        <JoinUs />
       </main>
-      <JoinUs />
     </>
   );
 }

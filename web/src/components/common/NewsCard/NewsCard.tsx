@@ -26,6 +26,27 @@ export function CenteredNewsCard({ item }: { item: NewsCardProps["item"] }) {
   );
 }
 
+// Faded stand-in that fills empty columns while there are fewer than four publications.
+export function NewsComingSoonCard() {
+  return (
+    <div aria-hidden="true" className="min-w-0 select-none">
+      <div className="flex aspect-square items-center justify-center bg-neutral-100/70 pb-[10%]">
+        <p className="text-[clamp(1rem,1.2vw,1.375rem)] text-neutral-400">Coming Soon !</p>
+      </div>
+      <div className="pt-4 opacity-40 lg:pt-8">
+        <p className="flex gap-x-3 py-1 text-[clamp(0.75rem,0.85vw,1rem)] leading-relaxed">
+          <span className="gradient-text font-medium">Publish Date</span>
+          <span className="text-neutral-500">N.A</span>
+        </p>
+      </div>
+      <div className="border-b border-neutral-100 py-5 text-neutral-300">
+        <p className="text-[clamp(1.0625rem,1.2vw,1.375rem)] leading-snug">More news & media will be listed soon. Subscribe to never miss an update.</p>
+        <p className="mt-3 text-[clamp(0.875rem,0.98vw,1.125rem)] font-light">N.A</p>
+      </div>
+    </div>
+  );
+}
+
 export default function NewsCard({ item, variant = "default" }: NewsCardProps) {
   const content = (
     <>
@@ -36,15 +57,15 @@ export default function NewsCard({ item, variant = "default" }: NewsCardProps) {
             <BsArrowUpRight className="size-8" />
           </span>
         </div>
-        <div className="border-b border-neutral-200 py-4 lg:py-8 transition-transform delay-75 duration-500 ease-out group-hover:-translate-y-2 group-focus-visible:-translate-y-2 motion-reduce:transition-none motion-reduce:delay-0">
-          <p className="relative flex flex-wrap items-center gap-x-3 gap-y-1 py-1 pl-3 text-[clamp(0.6875rem,0.75vw,0.875rem)] leading-relaxed before:absolute before:inset-y-0 before:left-0 before:w-0.5 before:bg-[image:var(--gradient-brand-vertical)] before:content-['']">
-            <span className="font-medium">Published Date :</span>
-            <time dateTime={item.publishedAt}>{item.publishedLabel}</time>
+        <div className="pt-4 lg:pt-8 transition-transform delay-75 duration-500 ease-out group-hover:-translate-y-2 group-focus-visible:-translate-y-2 motion-reduce:transition-none motion-reduce:delay-0">
+          <p className="flex flex-wrap items-center gap-x-3 gap-y-1 py-1 text-[clamp(0.75rem,0.85vw,1rem)] leading-relaxed">
+            <span className="gradient-text font-medium">Publish Date</span>
+            <time dateTime={item.publishedAt} className="text-neutral-600">{item.publishedLabel}</time>
           </p>
         </div>
         <div className={`border-b border-neutral-200 break-words py-5 transition-transform delay-150 duration-500 ease-out group-hover:-translate-y-3 group-focus-visible:-translate-y-3 motion-reduce:transition-none motion-reduce:delay-0 ${variant === "listing" ? "pb-8 lg:pb-5" : ""}`}>
           <h3 id={`${item.id}-title`} className="text-[clamp(1.0625rem,1.2vw,1.375rem)] leading-tight font-medium">{item.title}</h3>
-          <p className="mt-3 text-[clamp(0.875rem,0.98vw,1.125rem)] leading-snug font-light">{item.summary}</p>
+          <p className={`mt-3 text-[clamp(0.875rem,0.98vw,1.125rem)] leading-snug font-light ${variant === "default" ? "line-clamp-2" : ""}`}>{item.summary}</p>
           {item.href && <span className="mt-8 flex items-center gap-6 text-sm font-semibold text-primary md:hidden">READ MORE<BsArrowRight aria-hidden="true" className="size-6 shrink-0" /></span>}
         </div>
     </>

@@ -18,8 +18,8 @@ export default async function EventsPage() {
     <>
       <main>
         <EventsListing events={events} />
+        <JoinUs />
       </main>
-      <JoinUs />
     </>
   );
 }
