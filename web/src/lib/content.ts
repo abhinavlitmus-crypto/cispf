@@ -5,7 +5,7 @@ import sanitizeHtml from "sanitize-html";
 import { getWebsitePageList, type WebsitePage } from "@/api/websitePage";
 import type { EventGroups, EventItem } from "@/constants/events";
 import type { PolicyDiscussionsPage, PolicyItem } from "@/constants/policy";
-import type { TeamPage } from "@/constants/team";
+import { teamGroups, type TeamMember, type TeamPage } from "@/constants/team";
 import type { NewsItem } from "@/constants/news";
 
 type EventDetails = {
@@ -36,7 +36,7 @@ type PolicyDiscussionDetails = {
 
 type TeamDetails = {
   title?: string;
-  sections?: { images?: string[]; name?: string; designation?: string; description?: string; socialLinks?: { linkedin?: string } }[];
+  sections?: { images?: string[]; name?: string; group?: string; designation?: string; description?: string; socialLinks?: { linkedin?: string } }[];
 };
 
 // One request per type per render. If the API is down the page renders without that content instead of failing.
@@ -213,16 +213,21 @@ export async function getPolicyDiscussion(slug: string) {
 export const getTeamPage = cache(async (): Promise<TeamPage> => {
   const [page] = await getPages<TeamDetails>("team");
   const details = page?.details ?? {};
+  const sections = details.sections ?? [];
 
-  return {
-    title: details.title || "Our Team",
-    members: (details.sections ?? []).flatMap((member, index) => member.name && member.images?.[0] ? [{
+  // Members without a valid group are not shown; the admin requires one before saving.
+  const groups = teamGroups.map((group) => ({
+    group,
+    members: sections.flatMap((member, index): TeamMember[] => member.group === group && member.name && member.images?.[0] ? [{
       id: `team-${slugify(member.name) || index}`,
       name: member.name,
-      title: member.designation ?? "",
+      // An empty designation falls back to the group, e.g. "DIRECTOR".
+      title: member.designation?.trim() || group,
       image: secureUrl(member.images[0]),
       biography: member.description ?? "",
       linkedinUrl: member.socialLinks?.linkedin || undefined,
     }] : []),
-  };
+  })).filter(({ members }) => members.length);
+
+  return { title: details.title || "Our Team", groups };
 });

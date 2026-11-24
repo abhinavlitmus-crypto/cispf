@@ -22,6 +22,10 @@ const linkedinUrl = (v) => {
     }
 };
 
+// Team member groups, in website order. Must match the admin and website lists.
+const TEAM_GROUPS = ["BOARD MEMBER", "DIRECTOR", "ADVISOR"];
+const teamGroup = (v) => (TEAM_GROUPS.includes(str(v)) ? str(v) : "");
+
 // Keeps only the known fields per type so random keys can't end up in `details`
 const CLEANERS = {
     NEWSLETTER: (details) => ({
@@ -72,6 +76,7 @@ const CLEANERS = {
         sections: arr(details.sections).map((s) => ({
             images: strArr(s?.images),
             name: str(s?.name),
+            group: teamGroup(s?.group),
             designation: str(s?.designation),
             description: str(s?.description),
             socialLinks: {

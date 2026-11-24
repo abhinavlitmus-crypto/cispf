@@ -16,10 +16,7 @@ export default function JoinUs({ className }: JoinUsProps) {
       <div className="relative z-10 mt-3 flex w-full max-w-lg justify-center md:mt-[clamp(1.5rem,3vw,3.5rem)]">
         <ContactPopup triggerClassName={`${memberButtonClasses} min-w-[13.5rem] max-w-full cursor-pointer`}>CONTACT US</ContactPopup>
       </div>
-      {/* Toronto and India skylines sit on the footer; on desktop their tops rise beside the button.
-          The PNGs have transparent edges (left image: right 17%, right image: left 7.5%), so the boxes
-          overlap by 8% to leave the Figma's small gap between the visible cities.
-          Both PNGs also end in 2 transparent rows; translate-y pushes those under the footer so no white line shows. */}
+
       <div aria-hidden="true" className="pointer-events-none -mx-5 flex w-[calc(100%+2.5rem)] items-end pt-6 md:-mt-[8.5vw] md:pt-0">
         <Image src="/svg/city-left.png" alt="" width={1097} height={419} sizes="57vw" className="h-auto w-[57%] shrink-0 translate-y-[0.7%]" />
         <Image src="/svg/city-right.png" alt="" width={983} height={404} sizes="51vw" className="-ml-[8%] h-auto w-[51%] shrink-0 translate-y-[0.7%]" />

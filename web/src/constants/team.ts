@@ -8,7 +8,12 @@ export type TeamMember = {
   linkedinUrl?: string;
 };
 
+// Groups in website order. Must match the admin and API lists.
+export const teamGroups = ["BOARD MEMBER", "DIRECTOR", "ADVISOR"] as const;
+export type TeamGroup = (typeof teamGroups)[number];
+
 export type TeamPage = {
   title: string;
-  members: TeamMember[];
+  // Only groups that have members, in teamGroups order.
+  groups: { group: TeamGroup; members: TeamMember[] }[];
 };

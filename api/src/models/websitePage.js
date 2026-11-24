@@ -15,7 +15,7 @@ const websitePageSchema = new mongoose.Schema({
     //          sections: [{ image, date, description }], featureImages: [String] }
     // POLICY_DISCUSSION: { title, slug, description, mainImage,
     //          sections: [{ images: [String], date, title, authorName, authorDesignation, mainImage, mainDescription }] }
-    // TEAM: { title, slug, sections: [{ images: [String], name, designation, description, socialLinks: { linkedin } }] }
+    // TEAM: { title, slug, sections: [{ images: [String], name, group: "BOARD MEMBER" | "DIRECTOR" | "ADVISOR", designation, description, socialLinks: { linkedin } }] }
     details: {
         type: Object,
         default: {},

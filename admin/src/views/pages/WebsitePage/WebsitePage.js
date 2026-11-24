@@ -25,6 +25,9 @@ import util from '../../../utils/util';
 import DataNotLoaded from '../../components/DataNotLoaded';
 import MyPagination from '../../components/Pagination';
 
+// Team members are grouped by this on the website, in this order. Must match the API and website lists.
+const TEAM_GROUPS = ["BOARD MEMBER", "DIRECTOR", "ADVISOR"];
+
 const DateInput = ({ value, onChange }) => (
     <DatePicker
         className='w-full'
@@ -221,10 +224,13 @@ const PAGE_CONFIG = {
         hideMainImage: true,
         sectionLabel: "Member",
         newDetails: () => ({ sections: [PAGE_CONFIG.TEAM.newSection()] }),
-        newSection: () => ({ images: [], name: "", designation: "", description: "", socialLinks: { linkedin: "" } }),
+        newSection: () => ({ images: [], name: "", group: undefined, designation: "", description: "", socialLinks: { linkedin: "" } }),
         // Returns an error message to block saving, or nothing
         validate: (details) => {
-            const badIndex = (details.sections || []).findIndex((s) => !isLinkedinUrl(s?.socialLinks?.linkedin));
+            const sections = details.sections || [];
+            const noGroupIndex = sections.findIndex((s) => !TEAM_GROUPS.includes(s?.group));
+            if (noGroupIndex !== -1) return `Member ${noGroupIndex + 1}: please select a group`;
+            const badIndex = sections.findIndex((s) => !isLinkedinUrl(s?.socialLinks?.linkedin));
             if (badIndex !== -1) return `Member ${badIndex + 1}: LinkedIn link must be a linkedin.com URL`;
         },
         SectionFields: ({ section, index, setSection }) => (
@@ -235,8 +241,13 @@ const PAGE_CONFIG = {
                     </Form.Item>
                 </Col>
                 <Col span={12}>
-                    <Form.Item label="Designation">
-                        <Input value={section.designation} onChange={(e) => setSection(index, "designation", e.target.value)} />
+                    <Form.Item label="Group" required>
+                        <Select placeholder="Select group" options={TEAM_GROUPS.map((group) => ({ value: group, label: group }))} value={section.group || undefined} onChange={(value) => setSection(index, "group", value)} />
+                    </Form.Item>
+                </Col>
+                <Col span={24}>
+                    <Form.Item label="Designation" extra="Optional. If empty, the website shows the group.">
+                        <Input placeholder="e.g. Director, Policy and Strategy" value={section.designation} onChange={(e) => setSection(index, "designation", e.target.value)} />
                     </Form.Item>
                 </Col>
                 <Col span={24}>
