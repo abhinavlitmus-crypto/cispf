@@ -42,7 +42,7 @@ export default function EventCard({ item, tone = "dark" }: EventCardProps) {
       {item.href && <span className="flex items-center justify-center gap-4 text-sm font-semibold text-primary lg:hidden">READ MORE<BsArrowRight aria-hidden="true" className="size-6 shrink-0" /></span>}
       <div className={cn("col-span-2 flex min-w-0 flex-col justify-between gap-6 border-t pt-2 lg:col-span-1 lg:gap-10", t.border, tone === "dark" ? "lg:pt-[clamp(2rem,4.2vw,5rem)]" : "lg:pt-[clamp(1rem,1.6vw,2rem)]")}>
         <p className={`${t.date} ${item.href ? "transition-transform delay-150 duration-500 ease-out lg:group-hover:-translate-y-6 lg:group-focus-visible:-translate-y-6 motion-reduce:lg:group-hover:translate-y-0 motion-reduce:lg:group-focus-visible:translate-y-0 motion-reduce:transition-none motion-reduce:delay-0" : ""}`}>
-          {tone === "dark" ? <span>Event Date :</span> : <span className="gradient-text w-fit font-medium">Event Date</span>}
+          {tone === "dark" ? <span>Event Date :</span> : <span className="gradient-text w-fit font-medium">Date of discussion</span>}
           <time dateTime={item.date} className={t.dateValue}>{item.dateLabel}</time>
         </p>
         <div className={`border-b ${t.border} pb-6 ${item.href ? "transition-transform delay-150 duration-500 ease-out motion-reduce:transition-none motion-reduce:delay-0 motion-reduce:lg:group-hover:translate-y-0 motion-reduce:lg:group-focus-visible:translate-y-0 lg:group-hover:-translate-y-12 lg:group-focus-visible:-translate-y-12" : ""}`}>
