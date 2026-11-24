@@ -1,13 +1,15 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { BsFilterLeft } from "react-icons/bs";
-import Button from "@/components/common/Button/Button";
+// Filter is hidden for now (not in the Figma). Uncomment these two imports with the filter row below.
+// import { BsFilterLeft } from "react-icons/bs";
+// import Button from "@/components/common/Button/Button";
 import Pagination from "@/components/common/Pagination/Pagination";
-import PolicyCard from "@/components/common/PolicyCard/PolicyCard";
+import PolicyCard, { PolicyComingSoonCard } from "@/components/common/PolicyCard/PolicyCard";
 import type { PolicyItem } from "@/constants/policy";
 
 const pageSize = 6;
+const columns = 3;
 
 export default function PolicyDiscussionsListing({ items }: { items: PolicyItem[] }) {
   const [page, setPage] = useState(1);
@@ -27,21 +29,22 @@ export default function PolicyDiscussionsListing({ items }: { items: PolicyItem[
       <div className="mx-auto max-w-[1920px] px-5 pt-12 pb-16 md:px-[clamp(1rem,2.6vw,3.125rem)] lg:pt-0 lg:pb-[clamp(4rem,6vw,7rem)]">
         <h2 id="policy-listing-heading" className="sr-only">All policy discussions</h2>
 
+        {/* Filter row hidden for now. Uncomment it together with the imports at the top.
         <div className="flex items-start gap-[clamp(1.5rem,2vw,2.25rem)]">
           <div aria-hidden="true" className="hidden flex-1 border-t border-neutral-200 md:block" />
-          {/* TODO: Open the discussion filters once the filter options are defined. */}
+          TODO: Open the discussion filters once the filter options are defined.
           <Button className="cursor-pointer gap-4 transition-transform duration-300 ease-in-out hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100">FILTER<BsFilterLeft aria-hidden="true" className="size-6" /></Button>
         </div>
+        */}
 
-        {items.length === 1 ? (
-
-          <ul ref={listRef} tabIndex={-1} className="mt-12 grid scroll-mt-8 lg:mt-[clamp(3rem,3.8vw,4.5rem)] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.8fr)_minmax(0,1fr)] lg:gap-x-10">
-            <li className="min-w-0 lg:col-start-2 lg:px-5"><PolicyCard item={items[0]} variant="landscape" /></li>
-          </ul>
-        ) : (
-          <ul ref={listRef} tabIndex={-1} className="mt-12 grid grid-cols-1 scroll-mt-8 gap-x-8 gap-y-12 sm:grid-cols-2 lg:mt-[clamp(3rem,3.8vw,4.5rem)] lg:grid-cols-3 lg:gap-0">
-
-            {pageItems.map((item) => <li key={item.id} className="min-w-0 border-neutral-200 lg:px-[clamp(1.5rem,3vw,3.5rem)] lg:py-[clamp(2rem,3vw,3.5rem)] lg:nth-[3n+1]:pl-0 lg:nth-[3n]:pr-0 lg:nth-[-n+3]:pt-0 lg:not-nth-[3n+1]:border-l lg:nth-[n+4]:border-t"><PolicyCard item={item} variant="listing" /></li>)}
+        {/* Same grid and cards as the home page section. With fewer than three discussions,
+            "Coming Soon" cards fill the rest of the first row on desktop (never more than two). */}
+        {items.length > 0 && (
+          <ul ref={listRef} tabIndex={-1} className="mt-12 grid grid-cols-1 scroll-mt-8 items-start gap-x-[clamp(1.25rem,1.8vw,2rem)] gap-y-12 sm:grid-cols-2 lg:mt-[clamp(3rem,3.8vw,4.5rem)] lg:grid-cols-3">
+            {pageItems.map((item) => <li key={item.id} className="min-w-0"><PolicyCard item={item} variant="square" /></li>)}
+            {Array.from({ length: Math.max(columns - items.length, 0) }, (_, index) => (
+              <li key={`coming-soon-${index}`} aria-hidden="true" className="hidden min-w-0 lg:block"><PolicyComingSoonCard /></li>
+            ))}
           </ul>
         )}
         {!items.length && <p className="mt-12 text-lg text-neutral-600">Policy discussions will be published here soon.</p>}
