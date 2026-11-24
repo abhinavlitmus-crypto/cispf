@@ -49,6 +49,13 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Scroll hint arrow: 0.6s down, 0.6s back up, then a 0.5s pause before the next loop (1.7s total). */
+  --animate-scroll-hint: scroll-hint 1.7s ease-in-out infinite;
+  @keyframes scroll-hint {
+    0%, 70.6%, 100% { transform: translateY(0); }
+    35.3% { transform: translateY(0.75rem); }
+  }
 }
 
 :root {

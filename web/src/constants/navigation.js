@@ -18,6 +18,5 @@ export const navigation = [
 
 export const connectLink = { label: "LET’S CONNECT", href: "/contact-us" };
 
-// Routes whose hero sits behind a transparent desktop header.
-// Pages whose top section sits behind a transparent header. /events no longer has a hero image.
-export const transparentHeaderRoutes = ["/"];
+// Routes whose full-screen hero sits behind a transparent desktop header. /events no longer has a hero image.
+export const transparentHeaderRoutes = ["/", "/about/cispf"];
