@@ -7,98 +7,65 @@ import { cn } from "@/lib/utils";
 const data = [
   {
     title: "ECONOMIC & COMMERCIAL WORK",
-    image: "/about/pillar1.jpg",
-    alt: "Container ship loaded with cargo sailing across the ocean",
+    image: "/about/three-pillar-economic-work.webp",
+    alt: "Crane lifting a shipping container at a port",
     description: "Advancing trade, investment and business-friendly policy to unlock the full potential of the Canada–India economic corridor.",
   },
   {
     title: "GEOPOLITICAL & SECURITY CONVERGENCE",
-    image: "/about/pillar2.jpg",
-    alt: "Engineer holding a laptop inside a high-tech facility",
+    image: "/about/three-pillar-geopolitical.webp",
+    alt: "Coast guard crew walking across the ice in front of an icebreaker",
     description: "Aligning strategic interests on security, technology and supply-chain resilience across the Indo-Pacific and beyond.",
   },
   {
     title: "PEOPLE-TO-PEOPLE TIES",
-    image: "/about/pillar3.jpg",
-    alt: "People from Canada and India connecting together",
+    image: "/about/three-pillar-people-to-people.webp",
+    alt: "Two professionals shaking hands",
     description: "Strengthening the education, cultural and diaspora links that form the foundation of the Canada–India relationship.",
   },
 ];
 
 const formatIndex = (index: number) => String(index + 1).padStart(2, "0");
 
+// All pillars start closed. Hovering (desktop), tapping (mobile) or keyboard focus opens one:
+// red overlay, white number and its description. Closed descriptions stay in the DOM for screen readers.
 export default function ThreePillars() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const close = (index: number) => setActiveIndex((current) => (current === index ? null : current));
 
   return (
-    <section aria-labelledby="three-pillars-heading" className="overflow-hidden bg-white text-black">
-      <div className="mx-auto max-w-[1920px] px-5 pt-12 pb-16 md:px-[clamp(1rem,2.6vw,3.125rem)] lg:pt-[clamp(4rem,6vw,7rem)] lg:pb-[clamp(3rem,4vw,5rem)]">
-        <h2 id="three-pillars-heading" className="text-center text-[clamp(2.5rem,3.6vw,4.25rem)] leading-tight font-medium text-primary">
+    <section aria-labelledby="three-pillars-heading" className="bg-white text-black">
+      <div className="mx-auto max-w-[1920px] px-5 pt-14 pb-16 md:px-[clamp(1rem,8.6vw,10.5rem)] md:pt-[clamp(4rem,5vw,6rem)] md:pb-[clamp(4rem,5.5vw,6.5rem)]">
+        <h2 id="three-pillars-heading" className="text-center text-[clamp(2.25rem,3.4vw,4.25rem)] leading-tight font-medium text-primary">
           OUR THREE PILLARS
         </h2>
 
-        {/* Mobile: every pillar is shown with its image, alternating sides */}
-        <ul className="mt-14 lg:hidden">
-          {data.map((pillar, index) => (
-            <li key={pillar.title} className="grid grid-cols-2 items-start gap-8 border-b border-neutral-200 py-14 first:pt-0 last:border-b-0 last:pb-0">
-              <div className={cn("pt-4", index % 2 === 1 && "order-2")}>
-                <p className="text-2xl text-primary">{formatIndex(index)}</p>
-                <h3 className="mt-4 text-[clamp(1.25rem,5vw,1.75rem)] leading-snug font-medium">{pillar.title}</h3>
-              </div>
-              <div className={cn("relative aspect-274/378 w-full overflow-hidden", index % 2 === 1 && "order-1")}>
-                <Image src={pillar.image} alt={pillar.alt} fill sizes="50vw" className="object-cover" />
-              </div>
-            </li>
-          ))}
-        </ul>
-
-        {/* Desktop: hovering a pillar reveals its tilted image and description */}
-        <ul className="relative mt-[clamp(2rem,3vw,3.5rem)] hidden lg:block" onMouseLeave={() => setActiveIndex(null)}>
-          <span aria-hidden="true" className="absolute top-0 left-0 w-[68%] border-t border-neutral-200" />
+        <ul className="mt-10 grid gap-5 md:mt-[clamp(2.5rem,4.2vw,5rem)] md:grid-cols-3 md:gap-[clamp(0.75rem,1vw,1.25rem)]">
           {data.map((pillar, index) => {
             const isActive = activeIndex === index;
-            const isImageLeft = index % 2 === 0;
             return (
               <li
                 key={pillar.title}
                 tabIndex={0}
                 onMouseEnter={() => setActiveIndex(index)}
+                onMouseLeave={() => close(index)}
+                onClick={() => setActiveIndex(index)}
                 onFocus={() => setActiveIndex(index)}
-                onBlur={() => setActiveIndex(null)}
-                className={cn(
-                  "relative flex min-h-[clamp(10rem,10.4vw,12.5rem)] items-center justify-center outline-none transition-[padding] duration-500 ease-out",
-                  isActive && (isImageLeft ? "pl-[clamp(10rem,13vw,16rem)]" : "pr-[clamp(10rem,13vw,16rem)]"),
-                )}
+                onBlur={() => close(index)}
+                className="relative isolate aspect-1034/1446 overflow-hidden bg-black text-white outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
               >
-                <span
-                  aria-hidden="true"
-                  className={cn("absolute bottom-0 border-t border-neutral-200", index % 2 === 0 ? "right-0 left-[30%]" : "right-[24%] left-0")}
-                />
+                <Image src={pillar.image} alt={pillar.alt} fill sizes="(min-width: 768px) 28vw, 100vw" className="-z-10 object-cover" />
+                <div aria-hidden="true" className={cn("pointer-events-none absolute inset-0 -z-10 bg-[image:var(--gradient-card-overlay)] transition-opacity duration-500 ease-out motion-reduce:transition-none", isActive ? "opacity-100" : "opacity-0")} />
 
-                <div
-                  className={cn(
-                    "pointer-events-none absolute top-1/2 z-10 aspect-274/330 w-[clamp(8rem,10.5vw,13rem)] -translate-y-1/2 transition-all duration-500 ease-out",
-                    isImageLeft ? "left-[2%]" : "right-[2%]",
-                    isActive ? (isImageLeft ? "-rotate-15" : "rotate-15") : isImageLeft ? "-rotate-6" : "rotate-6",
-                    isActive ? "opacity-100" : "scale-90 opacity-0",
-                  )}
-                >
-                  <Image src={pillar.image} alt={pillar.alt} fill sizes="13vw" className="object-cover" />
+                <div className="absolute inset-x-0 bottom-0 px-[10%] pb-[clamp(2rem,3vw,3.5rem)]">
+                  <p className={cn("text-[clamp(1.75rem,1.75vw,2.25rem)] leading-none transition-colors duration-300 motion-reduce:transition-none", isActive ? "text-white" : "text-primary")}>{formatIndex(index)}</p>
+                  <h3 className="mt-2text-[clamp(1rem,0.95vw,1.25rem)] leading-snug font-medium">{pillar.title}</h3>
+                  <div className={cn("grid transition-[grid-template-rows,opacity] duration-500 ease-out motion-reduce:transition-none", isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0")}>
+                    <p className="overflow-hidden text-[clamp(1rem,0.95vw,1.25rem)] leading-snug font-light">
+                      <span className="block pt-[clamp(1rem,1.5vw,1.75rem)]">{pillar.description}</span>
+                    </p>
+                  </div>
                 </div>
-
-                <h3 className="text-[clamp(1.5rem,2.1vw,2.5rem)] leading-tight font-medium whitespace-nowrap">
-                  <span className={cn("mr-3 transition-colors duration-300", isActive ? "text-black" : "text-primary")}>{formatIndex(index)}</span>
-                  <span className={cn("transition-colors duration-300", isActive ? "text-primary" : "text-black")}>{pillar.title}</span>
-                </h3>
-
-                <p
-                  className={cn(
-                    "overflow-hidden text-[clamp(0.875rem,0.95vw,1.125rem)] leading-relaxed transition-all duration-500 ease-out",
-                    isActive ? "ml-[clamp(2rem,4.5vw,6rem)] max-w-[clamp(16rem,24vw,30rem)] opacity-100" : "ml-0 max-w-0 opacity-0",
-                  )}
-                >
-                  <span className="block w-[clamp(16rem,24vw,30rem)]">{pillar.description}</span>
-                </p>
               </li>
             );
           })}
