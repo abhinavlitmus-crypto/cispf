@@ -1,26 +1,19 @@
 import Image from "next/image";
-import { Binoculars, BriefcaseBusiness, Target } from "lucide-react";
 
 const data = [
   {
     title: "MISSION",
-    icon: Target,
-    image: "/about/tag1.jpg",
-    alt: "Stock market chart glowing over a city skyline at night",
+    image: { src: "/about/mission.webp", width: 680, height: 288 },
     description: "To advance the Canada–India partnership through trade, investment and strategic engagement. We help businesses navigate opportunities and strengthen the relationships that support sustained cross-border growth.",
   },
   {
     title: "VISION",
-    icon: Binoculars,
-    image: "/about/tag2.jpg",
-    alt: "Business leaders shaking hands in a meeting room",
+    image: { src: "/about/vision.webp", width: 650, height: 270 },
     description: "A resilient Canada–India partnership where complementary economic strengths, shared strategic interests and strong people-to-people ties create lasting prosperity for both countries.",
   },
   {
     title: "OUR ROLE",
-    icon: BriefcaseBusiness,
-    image: "/about/tag3.jpg",
-    alt: "Hands assembling a complex network of connectors",
+    image: { src: "/about/our-role.webp", width: 620, height: 340 },
     description: "We connect business leaders, investors and policymakers across Canada and India. Through focused dialogue, policy insights and practical partnerships, we help turn shared opportunities into action.",
   },
 ];
@@ -28,44 +21,31 @@ const data = [
 export default function WhoWeAre() {
   return (
     <section aria-labelledby="who-we-are-heading" className="bg-white text-black">
-      <div className="mx-auto max-w-[1920px] px-5 pt-12 pb-16 md:px-[clamp(1rem,2.6vw,3.125rem)] lg:pt-[clamp(3rem,4vw,5rem)] lg:pb-[clamp(4rem,6vw,7rem)]">
-        <div className="grid grid-cols-1 gap-16 text-center lg:grid-cols-2 lg:gap-[clamp(2rem,4vw,5rem)] lg:text-left">
-          <div>
-            <h2 id="who-we-are-heading" className="text-[clamp(2.5rem,3.6vw,4.25rem)] leading-tight font-medium">WHO WE ARE</h2>
-            <p className="mx-auto mt-4 max-w-[30rem] text-[clamp(1.5rem,2.1vw,2.5rem)] leading-snug text-neutral-400 lg:mx-0 lg:mt-[clamp(1rem,1.6vw,2rem)] lg:max-w-[42rem] lg:text-neutral-300">
-              Shaping what Canada and India can build together.
-            </p>
-          </div>
+      <div className="mx-auto max-w-[1920px] px-5 pt-12 pb-16 md:px-[clamp(1rem,8.6vw,10.5rem)] md:pt-[clamp(3rem,4vw,5rem)] md:pb-[clamp(4rem,8vw,9.5rem)]">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[36%_minmax(0,1fr)] lg:gap-0">
+          <h2 id="who-we-are-heading" className="text-[clamp(2.25rem,3.1vw,4rem)] leading-none font-medium text-primary">WHO WE ARE</h2>
 
-          <div className="mx-auto max-w-[40rem] space-y-8 text-lg leading-relaxed lg:mx-0 lg:max-w-none lg:space-y-[clamp(1.5rem,1.9vw,2.25rem)] lg:pt-2 lg:text-[clamp(1rem,1.05vw,1.25rem)]">
-            <p className="text-2xl leading-normal text-primary lg:text-[length:inherit]">CISPF is where business ambition meets policy influence.</p>
+          <div className="space-y-6 text-base leading-[1.55] lg:space-y-[clamp(1.25rem,1.4vw,1.75rem)] lg:pt-[0.3em] lg:text-[clamp(1rem,0.95vw,1.25rem)]">
+            <p className="text-primary">CISPF is where business ambition meets policy influence.</p>
             <p>The Canada–India Strategic Partnership Forum is a platform for leaders who see beyond the current state of the relationship—and the opportunity to build what comes next.</p>
             <p>We bring Canadian and Indian businesses, investors, policymakers and government leaders into the conversations that matter: where markets are opening, where policy needs to evolve and where strategic interests align.</p>
           </div>
         </div>
 
-        <ul className="mt-24 grid grid-cols-1 gap-16 lg:mt-[clamp(3rem,5.5vw,6.5rem)] lg:grid-cols-3 lg:gap-[clamp(1rem,1.7vw,2rem)]">
-          {data.map(({ title, icon: Icon, image, alt, description }) => (
-            <li key={title} className="group relative aspect-591/531 overflow-hidden text-white">
-              <Image src={image} alt={alt} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
-              <div aria-hidden="true" className="absolute inset-0 bg-[image:var(--gradient-card-overlay)] opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100 motion-reduce:transition-none" />
+        <div className="relative mt-10 aspect-3/2 overflow-hidden md:mt-[clamp(3rem,4.6vw,5.5rem)] md:aspect-2000/696">
+          <Image src="/about/who-we-are-image.webp" alt="Canadian and Indian delegations meeting across a conference table in front of both countries' flags" fill sizes="(min-width: 768px) 83vw, 100vw" className="object-cover" />
+        </div>
 
-              <div className="relative flex h-full flex-col justify-between p-[clamp(2rem,7vw,3.5rem)] lg:p-[clamp(1.5rem,2.3vw,2.75rem)]">
-                <Icon aria-hidden="true" strokeWidth={1.5} className="size-[clamp(3rem,11vw,5.5rem)] lg:size-[clamp(2.75rem,3.2vw,4rem)]" />
-                <div className="transition-transform duration-500 ease-out group-hover:-translate-y-[clamp(1.5rem,1.9vw,2.25rem)] motion-reduce:transition-none">
-                  <h3 className="text-[clamp(2rem,6.5vw,3rem)] leading-tight font-semibold lg:text-[clamp(1.75rem,2.1vw,2.75rem)]">{title}</h3>
-                  <p className="mt-2 max-w-[30rem] text-[clamp(1.125rem,4vw,1.5rem)] leading-relaxed lg:text-[clamp(0.875rem,0.95vw,1.125rem)]">{description}</p>
-                </div>
-              </div>
+        <ul className="mt-14 grid grid-cols-1 gap-6 md:mt-[clamp(4rem,6.4vw,7.5rem)] md:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:gap-[7.4vw]">
+          {data.map(({ title, image, description }) => (
+            <li key={title} className="flex flex-col bg-[#FAFAFA] px-8 pt-10 md:px-[clamp(1.5rem,2.15vw,2.75rem)] md:pt-[clamp(2rem,2.6vw,3rem)]">
+              <h3 className="text-[clamp(1.375rem,1.27vw,1.75rem)] leading-tight font-semibold text-primary">{title}</h3>
+              <p className="mt-4 text-base leading-[1.55] lg:text-[clamp(1rem,0.9vw,1.25rem)]">{description}</p>
+              {/* Decorative illustration, sitting on the bottom edge of the card. */}
+              <Image src={image.src} alt="" width={image.width} height={image.height} sizes="(min-width: 1024px) 22vw, 90vw" className="mx-auto mt-auto block h-auto w-[94%] pt-10" />
             </li>
           ))}
         </ul>
-
-        <div className="mt-16 grid grid-cols-1 lg:mt-[clamp(4rem,6vw,7rem)] lg:grid-cols-2 lg:gap-[clamp(2rem,4vw,5rem)]">
-          <p className="text-center text-lg leading-relaxed lg:col-start-2 lg:text-left lg:text-[clamp(1rem,1.05vw,1.25rem)]">
-            CISPF creates the connections, conversations and insights that help businesses navigate opportunity and help decision-makers understand what is possible.
-          </p>
-        </div>
       </div>
     </section>
   );
