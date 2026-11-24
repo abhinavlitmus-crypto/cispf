@@ -3,7 +3,6 @@ import JoinUs from "@/components/common/JoinUs/JoinUs";
 import HeroSection from "@/components/about/cispf/HeroSection";
 import ThreePillars from "@/components/about/cispf/ThreePillars";
 import WhoWeAre from "@/components/about/cispf/Whoweare";
-import StickyImage from "@/components/about/cispf/StickyImage";
 import OurStory from "@/components/about/cispf/OurStory";
 import OurApproach from "@/components/about/cispf/OurApproach";
 export const metadata: Metadata = {
@@ -18,9 +17,7 @@ export default function AboutCispfPage() {
         <HeroSection />
         <ThreePillars />
         <WhoWeAre />
-        {/* <StickyImage image="/about/stick1.jpg" /> */}
         <OurStory />
-        {/* <StickyImage image="/about/stick2.jpg" /> */}
         <OurApproach />
         <JoinUs />
       </main>
