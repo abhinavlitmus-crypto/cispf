@@ -138,7 +138,7 @@ function toEvent({ details }: WebsitePage<EventDetails>): EventItem | null {
     imageAlt: details.title,
     date,
     dateLabel: formatDate(date),
-    href: `/events/${details.slug}`,
+    href: `/what-we-do/events/${details.slug}`,
     detailTitle: details.insideTitle || details.title,
     detailSummary: section?.description || details.description || "",
     gallery: galleryImages.map((src, index) => ({ src: secureUrl(src), alt: `${details.title}, photo ${index + 1}` })),

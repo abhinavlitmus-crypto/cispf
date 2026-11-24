@@ -38,7 +38,7 @@ const data = [
 // Hover artwork alternates between cards: maple leaf (Canada) on 1 and 3, chakra circle (India) on 2 and 4.
 const hoverArt = [
   { src: "/about/our-approach-leaf.png", width: 396, height: 414, className: "w-[56%]" },
-  { src: "/about/our-approach-circle.png", width: 400, height: 400, className: "w-[52%]" },
+  { src: "/about/our-approach-circle.png", width: 187, height: 186, className: "w-[52%]" },
 ];
 
 const formatIndex = (index: number) => String(index + 1).padStart(2, "0");

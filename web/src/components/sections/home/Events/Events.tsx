@@ -18,7 +18,7 @@ export default function Events({ events }: { events: EventGroups }) {
       <div className="mx-auto max-w-[1920px] px-5 py-16 md:px-[clamp(1rem,2.6vw,3.125rem)] md:py-[clamp(4rem,5vw,6rem)]">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
           <EventTabs value={category} onChange={setCategory} idPrefix="events" tone="light" pastFirst />
-          <Button href="/events" className="group max-w-full shrink-0 self-start px-4 text-xs sm:px-6 sm:text-sm lg:self-auto">
+          <Button href="/what-we-do/events"className="group max-w-full shrink-0 self-start px-4 text-xs sm:px-6 sm:text-sm lg:self-auto">
             <span className="relative inline-flex items-center pr-10">
               <span className="transition-transform duration-500 group-hover:translate-x-10 group-focus-visible:translate-x-10 motion-reduce:transition-none">VIEW ALL EVENTS</span>
               <span aria-hidden="true" className="pointer-events-none absolute inset-0 flex items-center justify-end transition-transform duration-500 group-hover:translate-x-[calc(-100%+1.5rem)] group-focus-visible:translate-x-[calc(-100%+1.5rem)] motion-reduce:transition-none"><ArrowRight className="size-6 shrink-0" strokeWidth={1.5} /></span>

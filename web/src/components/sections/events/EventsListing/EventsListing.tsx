@@ -50,7 +50,7 @@ export default function EventsListing({ events }: { events: EventGroups }) {
 
 // ─── Previous dark design (hero image, filter, 6 per page) ───────────────────────────────
 // To switch back: comment out everything above this line, uncomment everything below,
-// and add "/events" back to transparentHeaderRoutes in src/constants/navigation.js.
+// and add "/what-we-do/events" back to transparentHeaderRoutes in src/constants/navigation.js.
 
 // "use client";
 
