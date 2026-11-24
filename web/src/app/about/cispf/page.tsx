@@ -18,9 +18,9 @@ export default function AboutCispfPage() {
         <HeroSection />
         <ThreePillars />
         <WhoWeAre />
-        <StickyImage image="/about/stick1.jpg" />
+        {/* <StickyImage image="/about/stick1.jpg" /> */}
         <OurStory />
-        <StickyImage image="/about/stick2.jpg" />
+        {/* <StickyImage image="/about/stick2.jpg" /> */}
         <OurApproach />
         <JoinUs />
       </main>

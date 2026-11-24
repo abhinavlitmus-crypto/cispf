@@ -1,3 +1,7 @@
+import Image from "next/image";
+import { MoveRight } from "lucide-react";
+import Button from "@/components/common/Button/Button";
+
 function GrowthIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 160 160" fill="none" stroke="currentColor" strokeWidth={4} aria-hidden="true" className={className}>
@@ -11,47 +15,42 @@ function GrowthIcon({ className }: { className?: string }) {
   );
 }
 
+// Desktop: the animated corridor map fills the section and the text sits on its empty left side.
+// Mobile: the text comes first and the map follows, cropped to the part with the countries.
 export default function OurStory() {
   return (
-    <section aria-labelledby="our-story-heading" className="bg-white text-black">
-      <div className="mx-auto max-w-[1920px] px-5 pt-12 pb-16 md:px-[clamp(1rem,2.6vw,3.125rem)] lg:pt-[clamp(3rem,4vw,5rem)] lg:pb-[clamp(4rem,6vw,7rem)]">
-        <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-[clamp(2rem,4vw,5rem)]">
-          <div>
-            <h2 id="our-story-heading" className="text-[clamp(2.5rem,3.6vw,4.25rem)] leading-tight font-medium">OUR STORY</h2>
-            <p className="mt-4 max-w-[30rem] text-[clamp(1.5rem,2.1vw,2.5rem)] leading-snug text-neutral-400 lg:mt-[clamp(1rem,1.6vw,2rem)] lg:max-w-[42rem] lg:text-neutral-300">
-              Built on a proven model. Created for a new corridor.
-            </p>
+    <section aria-labelledby="our-story-heading" className="relative isolate overflow-hidden bg-primary text-white lg:min-h-[52.35vw]">
+      <div className="relative z-10 mx-auto max-w-[1920px] px-5 pt-14 pb-10 md:px-[clamp(1rem,8.6vw,10.5rem)] lg:pt-[clamp(4rem,8vw,10rem)] lg:pb-[clamp(4rem,6.5vw,8rem)]">
+        <div className="max-w-[34rem] lg:w-[max(26vw,24rem)] lg:max-w-none">
+          <h2 id="our-story-heading" className="text-[clamp(2.25rem,3.1vw,4rem)] leading-none font-medium">OUR STORY</h2>
+          <p className="mt-5 text-[clamp(1.5rem,1.85vw,2.25rem)] leading-[1.3] lg:mt-[clamp(0.75rem,1vw,1.5rem)]">
+            Built on a proven model.<br />Created for a <strong className="font-semibold">new corridor.</strong>
+          </p>
+
+          <div className="mt-10 border-y border-white/30 py-6 text-base leading-[1.7] lg:mt-[clamp(2rem,3vw,3.5rem)] lg:py-[clamp(1rem,1.25vw,1.5rem)] lg:text-[clamp(1rem,0.95vw,1.25rem)]">
+            <p><strong className="font-semibold">CISPF</strong> brings the experience of <strong className="font-semibold">USISPF</strong> to a relationship with its own scale, complexity and opportunity.</p>
           </div>
 
-          <div className="text-lg leading-relaxed lg:pt-2 lg:text-[clamp(1rem,1.05vw,1.25rem)]">
-            <p className="text-2xl leading-normal text-primary lg:text-[length:inherit]">
-              CISPF brings the experience of USISPF to a relationship with its own scale, complexity and opportunity.
+          <div className="mt-10 flex items-center gap-5 lg:mt-[clamp(2rem,3.4vw,4rem)] lg:gap-[clamp(1rem,1.2vw,1.5rem)]">
+            <GrowthIcon className="size-[4.5rem] shrink-0 lg:size-[clamp(4rem,4.3vw,5.5rem)]" />
+            <p className="flex flex-col">
+              <span className="text-[clamp(2.5rem,2.5vw,3.25rem)] leading-none font-semibold">450+</span>
+              <span className="mt-1 text-[clamp(1.25rem,1.35vw,1.75rem)] leading-tight">global companies</span>
             </p>
-
-            <hr className="mt-10 w-3/4 border-neutral-200 lg:mt-[clamp(1.5rem,2.5vw,3rem)] lg:w-1/2" />
-
-            <div className="mt-12 flex items-center gap-[clamp(1.5rem,5vw,2.5rem)] lg:mt-[clamp(2rem,2.8vw,3.5rem)] lg:gap-[clamp(1.5rem,2.8vw,3.5rem)]">
-              <GrowthIcon className="size-[clamp(5rem,22vw,6rem)] shrink-0 text-primary lg:size-[clamp(6rem,8vw,10rem)]" />
-              <p className="flex flex-col">
-                <span className="text-[clamp(3rem,13vw,4rem)] leading-none font-semibold text-primary lg:text-[clamp(3.5rem,5.2vw,6.5rem)]">450+</span>
-                <span className="mt-1 text-[clamp(1.5rem,6vw,2rem)] leading-tight lg:text-[clamp(1.5rem,2.3vw,2.75rem)]">global companies</span>
-              </p>
-            </div>
-
-            <p className="mt-10 lg:mt-[clamp(1.5rem,2.2vw,2.5rem)]">
-              form its network, helping shape one of the world’s most consequential economic corridors.
-            </p>
-
-            <hr className="mt-10 border-neutral-200 lg:mt-[clamp(2rem,2.8vw,3.5rem)] lg:w-[87%]" />
-
-            <div className="mt-12 space-y-8 font-light lg:mt-[clamp(2rem,3.2vw,4rem)] lg:space-y-[clamp(1.5rem,1.9vw,2.25rem)] lg:font-normal">
-              <p>
-                CISPF takes that experience forward with a dedicated focus on Canada and India—two economies with complementary strengths, growing strategic relevance and significant room to deepen their commercial relationship.
-              </p>
-              <p>The ambition is simple: move the relationship from potential to scale.</p>
-            </div>
           </div>
+          <p className="mt-6 text-base leading-[1.7] lg:mt-[clamp(0.75rem,1vw,1.5rem)] lg:text-[clamp(1rem,0.95vw,1.25rem)]">
+            form its network, helping shape one of the world’s most consequential economic corridors.
+          </p>
+
+          <Button href="https://usispf.org/" target="_blank" rel="noopener noreferrer" className="mt-10 gap-4 bg-white font-medium text-black lg:mt-[clamp(2.5rem,4.2vw,5rem)]">
+            LEARN MORE ABOUT USISPF<MoveRight aria-hidden="true" strokeWidth={1.5} className="size-6" />
+            <span className="sr-only">(opens in a new tab)</span>
+          </Button>
         </div>
+      </div>
+
+      <div className="relative aspect-[1.3] w-full lg:absolute lg:inset-0 lg:aspect-auto">
+        <Image src="/svg/about-us.gif" alt="Map showing CISPF's new Canada–India corridor alongside the existing US–India corridor" fill unoptimized sizes="100vw" className="object-cover object-[88%_50%] lg:object-center" />
       </div>
     </section>
   );
