@@ -54,7 +54,7 @@ export default function ThreePillars() {
                 onBlur={() => close(index)}
                 className="relative isolate aspect-1034/1446 overflow-hidden bg-black text-white outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
               >
-                <Image src={pillar.image} alt={pillar.alt} fill sizes="(min-width: 768px) 28vw, 100vw" className="-z-10 object-cover" />
+                <Image src={pillar.image} alt={pillar.alt} fill sizes="(min-width: 768px) 28vw, 100vw" className={cn("-z-10 object-cover transition-transform duration-300 ease-out", isActive && "motion-safe:scale-110")} />
                 <div aria-hidden="true" className={cn("pointer-events-none absolute inset-0 -z-10 bg-[image:var(--gradient-card-overlay)] transition-opacity duration-500 ease-out motion-reduce:transition-none", isActive ? "opacity-100" : "opacity-0")} />
 
                 <div className="absolute inset-x-0 bottom-0 px-[10%] pb-[clamp(2rem,3vw,3.5rem)]">

@@ -71,7 +71,7 @@ export default function OurApproach() {
                 <h3 className="text-base leading-tight font-semibold lg:text-[clamp(1rem,0.95vw,1.25rem)]">{formatIndex(index)} {item.title}</h3>
 
                 <div className="relative isolate mt-4 aspect-square overflow-hidden bg-neutral-200 lg:mt-[clamp(1rem,1.1vw,1.5rem)]">
-                  <Image src={item.image} alt={item.alt} fill sizes="(min-width: 1024px) 19vw, (min-width: 640px) 45vw, 100vw" className="-z-10 object-cover" />
+                  <Image src={item.image} alt={item.alt} fill sizes="(min-width: 1024px) 19vw, (min-width: 640px) 45vw, 100vw" className={cn("-z-10 object-cover transition-transform duration-300 ease-out", isActive && "motion-safe:scale-110")} />
                   <div aria-hidden="true" className={cn("pointer-events-none absolute inset-0 grid place-items-center bg-[image:var(--gradient-card-overlay)] transition-opacity duration-500 ease-out motion-reduce:transition-none", isActive ? "opacity-100" : "opacity-0")}>
                     <Image src={art.src} alt="" width={art.width} height={art.height} sizes="10vw" className={cn("h-auto", art.className)} />
                   </div>

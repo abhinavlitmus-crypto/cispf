@@ -60,7 +60,8 @@ function toCalendarDate(value?: string | null) {
   return Number.isNaN(time) ? "" : new Date(time + 12 * 60 * 60 * 1000).toISOString().slice(0, 10);
 }
 
-const dateLabelFormat = new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
+// Short month, as in the Figma: "Oct 2, 2026".
+const dateLabelFormat = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
 const formatDate = (calendarDate: string) => (calendarDate ? dateLabelFormat.format(new Date(calendarDate)) : "");
 
 export const getNewsMediaPage = cache(async () => {

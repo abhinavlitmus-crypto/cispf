@@ -57,14 +57,15 @@ export default function NewsCard({ item, variant = "default" }: NewsCardProps) {
             <BsArrowUpRight className="size-8" />
           </span>
         </div>
-        <div className="pt-4 lg:pt-8 transition-transform delay-75 duration-500 ease-out group-hover:-translate-y-2 group-focus-visible:-translate-y-2 motion-reduce:transition-none motion-reduce:delay-0">
+        {/* The date stays put on hover; only the title and summary below move up (Figma). */}
+        <div className="pt-4 lg:pt-8">
           <p className="flex flex-wrap items-center gap-x-3 gap-y-1 py-1 text-[clamp(0.75rem,0.85vw,1rem)] leading-relaxed">
             <span className="gradient-text font-medium">Publish Date</span>
             <time dateTime={item.publishedAt} className="text-neutral-600">{item.publishedLabel}</time>
           </p>
         </div>
         <div className={`border-b border-neutral-200 break-words py-5 transition-transform delay-150 duration-500 ease-out group-hover:-translate-y-3 group-focus-visible:-translate-y-3 motion-reduce:transition-none motion-reduce:delay-0 ${variant === "listing" ? "pb-8 lg:pb-5" : ""}`}>
-          <h3 id={`${item.id}-title`} className="text-[clamp(1.0625rem,1.2vw,1.375rem)] leading-tight font-medium">{item.title}</h3>
+          <h3 id={`${item.id}-title`} className="text-[clamp(1.0625rem,1.2vw,1.375rem)] leading-tight font-normal">{item.title}</h3>
           <p className={`mt-3 text-[clamp(0.875rem,0.98vw,1.125rem)] leading-snug font-light ${variant === "default" ? "line-clamp-2" : ""}`}>{item.summary}</p>
           {item.href && <span className="mt-8 flex items-center gap-6 text-sm font-semibold text-primary md:hidden">READ MORE<BsArrowRight aria-hidden="true" className="size-6 shrink-0" /></span>}
         </div>

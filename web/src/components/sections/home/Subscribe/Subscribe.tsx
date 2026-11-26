@@ -44,7 +44,7 @@ export default function Subscribe() {
   }
 
   return (
-    <section aria-labelledby="subscribe-heading" className="bg-white px-5 py-12 md:px-[clamp(1rem,8.6vw,10.5rem)] md:py-[clamp(4rem,6vw,7rem)]">
+    <section aria-labelledby="subscribe-heading" className="bg-white px-5 pt-12 pb-6 md:px-[clamp(1rem,8.6vw,10.5rem)] md:pt-[clamp(4rem,6vw,7rem)] md:pb-[clamp(1rem,1.3vw,1.75rem)]">
       {/* Form panel on the left, photo with the leaf on the right; stacked on smaller screens. */}
       {/* Narrower than the other sections: 73% of the page on large screens (88% of the padded container), as in the Figma. */}
       <div className="mx-auto grid max-w-[1400px] lg:grid-cols-[53fr_47fr] xl:w-[88%]">

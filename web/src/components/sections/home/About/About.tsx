@@ -9,9 +9,9 @@ export default function About() {
           unoptimized keeps the GIF animated. */}
       <Image src="/svg/map.gif" alt="World map highlighting Canada and India" width={1492} height={914} unoptimized className="pointer-events-none absolute top-1/2 left-[37%] hidden h-auto w-[78%] max-w-none -translate-y-[44%] lg:block" />
       <div className="relative mx-auto max-w-[1920px] px-5 py-16 md:px-[clamp(1rem,8.6vw,10.5rem)] md:py-[clamp(4rem,5vw,6rem)] lg:min-h-[clamp(40rem,50vw,58rem)] lg:py-[clamp(5rem,9vw,10rem)]">
-      <div className="lg:max-w-[min(38rem,33vw)]">
+      <div className="lg:max-w-[min(40rem,32.6vw)]">
         <h2 id="about-heading" className="text-[clamp(2rem,3.1vw,3.625rem)] leading-tight font-medium text-primary">ABOUT CISPF</h2>
-        <div className="mt-8 space-y-7 text-[clamp(1rem,0.98vw,1.125rem)] leading-[1.6] md:mt-[clamp(2.5rem,3.5vw,4rem)] md:space-y-[clamp(1.75rem,2.6vw,3rem)]">
+        <div className="mt-8 space-y-7 text-[clamp(1rem,1.04vw,1.25rem)] leading-[1.5] md:mt-[clamp(2.5rem,3.5vw,4rem)] md:space-y-[clamp(1.75rem,2vw,2.5rem)]">
           <p className="font-normal">
             The Canada-India Strategic Partnership Forum (CISPF) is a not-for-profit organization working to help Canadian companies succeed in India by advancing pragmatic engagement across trade and investment.
           </p>

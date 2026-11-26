@@ -43,18 +43,20 @@ export default function PolicyCard({ item, variant = "portrait" }: PolicyCardPro
         <div className={`relative overflow-hidden ${aspectClasses[variant]}`}>
           <Image src={item.image} alt={item.imageAlt} fill sizes={imageSizes[variant]} className="object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-focus-visible:scale-110 motion-reduce:transition-none motion-reduce:group-hover:scale-100 motion-reduce:group-focus-visible:scale-100" />
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-card-overlay)] opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none" />
-          <span aria-hidden="true" className="pointer-events-none absolute inset-0 flex translate-y-2 items-center justify-center text-white opacity-0 transition-[translate,opacity] duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 motion-reduce:transition-none">
+          {/* Arrow in the top-right corner of the image (Figma), fading in on hover. */}
+          <span aria-hidden="true" className="pointer-events-none absolute top-[8%] right-[8%] translate-y-2 text-white opacity-0 transition-[translate,opacity] duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 motion-reduce:transition-none">
             <BsArrowUpRight className="size-8" />
           </span>
         </div>
-        <div className="py-4 transition-transform delay-75 duration-500 ease-out group-hover:-translate-y-2 group-focus-visible:-translate-y-2 motion-reduce:transition-none motion-reduce:delay-0 motion-reduce:group-hover:translate-y-0 motion-reduce:group-focus-visible:translate-y-0 lg:py-6">
+        {/* The date stays put on hover; only the title below moves up (Figma). */}
+        <div className="py-4 lg:py-6">
           <p className="flex flex-wrap gap-x-3 gap-y-1 py-1 text-[clamp(0.75rem,0.85vw,1rem)] leading-relaxed">
             <span className="gradient-text font-medium">Date of discussion</span><time dateTime={item.date} className="text-neutral-600">{item.dateLabel}</time>
           </p>
         </div>
         <div className="relative pt-3 pl-3 transition-transform delay-150 duration-500 ease-out group-hover:-translate-y-3 group-focus-visible:-translate-y-3 motion-reduce:transition-none motion-reduce:delay-0 motion-reduce:group-hover:translate-y-0 motion-reduce:group-focus-visible:translate-y-0">
           <Image src="/Icon/quaote1.svg" alt="" aria-hidden="true" width={81} height={93} className="pointer-events-none absolute -top-3 left-0 h-auto w-12 lg:w-16" />
-          <h3 id={`${item.id}-title`} className="relative text-[clamp(1.0625rem,1.3vw,1.5rem)] leading-[1.3] font-medium">{item.title}</h3>
+          <h3 id={`${item.id}-title`} className="relative text-[clamp(1.0625rem,1.3vw,1.5rem)] leading-[1.3] font-normal">{item.title}</h3>
         </div>
         <div className="border-b border-neutral-200 pb-8 md:hidden"><span className="mt-8 flex items-center gap-6 text-sm font-semibold text-primary md:hidden">READ MORE<BsArrowRight aria-hidden="true" className="size-6 shrink-0" /></span></div>
       </Link>

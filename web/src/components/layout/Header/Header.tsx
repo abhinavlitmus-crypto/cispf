@@ -29,6 +29,10 @@ const navigationLabelClasses = [
 const overlayHeaderClasses = "md:fixed md:inset-x-0";
 const transparentHeaderClasses = "md:border-transparent md:bg-transparent";
 const transparentLabelClasses = "md:text-white";
+// Once the page scrolls, the sticky header turns see-through white with a blur, so content shows through
+// while the black links and logo stay readable over dark sections.
+// const stickyHeaderClasses = "bg-white/70 backdrop-blur-md";
+const stickyHeaderClasses = "bg-transparent border-transparent";
 
 function subscribeToLocation(onChange: () => void) {
   window.addEventListener("hashchange", onChange);
@@ -68,7 +72,6 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [mobileMenuHref, setMobileMenuHref] = useState<string | null>(null);
   const [menuHref, setMenuHref] = useState<string | null>(null);
-  const expandedMenu = navigation.find((item) => item.href === menuHref && item.children);
   const activeHref = useSyncExternalStore(subscribeToLocation, getLocation, getServerLocation);
   const overlay = transparentHeaderRoutes.includes(usePathname());
   const scrolled = useSyncExternalStore(subscribeToScroll, getScrolled, getServerScrolled);
@@ -96,24 +99,45 @@ export default function Header() {
   }, []);
 
   return (
-    <header onMouseLeave={() => setMenuHref(null)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setMenuHref(null); }} onKeyDown={(event) => { if (event.key === "Escape") setMenuHref(null); }} className={cn("sticky top-0 z-40 border-b border-black/5 bg-white text-foreground transition-[color,background-color,border-color,translate] duration-300 motion-reduce:transition-none", overlay && overlayHeaderClasses, transparent && transparentHeaderClasses, footerVisible && scrolled && "-translate-y-full focus-within:translate-y-0")}>
-      <div className="mx-auto flex min-h-16 max-w-[1920px] items-center justify-between gap-4 px-5 md:min-h-18 md:gap-3 md:px-[clamp(1rem,2.6vw,3.125rem)]">
+    <header onMouseLeave={() => setMenuHref(null)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setMenuHref(null); }} onKeyDown={(event) => { if (event.key === "Escape") setMenuHref(null); }} className={cn("sticky top-0 z-40 border-b border-black/5 bg-white text-foreground transition-[color,background-color,border-color,translate] duration-300 motion-reduce:transition-none", overlay && overlayHeaderClasses, transparent && transparentHeaderClasses, scrolled && stickyHeaderClasses, footerVisible && scrolled && "-translate-y-full focus-within:translate-y-0")}>
+      {/* Desktop height follows the Figma at the top of the page (~130px at 1856px wide); once scrolled it
+          shrinks to leave only a small gap above and below the logo (~100px). */}
+      <div className={cn("mx-auto flex min-h-16 max-w-[1920px] items-center justify-between gap-4 px-5 transition-[height] duration-300 ease-out motion-reduce:transition-none md:gap-3 md:px-[clamp(1rem,2.6vw,3.125rem)]", scrolled ? "md:h-[clamp(4.5rem,5.4vw,6.25rem)]" : "md:h-[clamp(4.5rem,7vw,8.25rem)]")}>
         <Link href="/" aria-label="CISPF home" className="shrink-0">
           {/* TODO: Replace with the approved Canada-India logo. */}
-          <Image src="/logos/Logo-transparent.png" alt="Canada-India Strategic Partnership Forum" width={160} height={64} preload className={cn("h-auto w-[156px] md:w-[clamp(7rem,11.5vw,17rem)]", transparent && "md:hidden")} />
+          <Image src="/logos/Logo-transparent.png" alt="Canada-India Strategic Partnership Forum" width={160} height={64} preload className={cn("h-auto w-[156px] md:w-[clamp(7rem,8.6vw,12.5rem)]", transparent && "md:hidden")} />
           {/* Over the home hero video the tagline needs to be white; mobile keeps the white header and the normal logo. */}
-          {transparent && <Image src="/logos/logo-description-white.png" alt="Canada-India Strategic Partnership Forum" width={336} height={166} className="hidden h-auto md:block md:w-[clamp(7rem,11.5vw,17rem)]" />}
+          {transparent && <Image src="/logos/logo-description-white.png" alt="Canada-India Strategic Partnership Forum" width={336} height={166} className="hidden h-auto md:block md:w-[clamp(7rem,8.6vw,12.5rem)]" />}
         </Link>
 
-        <nav aria-label="Main navigation" className="hidden items-center gap-[clamp(0.75rem,3vw,3.75rem)] md:flex">
-          <ul className="flex items-center gap-[clamp(0.75rem,3vw,3.75rem)]">
-            {navigation.map(({ label, href, children }) => (
-              <li key={href} onMouseEnter={() => setMenuHref(children ? href : null)}>
-                <Link href={href} onFocus={() => setMenuHref(children ? href : null)} onClick={() => setMenuHref(null)} aria-expanded={children ? menuHref === href : undefined} aria-controls={children ? "header-subnavigation" : undefined} onNavigate={(event) => navigateToSection(event, href)} aria-current={activeHref === href ? "location" : undefined} className="group inline-flex min-h-11 items-center whitespace-nowrap text-[clamp(0.625rem,0.75vw,0.875rem)] font-normal ">
-                  <span className={cn(navigationLabelClasses, transparent && transparentLabelClasses)}>{label}</span>
-                </Link>
-              </li>
-            ))}
+        <nav aria-label="Main navigation" className="hidden items-center gap-[clamp(0.75rem,3.9vw,4.5rem)] md:flex">
+          <ul className="flex items-center gap-[clamp(0.75rem,3.9vw,4.5rem)]">
+            {navigation.map(({ label, href, children }, index) => {
+              const expanded = !!children && menuHref === href;
+              return (
+                <li key={href} onMouseEnter={() => setMenuHref(children ? href : null)} className="relative">
+                  <Link href={href} onFocus={() => setMenuHref(children ? href : null)} onClick={() => setMenuHref(null)} aria-expanded={children ? expanded : undefined} aria-controls={children ? `header-subnavigation-${index}` : undefined} onNavigate={(event) => navigateToSection(event, href)} aria-current={activeHref === href ? "location" : undefined} className="group inline-flex min-h-11 items-center whitespace-nowrap text-[clamp(0.625rem,0.82vw,0.9375rem)] font-normal ">
+                    <span className={cn(navigationLabelClasses, transparent && transparentLabelClasses)}>{label}</span>
+                  </Link>
+                  {/* Small dropdown under the item (Figma). It sits inside the <li>, so moving the pointer into it keeps it open;
+                      the top padding bridges the gap without closing it. */}
+                  {children && (
+                    <div id={`header-subnavigation-${index}`} inert={!expanded} className={cn("absolute top-full left-0 pt-2 transition-[opacity,translate,visibility] duration-200 motion-reduce:transition-none", expanded ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0")}>
+                      <ul aria-label={`${label} links`} className="bg-[#F0F0F0] px-[clamp(1rem,1.2vw,1.375rem)] py-[clamp(0.5rem,0.6vw,0.75rem)]">
+                        {children.map((item) => (
+                          <li key={item.href}>
+                            <Link href={item.href} onClick={() => setMenuHref(null)} aria-current={activeHref === item.href ? "page" : undefined} className="group flex min-h-9 items-center gap-2 text-[clamp(0.625rem,0.75vw,0.875rem)] whitespace-nowrap text-black transition-colors duration-200 hover:text-primary focus-visible:text-primary motion-reduce:transition-none">
+                              {item.label}
+                              <ArrowRight aria-hidden="true" className="size-4 -translate-x-1 opacity-0 transition-[translate,opacity] duration-200 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100 motion-reduce:transition-none" />
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </li>
+              );
+            })}
           </ul>
           <Button href={connectLink.href} className={cn(connectButtonClasses, "px-[clamp(0.75rem,1.35vw,1.75rem)] text-[clamp(0.6875rem,0.95vw,1.0625rem)]")}>{connectLink.label}</Button>
         </nav>
@@ -159,14 +183,6 @@ export default function Header() {
             </nav>
           </SheetContent>
         </Sheet>
-      </div>
-      <div id="header-subnavigation" inert={!expandedMenu} className={`absolute inset-x-0 top-full hidden border-x-2 border-primary bg-[#F6F6F6] transition-[opacity,translate,visibility] duration-200 md:block motion-reduce:transition-none ${expandedMenu ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"}`}>
-        {expandedMenu && <div className="mx-auto grid max-w-[1920px] grid-cols-[1fr_3fr] items-center gap-10 px-[clamp(2rem,8vw,10rem)] py-[clamp(2rem,3.5vw,4rem)]">
-          <p className="border-r border-neutral-200 py-6 pr-8 text-[clamp(1.25rem,2vw,2.5rem)] font-medium"><span className="bg-brand-gradient bg-clip-text text-transparent">{expandedMenu.label}</span></p>
-          <nav aria-label={`${expandedMenu.label} links`}><ul className="flex flex-wrap justify-around gap-6">
-            {expandedMenu.children?.map((item) => <li key={item.href}><Link href={item.href} onClick={() => setMenuHref(null)} className="group flex min-h-11 items-center gap-2 text-xs hover:text-primary focus-visible:text-primary lg:text-sm">{item.label}<ArrowRight aria-hidden="true" className="size-4 -translate-x-1 opacity-0 transition-[translate,opacity] duration-200 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100 motion-reduce:transition-none" /></Link></li>)}
-          </ul></nav>
-        </div>}
       </div>
     </header>
   );
