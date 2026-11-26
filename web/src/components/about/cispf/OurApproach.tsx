@@ -77,7 +77,7 @@ export default function OurApproach() {
                   </div>
                 </div>
 
-                <p className="mt-8 text-[clamp(1.25rem,1.15vw,1.5rem)] leading-snug font-medium text-primary lg:mt-[clamp(1.5rem,1.6vw,2.25rem)]">{item.tagline}</p>
+                <p className="mt-8 text-[clamp(1.25rem,1.15vw,1.5rem)] leading-snug font-normal text-primary lg:mt-[clamp(1.5rem,1.6vw,2.25rem)]">{item.tagline}</p>
                 <p className="mt-3 text-base leading-[1.5] lg:mt-[clamp(0.75rem,0.8vw,1rem)] lg:text-[clamp(1rem,0.95vw,1.25rem)]">{item.description}</p>
               </li>
             );
