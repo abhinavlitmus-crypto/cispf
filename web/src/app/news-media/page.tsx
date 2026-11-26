@@ -21,11 +21,12 @@ export default async function NewsMediaPage() {
   return (
     <>
       <main className="relative z-10 bg-white">
-        <div className="mx-auto max-w-[1920px] px-5 pt-12 md:px-[clamp(1rem,2.6vw,3.125rem)] md:pt-[clamp(3rem,5vw,6rem)] lg:pb-[clamp(3rem,4.5vw,5.5rem)]">
-          <h1 id="news-media-heading" className="gradient-text mx-auto max-w-[19rem] text-center md:mx-0 md:w-fit md:max-w-none md:text-left text-[clamp(2.5rem,4.5vw,5.5rem)] leading-[1.1] font-medium uppercase">{page.title || "News & Media"}</h1>
+        <div className="mx-auto max-w-[1920px] px-5 pt-12 md:px-[clamp(1rem,8.6vw,10.5rem)] md:pt-[clamp(3rem,5vw,6rem)]">
+          <h1 id="news-media-heading" className="mx-auto max-w-[19rem] text-center text-[clamp(2rem,3.1vw,3.625rem)] leading-tight font-medium text-primary uppercase md:mx-0 md:w-fit md:max-w-none md:text-left">{page.title || "News & Media"}</h1>
         </div>
         <NewsMediaListing items={page.items} />
-        <JoinUs />
+        {/* Figma: only the skyline above the footer on this page. */}
+        <JoinUs skylineOnly />
       </main>
     </>
   );

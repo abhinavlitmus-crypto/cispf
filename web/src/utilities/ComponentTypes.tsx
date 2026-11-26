@@ -52,7 +52,8 @@ export type PaginationProps = {
 
 export type BackgroundVideoProps = { src: string; poster?: string };
 export type EventCardProps = { item: EventItem; tone?: "dark" | "light" };
-export type JoinUsProps = { className?: string };
+// skylineOnly: just the city skyline above the footer, without the heading, text and button.
+export type JoinUsProps = { className?: string; skylineOnly?: boolean };
 export type NewsCardProps = { item: NewsItem; variant?: "default" | "listing" | "featured" };
 export type OpportunityCardProps = { item: OpportunityItem };
 export type PageHeroProps = {
