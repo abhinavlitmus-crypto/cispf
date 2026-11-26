@@ -11,7 +11,7 @@ export default function PolicyDiscussions({ items }: { items: PolicyItem[] }) {
 
   return (
     <section id="policy-discussions" aria-labelledby="policy-heading" className="bg-white text-black">
-      <div className="mx-auto max-w-[1920px] px-5 py-16 md:px-[clamp(1rem,2.6vw,3.125rem)] md:py-[clamp(4rem,5vw,6rem)]">
+      <div className="mx-auto max-w-[1920px] px-5 py-16 md:px-[clamp(1rem,8.6vw,10.5rem)] md:py-[clamp(4rem,5vw,6rem)]">
         <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
           <h2 id="policy-heading" className="w-fit text-[clamp(2rem,3.1vw,3.625rem)] leading-tight font-medium text-primary">RECENT POLICY DISCUSSIONS</h2>
           <Button href="/what-we-do/policy-discussions" className="group max-w-full shrink-0 px-4 text-xs sm:px-6 sm:text-sm">

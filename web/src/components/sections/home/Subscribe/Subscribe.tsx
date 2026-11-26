@@ -44,9 +44,10 @@ export default function Subscribe() {
   }
 
   return (
-    <section aria-labelledby="subscribe-heading" className="bg-white px-5 py-12 md:px-[clamp(1rem,2.6vw,3.125rem)] md:py-[clamp(4rem,6vw,7rem)]">
+    <section aria-labelledby="subscribe-heading" className="bg-white px-5 py-12 md:px-[clamp(1rem,8.6vw,10.5rem)] md:py-[clamp(4rem,6vw,7rem)]">
       {/* Form panel on the left, photo with the leaf on the right; stacked on smaller screens. */}
-      <div className="mx-auto grid max-w-[1352px] lg:w-[85%] lg:grid-cols-[53fr_47fr] xl:w-[73%]">
+      {/* Narrower than the other sections: 73% of the page on large screens (88% of the padded container), as in the Figma. */}
+      <div className="mx-auto grid max-w-[1400px] lg:grid-cols-[53fr_47fr] xl:w-[88%]">
       <div className="bg-[#f3f3f3] px-6 py-12 md:px-[clamp(2.5rem,6vw,5rem)] md:py-[clamp(3rem,5vw,6rem)]">
         {/* max-w in em breaks the heading after "OUR", as in the design. */}
         <h2 id="subscribe-heading" className="max-w-[13em] text-[clamp(1.75rem,2.2vw,2.5rem)] leading-tight font-medium text-black">SUBSCRIBE TO OUR NEWSLETTER</h2>

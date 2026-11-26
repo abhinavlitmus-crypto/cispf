@@ -11,7 +11,7 @@ export default async function NewsMedia() {
 
   return (
     <section id="news-media" aria-labelledby="news-heading" className="bg-white text-black">
-      <div className="mx-auto max-w-[1920px] px-5 py-16 md:px-[clamp(1rem,2.6vw,3.125rem)] md:py-[clamp(4rem,5vw,6rem)]">
+      <div className="mx-auto max-w-[1920px] px-5 py-16 md:px-[clamp(1rem,8.6vw,10.5rem)] md:py-[clamp(4rem,5vw,6rem)]">
         <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
         <h2 id="news-heading" className="text-primary w-fit text-[clamp(2rem,3.1vw,3.625rem)] leading-tight font-medium">NEWS & MEDIA</h2>
           <Button href="/news-media" className="group max-w-full shrink-0 px-4 text-xs sm:px-6 sm:text-sm">
