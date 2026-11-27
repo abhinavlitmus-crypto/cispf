@@ -14,7 +14,7 @@ export const navigation = [
   // TODO: Implement the news & media page.
   { label: "NEWS & MEDIA", href: "/news-media" },
   // { label: "RESEARCH WORK", href: "/#research" },
-  { label: "OPPORTUNITIES", href: "/opportunities" },
+  { label: "RESEARCH", href: "/opportunities" },
 ];
 
 export const connectLink = { label: "LET’S CONNECT", href: "/contact-us" };
